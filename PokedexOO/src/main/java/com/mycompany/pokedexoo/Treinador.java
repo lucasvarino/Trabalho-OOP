@@ -13,11 +13,21 @@ import java.util.ArrayList;
 public class Treinador extends Pessoa {
     private Region regiao;
     private ArrayList<Pokemon> pokemons;
+    private String nome;
 
     public Treinador(int _id, String _nome) {
         super(_id, _nome);
         this.regiao = new Region();
         this.pokemons = new ArrayList<>();
+        this.nome = _nome;
+    }
+    
+    public String getNome() {
+        return nome;
+    }
+    
+    public void setNome(String _nome) {
+        this.nome = _nome;
     }
 
     public Region getRegiao() {
