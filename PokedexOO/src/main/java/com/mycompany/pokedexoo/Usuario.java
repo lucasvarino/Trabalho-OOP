@@ -27,10 +27,12 @@ public class Usuario extends Pessoa {
         this.treinadores.add(treinador);
     }
 
-    public void imprimeNomes() {
+    public void imprimeNomesTreinadores() {
         for (Treinador treinador : treinadores) {
             System.out.println(treinador.getNome());
         }
     }
+
+
 
 }

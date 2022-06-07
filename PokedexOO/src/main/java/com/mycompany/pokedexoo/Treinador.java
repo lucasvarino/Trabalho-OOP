@@ -25,10 +25,7 @@ public class Treinador extends Pessoa {
     public String getNome() {
         return nome;
     }
-    
-    public void setNome(String _nome) {
-        this.nome = _nome;
-    }
+
 
     public Region getRegiao() {
         return regiao;
@@ -40,6 +37,21 @@ public class Treinador extends Pessoa {
 
     public ArrayList<Pokemon> getPokemons() {
         return pokemons;
+    }
+
+    public void imprimePokemons() {
+
+        if(this.pokemons.isEmpty()) {
+            System.out.println("Você ainda não registrou nenhum pokemon!");
+        } else {
+            for (Pokemon pokemon : pokemons) {
+                System.out.println(pokemon.getId() + " " + pokemon.getNome());
+            }
+        }
+    }
+
+    public void addPokemon(Pokemon pokemon) {
+        this.pokemons.add(pokemon);
     }
     
     

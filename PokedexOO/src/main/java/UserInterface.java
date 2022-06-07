@@ -1,4 +1,6 @@
 
+import com.mycompany.pokedexoo.Pokemon;
+import com.mycompany.pokedexoo.Treinador;
 import com.mycompany.pokedexoo.Usuario;
 import java.util.Scanner;
 
@@ -9,11 +11,11 @@ import java.util.Scanner;
 
 /**
  *
- * @author ice
+ * @author lucasvarino
  */
 public class UserInterface {
     public static void main(String[] args) {
-        
+        imprimeInterface();
     }
     
     public static void imprimeInterface() {
@@ -31,6 +33,7 @@ public class UserInterface {
         
         
         Usuario defaultUser = new Usuario(0, nome);
+        Treinador treinador = defaultUser.getTreinadores().get(0);
         
         System.out.println("Escolha uma ação:");
         System.out.println("1 - Acessar meus pokemons");
@@ -43,7 +46,40 @@ public class UserInterface {
         
         switch (escolha) {
             case 1:
-                
+                System.out.println("Acessando pokemons...");
+                defaultUser.imprimeNomesTreinadores();
+
+
+                treinador.imprimePokemons();
+
+                break;
+            case 2:
+                System.out.println("Registrando novo Pokemon");
+
+                System.out.println("Digite o nome do seu pokemon...");
+                String nomePokemon = teclado.nextLine();
+
+                System.out.println("Digite a altura do seu pokemon...");
+                Double altura = teclado.nextDouble();
+
+                System.out.println("Digite o peso do seu pokemon...");
+                Double peso = teclado.nextDouble();
+
+                treinador.addPokemon(new Pokemon("1", nomePokemon, altura, peso));
+
+                System.out.println("Pokemon adicionado com sucesso!");
+
+                System.out.println("");
+
+                System.out.println("Imprimindo a lista de pokemons atuais");
+
+                treinador.imprimePokemons();
+
+                break;
+            default:
+                System.out.println("Saindo do programa...");
+                return;
+
         }
     }
 }

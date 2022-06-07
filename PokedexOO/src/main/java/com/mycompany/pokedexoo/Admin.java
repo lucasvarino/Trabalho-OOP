@@ -23,11 +23,7 @@ public class Admin extends Pessoa {
     }
     
     public void editaUsuario(List<Usuario> usuariosBanco, int usuarioId) {
-        for (Usuario usuario : usuariosBanco) {
-            if (usuario.getId() == usuarioId) {
-                usuario.setNome();
-                usuario.setTreinador();
-        }
+
     }
     
     public void deletaUsuario() {
