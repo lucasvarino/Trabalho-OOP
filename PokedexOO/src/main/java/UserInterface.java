@@ -17,69 +17,74 @@ public class UserInterface {
     public static void main(String[] args) {
         imprimeInterface();
     }
-    
+
     public static void imprimeInterface() {
         System.out.println("======================================");
         System.out.println("Pokedex - Gerencie seus pokémons!");
         System.out.println("======================================");
         System.out.println("");
-        
+
         Scanner teclado = new Scanner(System.in);
 
         System.out.printf("Digite seu nome: ");
         String nome = teclado.nextLine();
-        
+
         System.out.println("");
-        
-        
+
         Usuario defaultUser = new Usuario(0, nome);
         Treinador treinador = defaultUser.getTreinadores().get(0);
-        
-        System.out.println("Escolha uma ação:");
-        System.out.println("1 - Acessar meus pokemons");
-        System.out.println("2 - Registrar novo pokémon");
-        System.out.println("3 - Sair");
-        
 
-        
-        int escolha = teclado.nextInt();
-        
-        switch (escolha) {
-            case 1:
-                System.out.println("Acessando pokemons...");
-                defaultUser.imprimeNomesTreinadores();
+        String escolha = "0";
 
+        while (escolha != "3") {
 
-                treinador.imprimePokemons();
+            System.out.println("");
 
-                break;
-            case 2:
-                System.out.println("Registrando novo Pokemon");
+            System.out.println("Escolha uma ação:");
+            System.out.println("1 - Acessar meus pokemons");
+            System.out.println("2 - Registrar novo pokémon");
+            System.out.println("3 - Sair");
+    
+            escolha = teclado.nextLine();
+            
+            switch (escolha) {
+                case "1":
+                    System.out.println("Acessando pokemons...");
+                    defaultUser.imprimeNomesTreinadores();
 
-                System.out.println("Digite o nome do seu pokemon...");
-                String nomePokemon = teclado.nextLine();
+                    treinador.imprimePokemons();
 
-                System.out.println("Digite a altura do seu pokemon...");
-                Double altura = teclado.nextDouble();
+                    break;
+                case "2":
+                    System.out.println("Registrando novo Pokemon");
 
-                System.out.println("Digite o peso do seu pokemon...");
-                Double peso = teclado.nextDouble();
+                    System.out.println("Digite o nome do seu pokemon...");
+                    String nomePokemon = teclado.nextLine();
 
-                treinador.addPokemon(new Pokemon("1", nomePokemon, altura, peso));
+                    System.out.println("Digite a altura do seu pokemon...");
+                    String altura = teclado.nextLine();
 
-                System.out.println("Pokemon adicionado com sucesso!");
+                    System.out.println("Digite o peso do seu pokemon...");
+                    String peso = teclado.nextLine();
 
-                System.out.println("");
+                    treinador.addPokemon(new Pokemon("1", nomePokemon, altura, peso));
 
-                System.out.println("Imprimindo a lista de pokemons atuais");
+                    System.out.println("Pokemon adicionado com sucesso!");
 
-                treinador.imprimePokemons();
+                    System.out.println("");
 
-                break;
-            default:
-                System.out.println("Saindo do programa...");
-                return;
+                    System.out.println("Imprimindo a lista de pokemons atuais");
 
+                    treinador.imprimePokemons();
+
+                    teclado = new Scanner(System.in);
+
+                    break;
+                case "3":
+                    System.out.println("Saindo do programa...");
+                    return;
+
+            }
         }
     }
 }

@@ -13,14 +13,14 @@ import java.util.*;
 public class Pokemon {
     private String id;
     private String nome;
-    private Double altura;
-    private Double peso;
+    private String altura;
+    private String peso;
     private PokemonType tipo;
     private PokemonSpecies especie;
     private ArrayList<PokemonAbility> habilidades;
     private PokemonSprites sprites;
 
-    public Pokemon(String id, String nome, Double altura, Double peso) {
+    public Pokemon(String id, String nome, String altura, String peso) {
         this.id = id;
         this.nome = nome;
         this.altura = altura;
@@ -43,19 +43,19 @@ public class Pokemon {
         this.nome = nome;
     }
 
-    public Double getAltura() {
+    public String getAltura() {
         return altura;
     }
 
-    public void setAltura(Double altura) {
+    public void setAltura(String altura) {
         this.altura = altura;
     }
 
-    public Double getPeso() {
+    public String getPeso() {
         return peso;
     }
 
-    public void setPeso(Double peso) {
+    public void setPeso(String peso) {
         this.peso = peso;
     }
 
