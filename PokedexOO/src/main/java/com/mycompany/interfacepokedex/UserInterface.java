@@ -32,7 +32,7 @@ public class UserInterface {
         int id = 1;
         
 
-        System.out.printf("Digite seu nome: ");
+        System.out.println("Digite seu nome: ");
         String nome = teclado.nextLine();
 
         System.out.println("");
