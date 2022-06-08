@@ -5,8 +5,9 @@
 package com.mycompany.pokedexoo;
 
 /**
- *
- * @author jpbba
+ * autores:
+ * João Pedro Banhato Pereira (202165506B)
+ * Lucas de Oliveira Varino (202165090A)
  */
 public class Pessoa {
     protected static int id;

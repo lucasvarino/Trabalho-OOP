@@ -1,3 +1,5 @@
+package com.mycompany.interfacepokedex;
+
 
 import com.mycompany.pokedexoo.Pokemon;
 import com.mycompany.pokedexoo.Treinador;
@@ -10,8 +12,9 @@ import java.util.Scanner;
  */
 
 /**
- *
- * @author lucasvarino
+ * autores:
+ * João Pedro Banhato Pereira (202165506B)
+ * Lucas de Oliveira Varino (202165090A)
  */
 public class UserInterface {
     public static void main(String[] args) {

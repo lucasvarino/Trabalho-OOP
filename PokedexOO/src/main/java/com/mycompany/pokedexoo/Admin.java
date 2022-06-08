@@ -7,8 +7,9 @@ package com.mycompany.pokedexoo;
 import java.util.*;
 
 /**
- *
- * @author jpbba
+ * autores:
+ * João Pedro Banhato Pereira (202165506B)
+ * Lucas de Oliveira Varino (202165090A)
  */
 public class Admin extends Pessoa {
     private String senha;
