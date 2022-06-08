@@ -97,6 +97,10 @@ public class UserInterface {
                 case "3":
 
                     limparTela();
+
+                    if(treinador.getPokemons().isEmpty())
+                        break;
+
                     System.out.println("Selecione um pokemon para editar: ");
 
                     treinador.imprimePokemons();
@@ -131,6 +135,10 @@ public class UserInterface {
                 case "4":
 
                     limparTela();
+
+                    if(treinador.getPokemons().isEmpty())
+                        break;
+
                     System.out.println("Selecione um pokemon para excluir: ");
 
                     treinador.imprimePokemons();

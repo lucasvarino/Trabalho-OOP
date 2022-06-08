@@ -96,7 +96,6 @@ public class Treinador extends Pessoa {
             System.out.println("Você ainda não registrou nenhum pokemon!");
         } else {
             for (Pokemon pokemon : pokemons) {
-                System.out.println("COMPARAÇÃO - ID DO USUARIO - " + id + " ID DO POKEMON - " + pokemon.getId() + " COMPARAÇÃO - "  + (pokemon.getId() == id));
                 if(pokemon.getId() == id) {
                     pokemons.set(pokemons.indexOf(pokemon), pokemonEditado);
 
