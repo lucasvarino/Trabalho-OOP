@@ -27,57 +27,79 @@ public class InterfaceAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pokemons = new javax.swing.JLabel();
+        listaPokemons = new javax.swing.JComboBox<>();
+        modificaAdmin = new javax.swing.JButton();
         admin = new javax.swing.JLabel();
         usuario = new javax.swing.JLabel();
-        listaUsuarios = new javax.swing.JComboBox<>();
-        entraAdmin = new javax.swing.JButton();
-        criaUsuario1 = new javax.swing.JButton();
+        treinador = new javax.swing.JLabel();
+        inputTreinadorUsuario = new javax.swing.JTextField();
+        inputNomeUsuario = new javax.swing.JTextField();
         pokedex = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        pokemons.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        pokemons.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pokemons.setText("Pokémons:");
+        getContentPane().add(pokemons);
+        pokemons.setBounds(140, 320, 90, 23);
+
+        listaPokemons.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bulbasaur", "Lucas", "Pedro", "José" }));
+        listaPokemons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaPokemonsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(listaPokemons);
+        listaPokemons.setBounds(250, 320, 100, 22);
+
+        modificaAdmin.setBackground(new java.awt.Color(51, 255, 51));
+        modificaAdmin.setText("Confirmar");
+        modificaAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificaAdminActionPerformed(evt);
+            }
+        });
+        getContentPane().add(modificaAdmin);
+        modificaAdmin.setBounds(200, 360, 100, 22);
+
         admin.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
-        admin.setForeground(new java.awt.Color(102, 255, 102));
         admin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         admin.setText("ADMIN");
         getContentPane().add(admin);
-        admin.setBounds(610, 250, 90, 23);
+        admin.setBounds(200, 230, 90, 23);
 
         usuario.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        usuario.setText("USUÁRIO");
+        usuario.setText("Usuário:");
         getContentPane().add(usuario);
-        usuario.setBounds(200, 230, 90, 23);
+        usuario.setBounds(140, 260, 90, 23);
 
-        listaUsuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Joao", "Lucas", "Pedro", "José" }));
-        listaUsuarios.addActionListener(new java.awt.event.ActionListener() {
+        treinador.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        treinador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        treinador.setText("Treinador:");
+        getContentPane().add(treinador);
+        treinador.setBounds(130, 290, 100, 23);
+
+        inputTreinadorUsuario.setText("Ash");
+        inputTreinadorUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listaUsuariosActionPerformed(evt);
+                inputTreinadorUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(listaUsuarios);
-        listaUsuarios.setBounds(210, 290, 72, 22);
+        getContentPane().add(inputTreinadorUsuario);
+        inputTreinadorUsuario.setBounds(250, 290, 60, 22);
 
-        entraAdmin.setBackground(new java.awt.Color(51, 255, 51));
-        entraAdmin.setText("Entrar");
-        entraAdmin.addActionListener(new java.awt.event.ActionListener() {
+        inputNomeUsuario.setText("Joao");
+        inputNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                entraAdminActionPerformed(evt);
+                inputNomeUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(entraAdmin);
-        entraAdmin.setBounds(620, 290, 75, 22);
-
-        criaUsuario1.setBackground(new java.awt.Color(102, 204, 255));
-        criaUsuario1.setText("Criar");
-        criaUsuario1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                criaUsuario1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(criaUsuario1);
-        criaUsuario1.setBounds(210, 350, 75, 22);
+        getContentPane().add(inputNomeUsuario);
+        inputNomeUsuario.setBounds(250, 260, 60, 22);
 
         pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\663-6639628_trending-pokedex-png-transparent-png.png")); // NOI18N
         getContentPane().add(pokedex);
@@ -86,17 +108,21 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void listaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaUsuariosActionPerformed
+    private void listaPokemonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaPokemonsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_listaUsuariosActionPerformed
+    }//GEN-LAST:event_listaPokemonsActionPerformed
 
-    private void entraAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entraAdminActionPerformed
+    private void modificaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaAdminActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_entraAdminActionPerformed
+    }//GEN-LAST:event_modificaAdminActionPerformed
 
-    private void criaUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criaUsuario1ActionPerformed
+    private void inputTreinadorUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTreinadorUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_criaUsuario1ActionPerformed
+    }//GEN-LAST:event_inputTreinadorUsuarioActionPerformed
+
+    private void inputNomeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomeUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputNomeUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,10 +162,13 @@ public class InterfaceAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel admin;
-    private javax.swing.JButton criaUsuario1;
-    private javax.swing.JButton entraAdmin;
-    private javax.swing.JComboBox<String> listaUsuarios;
+    private javax.swing.JTextField inputNomeUsuario;
+    private javax.swing.JTextField inputTreinadorUsuario;
+    private javax.swing.JComboBox<String> listaPokemons;
+    private javax.swing.JButton modificaAdmin;
     private javax.swing.JLabel pokedex;
+    private javax.swing.JLabel pokemons;
+    private javax.swing.JLabel treinador;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 
