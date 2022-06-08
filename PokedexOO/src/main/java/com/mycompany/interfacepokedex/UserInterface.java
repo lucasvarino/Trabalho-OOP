@@ -29,6 +29,9 @@ public class UserInterface {
 
         Scanner teclado = new Scanner(System.in);
 
+        int id = 1;
+        
+
         System.out.printf("Digite seu nome: ");
         String nome = teclado.nextLine();
 
@@ -46,19 +49,26 @@ public class UserInterface {
             System.out.println("Escolha uma ação:");
             System.out.println("1 - Acessar meus pokemons");
             System.out.println("2 - Registrar novo pokémon");
-            System.out.println("3 - Sair");
+            System.out.println("3 - Editar pokémon");
+            System.out.println("4 - Deletar pokémon");
+            System.out.println("5 - Sair");
+
     
             escolha = teclado.nextLine();
             
             switch (escolha) {
                 case "1":
                     System.out.println("Acessando pokemons...");
-                    defaultUser.imprimeNomesTreinadores();
+
+                    limparTela();
 
                     treinador.imprimePokemons();
 
+
                     break;
                 case "2":
+
+                    limparTela();
                     System.out.println("Registrando novo Pokemon");
 
                     System.out.println("Digite o nome do seu pokemon...");
@@ -70,7 +80,7 @@ public class UserInterface {
                     System.out.println("Digite o peso do seu pokemon...");
                     String peso = teclado.nextLine();
 
-                    treinador.addPokemon(new Pokemon("1", nomePokemon, altura, peso));
+                    treinador.addPokemon(new Pokemon(id++, nomePokemon, altura, peso));
 
                     System.out.println("Pokemon adicionado com sucesso!");
 
@@ -83,11 +93,69 @@ public class UserInterface {
                     teclado = new Scanner(System.in);
 
                     break;
+
                 case "3":
+
+                    limparTela();
+                    System.out.println("Selecione um pokemon para editar: ");
+
+                    treinador.imprimePokemons();
+
+                    teclado = new Scanner(System.in);
+
+                    int idEditar = teclado.nextInt();
+
+                    teclado = new Scanner(System.in);
+
+                    if(treinador.verificarId(idEditar)) {
+                        System.out.println("Pokemon encontrado, digite os novos valores...");
+                        System.out.println("Digite o nome do pokemon: ");
+
+                        nome = teclado.nextLine();
+
+                        System.out.println("Digite a altura do pokemon: ");
+                        altura = teclado.nextLine();
+
+                        System.out.println("Digite o peso: ");
+                        peso = teclado.nextLine();
+
+                        Pokemon pokemonEditado = new Pokemon(idEditar, nome, altura, peso);
+
+                        treinador.editarPokemon(idEditar, pokemonEditado);
+
+                        teclado = new Scanner(System.in);
+                    }
+
+                    break;
+
+                case "4":
+
+                    limparTela();
+                    System.out.println("Selecione um pokemon para excluir: ");
+
+                    treinador.imprimePokemons();
+
+                    int idExcluir = teclado.nextInt();
+
+                    treinador.deletarPokemon(idExcluir);
+
+                    teclado = new Scanner(System.in);
+
+                    break;
+                case "5":
                     System.out.println("Saindo do programa...");
                     return;
+
+                default:
+                    System.out.println("Comando não identificado.");
+                    break;
 
             }
         }
     }
+
+    public static void limparTela() {  
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();  
+    } 
 }

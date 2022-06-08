@@ -12,7 +12,7 @@ import java.util.*;
  * Lucas de Oliveira Varino (202165090A)
  */
 public class Pokemon {
-    private String id;
+    private int id;
     private String nome;
     private String altura;
     private String peso;
@@ -21,18 +21,18 @@ public class Pokemon {
     private ArrayList<PokemonAbility> habilidades;
     private PokemonSprites sprites;
 
-    public Pokemon(String id, String nome, String altura, String peso) {
+    public Pokemon(int id, String nome, String altura, String peso) {
         this.id = id;
         this.nome = nome;
         this.altura = altura;
         this.peso = peso;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

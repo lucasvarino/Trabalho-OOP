@@ -54,6 +54,62 @@ public class Treinador extends Pessoa {
     public void addPokemon(Pokemon pokemon) {
         this.pokemons.add(pokemon);
     }
+
+    public boolean verificarId(int id) {
+        if(this.pokemons.isEmpty()) {
+            return false;
+        } else {
+            for (Pokemon pokemon : pokemons) {
+                if(pokemon.getId() == id) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void deletarPokemon(int id) {
+
+        if(this.pokemons.isEmpty()) {
+            System.out.println("Você ainda não registrou nenhum pokemon!");
+        } else {
+            for (Pokemon pokemon : pokemons) {
+                if(pokemon.getId() == id) {
+                    pokemons.remove(pokemon);
+
+                    System.out.println("Pokemon removido com sucesso!");
+                    this.imprimePokemons();
+
+                    return;
+                }
+            }
+        }
+
+        System.out.println("Não foi encontrado nenhum pokemon com esse id!");
+
+    }
+
+    public void editarPokemon(int id, Pokemon pokemonEditado) {
+
+        
+        if(this.pokemons.isEmpty()) {
+            System.out.println("Você ainda não registrou nenhum pokemon!");
+        } else {
+            for (Pokemon pokemon : pokemons) {
+                System.out.println("COMPARAÇÃO - ID DO USUARIO - " + id + " ID DO POKEMON - " + pokemon.getId() + " COMPARAÇÃO - "  + (pokemon.getId() == id));
+                if(pokemon.getId() == id) {
+                    pokemons.set(pokemons.indexOf(pokemon), pokemonEditado);
+
+                    System.out.println("Pokemon editado com sucesso!");
+                    this.imprimePokemons();
+
+                    return;
+                }
+            }
+        }
+
+        System.out.println("Não foi encontrado nenhum pokemon com esse id!");
+    }
     
     
 }
