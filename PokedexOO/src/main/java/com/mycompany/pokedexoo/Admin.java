@@ -11,12 +11,10 @@ import java.util.*;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class Admin extends Pessoa {
-    private String senha;
+public class Admin extends Usuario {
 
-    public Admin(String senha, int _id, String _nome) {
-        super(_id, _nome);
-        this.senha = senha;
+    public Admin(int _id, String _nome, String _senha) {
+        super(_id, _nome, _senha);
     }
     
     public void criaUsuario() {

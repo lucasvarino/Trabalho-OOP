@@ -11,29 +11,11 @@ import java.util.*;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class Usuario extends Pessoa {
-    private ArrayList<Treinador> treinadores;
+public abstract class Usuario extends Pessoa {
+    private String senha;
 
-    public Usuario(int _id, String _nome) {
+    public Usuario(int _id, String _nome, String _senha) {
         super(_id, _nome);
-        this.treinadores = new ArrayList<>();
-        this.treinadores.add(new Treinador(0, "Ash"));
+        this.senha = _senha;
     }
-
-    public ArrayList<Treinador> getTreinadores() {
-        return treinadores;
-    }
-
-    public void setTreinador(Treinador treinador) {
-        this.treinadores.add(treinador);
-    }
-
-    public void imprimeNomesTreinadores() {
-        for (Treinador treinador : treinadores) {
-            System.out.println(treinador.getNome());
-        }
-    }
-
-
-
 }
