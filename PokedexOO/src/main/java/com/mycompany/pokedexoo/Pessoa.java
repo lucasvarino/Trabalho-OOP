@@ -13,7 +13,7 @@ public abstract class Pessoa {
     protected static int id;
     protected String nome;
 
-    public Pessoa(String _nome) {
+    public Pessoa(int _id, String _nome) {
         id++;
         this.nome = "";
     }
