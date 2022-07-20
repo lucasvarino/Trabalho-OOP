@@ -5,6 +5,7 @@
 package com.mycompany.pokedexoo;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,13 +19,25 @@ import java.util.*;
  * Lucas de Oliveira Varino (202165090A)
  */
 public class Pokemon {
+    @SerializedName("id")
     private int id;
+    
+    @SerializedName("name")
     private String name;
+    
+    @SerializedName("height")
     private String height;
+    
+    @SerializedName("weight")
     private String weight;
-    private PokemonType tipo;
-    private PokemonSpecies especie;
+    
+    @SerializedName("types")
+    private ArrayList<PokemonTypeSlot> tipos;
+    
+    @SerializedName("sprites")
     private PokemonSprites sprites;
+    
+    private PokemonRegion region;
 
     public Pokemon(int id, String nome, String altura, String peso) {
         this.id = id;
@@ -65,20 +78,12 @@ public class Pokemon {
         this.weight = peso;
     }
 
-    public PokemonType getTipo() {
-        return tipo;
+    public ArrayList<PokemonTypeSlot> getTipo() {
+        return tipos;
     }
 
-    public void setTipo(PokemonType tipo) {
-        this.tipo = tipo;
-    }
-
-    public PokemonSpecies getEspecie() {
-        return especie;
-    }
-
-    public void setEspecie(PokemonSpecies especie) {
-        this.especie = especie;
+    public void setTipo(ArrayList<PokemonTypeSlot> tipo) {
+        this.tipos = tipo;
     }
 
     public PokemonSprites getSprites() {
@@ -129,5 +134,13 @@ public class Pokemon {
         System.out.println("NOME - " + this.name);
         System.out.println("ALTURA - " + this.height);
         System.out.println("PESO - " + this.weight);
+        
+        for(PokemonTypeSlot tipo : this.tipos) 
+        {
+            System.out.println("TIPO - " + tipo.getType().getName());
+        }
+        
+        System.out.println("SPRITE - " + this.sprites.getSprite());
+        
     }
 }
