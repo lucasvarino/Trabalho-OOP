@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -17,49 +18,43 @@ import java.net.URL;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
+public class Generation {
 
-public class PokemonRegion {
+    private final String name;
+    private final String url;
 
-    private String name;
-    
-    @SerializedName("generation")
-    private Generation geracao;
-    
-    public PokemonRegion(String name, Generation geracao) throws IOException {
+    @SerializedName("main_region")
+    private final Region region;
+
+    public Generation(String name, String url, Region region) {
         this.name = name;
-        this.geracao = geracao;
+        this.url = url;
+        this.region = region;
     }
 
     public String getName() {
         return name;
     }
 
-    public Generation getGeracao() {
-        return geracao;
+    public String getUrl() {
+        return url;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public static int takeRegionIdFromUrl(String url) {
-        int id = Integer.parseInt(Character.toString(url.charAt(-2)));
-
-        return id;
-
+    public Region getRegion() {
+        return region;
     }
     
-    public static PokemonRegion getRegionFromAPI(String pokemonName) throws IOException {
-        String url = "https://pokeapi.co/api/v2/pokemon-species/" + pokemonName;
-        System.out.println("URL - " + url);
-        
+
+    public String getRegionNameFromGeneration() throws IOException {
+        String url = "https://pokeapi.co/api/v2/generation/" + this.name;
+
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
 
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Accept", "Application/json");
 
         if (conn.getResponseCode() != 200) {
-            System.out.println("Requisição inválida, tente novamente. RES = " + conn.getResponseCode());
+            System.out.println("Requisição inválida, tente novamente.Res = " + conn.getResponseCode());
         }
 
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -75,15 +70,9 @@ public class PokemonRegion {
 
         Gson gson = new Gson();
 
-        PokemonRegion region = gson.fromJson(new String(response.getBytes()), PokemonRegion.class);
+        Generation regiao = gson.fromJson(new String(response.getBytes()), Generation.class);
+        
 
-        return region;
+        return regiao.getRegion().getName();
     }
-    
-    public static String getPokemonRegionName(String pokemonName) throws IOException
-    {
-        return PokemonRegion.getRegionFromAPI(pokemonName).getGeracao().getRegionNameFromGeneration();
-    }
-    
-
 }

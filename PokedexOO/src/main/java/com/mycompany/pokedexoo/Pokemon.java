@@ -37,13 +37,20 @@ public class Pokemon {
     @SerializedName("sprites")
     private PokemonSprites sprites;
     
-    private PokemonRegion region;
+    private String region;
 
-    public Pokemon(int id, String nome, String altura, String peso) {
+    public Pokemon() throws IOException {
+        this.region = null;
+    }
+
+   
+    public Pokemon(int id, String nome, String altura, String peso) throws IOException {
         this.id = id;
         this.name = nome;
         this.height = altura;
         this.weight = peso;
+        
+        this.region = PokemonRegion.getPokemonRegionName(nome);
     }
 
     public int getId() {
@@ -93,10 +100,18 @@ public class Pokemon {
     public void setSprites(PokemonSprites sprites) {
         this.sprites = sprites;
     }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
     
     public static Pokemon getPokemonByUrl(String pokemonName) {
         try {
-            String url = "https://pokeapi.co/api/v2/pokemon/" + pokemonName;
+            String url = "https://pokeapi.co/api/v2/pokemon/" + pokemonName.toLowerCase();
             
             HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
             
@@ -122,15 +137,17 @@ public class Pokemon {
             
             Pokemon pokemon = gson.fromJson(new String(response.getBytes()), Pokemon.class);
             
+            pokemon.setRegion(PokemonRegion.getPokemonRegionName(pokemon.getNome()));
+            
             return pokemon;
             
         } catch(IOException ex) {
-            System.out.println("Erro ao processar sua requisição, tente novamente");
+            System.out.println("Erro ao processar sua requisição, tente novamente" + ex);
             return null;
         }
     }
     
-    public void imprimePokemon() {
+    public void imprimePokemon() throws IOException {
         System.out.println("NOME - " + this.name);
         System.out.println("ALTURA - " + this.height);
         System.out.println("PESO - " + this.weight);
@@ -141,6 +158,7 @@ public class Pokemon {
         }
         
         System.out.println("SPRITE - " + this.sprites.getSprite());
+        System.out.println("REGIAO - " + this.region);
         
     }
 }

@@ -18,7 +18,7 @@ public class Treinador extends Pessoa {
 
     public Treinador(int _id, String _nome) {
         super(_id, _nome);
-        this.regiao = new Region();
+        this.regiao = new Region("");
         this.pokemons = new ArrayList<>();
         this.nome = _nome;
     }
