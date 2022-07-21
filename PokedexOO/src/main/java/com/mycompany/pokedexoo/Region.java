@@ -6,4 +6,13 @@ package com.mycompany.pokedexoo;
  * Lucas de Oliveira Varino (202165090A)
  */
 public class Region {
+    private final String name;
+
+    public Region(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

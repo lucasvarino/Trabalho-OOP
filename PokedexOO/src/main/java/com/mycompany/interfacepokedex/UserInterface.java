@@ -4,6 +4,7 @@ package com.mycompany.interfacepokedex;
 import com.mycompany.pokedexoo.Pokemon;
 import com.mycompany.pokedexoo.Treinador;
 import com.mycompany.pokedexoo.Usuario;
+import java.io.IOException;
 import java.util.Scanner;
 
 /*
@@ -17,11 +18,11 @@ import java.util.Scanner;
  * Lucas de Oliveira Varino (202165090A)
  */
 public class UserInterface {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         imprimeInterface();
     }
 
-    public static void imprimeInterface() {
+    public static void imprimeInterface() throws IOException {
         System.out.println("======================================");
         System.out.println("Pokedex - Gerencie seus pokémons!");
         System.out.println("======================================");
