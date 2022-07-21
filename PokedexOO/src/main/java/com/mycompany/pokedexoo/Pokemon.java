@@ -111,7 +111,7 @@ public class Pokemon {
     
     public static Pokemon getPokemonByUrl(String pokemonName) {
         try {
-            String url = "https://pokeapi.co/api/v2/pokemon/" + pokemonName;
+            String url = "https://pokeapi.co/api/v2/pokemon/" + pokemonName.toLowerCase();
             
             HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
             
