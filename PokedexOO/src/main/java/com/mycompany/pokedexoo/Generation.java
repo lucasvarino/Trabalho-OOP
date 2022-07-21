@@ -14,8 +14,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- *
- * @author pamme
+ * autores:
+ * João Pedro Banhato Pereira (202165506B)
+ * Lucas de Oliveira Varino (202165090A)
  */
 public class Generation {
 
