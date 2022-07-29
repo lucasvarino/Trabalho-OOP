@@ -1,9 +1,9 @@
 package com.mycompany.interfacepokedex;
 
 
-import com.mycompany.pokedexoo.Pokemon;
-import com.mycompany.pokedexoo.Treinador;
-import com.mycompany.pokedexoo.Usuario;
+import com.mycompany.pokedexoo.pokemon.Pokemon;
+import com.mycompany.pokedexoo.users.Treinador;
+import com.mycompany.pokedexoo.users.Usuario;
 import java.io.IOException;
 import java.util.Scanner;
 

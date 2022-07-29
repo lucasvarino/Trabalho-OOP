@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.pokedexoo;
+package com.mycompany.pokedexoo.users;
 
+import com.mycompany.pokedexoo.pokemon.Pokemon;
 import java.util.ArrayList;
 
 /**

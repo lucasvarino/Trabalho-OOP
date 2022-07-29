@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.pokedexoo;
+package com.mycompany.pokedexoo.pokemon;
 
+import com.mycompany.pokedexoo.pokemon.region.Region;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import java.io.BufferedReader;

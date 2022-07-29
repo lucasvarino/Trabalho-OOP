@@ -1,4 +1,4 @@
-package com.mycompany.pokedexoo;
+package com.mycompany.pokedexoo.pokemon;
 
 import com.google.gson.annotations.SerializedName;
 
