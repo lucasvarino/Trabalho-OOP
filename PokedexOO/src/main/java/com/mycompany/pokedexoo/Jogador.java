@@ -17,7 +17,7 @@ public class Jogador extends Usuario {
     public Jogador(int _id, String _nome, String _senha) {
         super(_id, _nome, _senha);
         this.treinadores = new ArrayList<>();
-        this.treinadores.add(new Treinador(0, "Ash", "Kanto"));
+        this.treinadores.add(new Treinador("Ash", "Kanto"));
     }
     
     public ArrayList<Treinador> getTreinadores() {

@@ -45,8 +45,8 @@ public class UserInterface {
         pokemon.imprimePokemon();
         System.out.println("");
         pokemon2.imprimePokemon();
+        
 
-          
     }
 
     public static void limparTela() {  

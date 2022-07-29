@@ -14,16 +14,11 @@ import java.util.ArrayList;
 public class Treinador extends Pessoa {
     private String regiao;
     private ArrayList<Pokemon> pokemons;
-    private String nome;
-
-    public Treinador(int _id, String _nome, String regiao) {
-        super(_id, _nome);
+    
+    public Treinador(String _nome, String regiao) {
+        super(_nome);
         this.regiao = regiao.toLowerCase();
         this.pokemons = new ArrayList<>();
-    }
-    
-    public String getNome() {
-        return nome;
     }
 
     public String getRegiao() {
