@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.pokedexoo;
+package com.mycompany.pokedexoo.users;
 
 import java.util.*;
 
@@ -14,8 +14,8 @@ import java.util.*;
 public abstract class Usuario extends Pessoa {
     private String senha;
 
-    public Usuario(int _id, String _nome, String _senha) {
-        super(_id, _nome);
+    public Usuario(String _nome, String _senha) {
+        super(_nome);
         this.senha = _senha;
     }
 }

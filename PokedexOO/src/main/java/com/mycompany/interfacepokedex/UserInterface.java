@@ -1,9 +1,9 @@
 package com.mycompany.interfacepokedex;
 
 
-import com.mycompany.pokedexoo.Pokemon;
-import com.mycompany.pokedexoo.Treinador;
-import com.mycompany.pokedexoo.Usuario;
+import com.mycompany.pokedexoo.pokemon.Pokemon;
+import com.mycompany.pokedexoo.users.Treinador;
+import com.mycompany.pokedexoo.users.Usuario;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -28,10 +28,7 @@ public class UserInterface {
         System.out.println("======================================");
         System.out.println("");
 
-        Scanner teclado = new Scanner(System.in);
-
-        int id = 1;
-        
+        Scanner teclado = new Scanner(System.in);        
 
         System.out.println("Digite seu nome: ");
         String nome = teclado.nextLine();
@@ -40,9 +37,16 @@ public class UserInterface {
 
         Pokemon pokemon = Pokemon.getPokemonByUrl(nome);
         
+        System.out.println("Pokemon 2");
+        String nome2 = teclado.nextLine();
+        
+        Pokemon pokemon2 = Pokemon.getPokemonByUrl(nome2);
+        
         pokemon.imprimePokemon();
+        System.out.println("");
+        pokemon2.imprimePokemon();
+        
 
-          
     }
 
     public static void limparTela() {  

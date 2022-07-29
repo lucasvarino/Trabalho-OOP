@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.pokedexoo;
+package com.mycompany.pokedexoo.users;
 
 import java.util.*;
 
@@ -13,8 +13,8 @@ import java.util.*;
  */
 public class Admin extends Usuario {
 
-    public Admin(int _id, String _nome, String _senha) {
-        super(_id, _nome, _senha);
+    public Admin(String _nome, String _senha) {
+        super(_nome, _senha);
     }
     
     public void criaUsuario() {

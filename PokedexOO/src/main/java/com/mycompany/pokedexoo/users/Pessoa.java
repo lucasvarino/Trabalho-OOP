@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.pokedexoo;
+package com.mycompany.pokedexoo.users;
 
 /**
  * autores:
@@ -10,20 +10,22 @@ package com.mycompany.pokedexoo;
  * Lucas de Oliveira Varino (202165090A)
  */
 public abstract class Pessoa {
-    protected static int id;
+    protected static int totalPessoas;
+    protected int id;
     protected String nome;
 
-    public Pessoa(int _id, String _nome) {
-        id++;
-        this.nome = "";
+    public Pessoa(String _nome) {
+        this.id = Pessoa.totalPessoas;
+        totalPessoas++;
+        this.nome = _nome;
     }
 
     public int getId() {
-        return Pessoa.id;
+        return this.id;
     }
 
     public void setId(int id) {
-        Pessoa.id = id;
+        this.id = id;
     }
 
     public String getNome() {

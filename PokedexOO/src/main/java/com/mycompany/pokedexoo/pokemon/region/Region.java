@@ -1,4 +1,4 @@
-package com.mycompany.pokedexoo;
+package com.mycompany.pokedexoo.pokemon.region;
 
 /**
  * autores:

@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.pokedexoo;
+package com.mycompany.pokedexoo.pokemon.region;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.mycompany.pokedexoo.pokemon.Generation;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -51,7 +52,6 @@ public class PokemonRegion {
     
     public static PokemonRegion getRegionFromAPI(String pokemonName) throws IOException {
         String url = "https://pokeapi.co/api/v2/pokemon-species/" + pokemonName;
-        System.out.println("URL - " + url);
         
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
 

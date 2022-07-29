@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.pokedexoo;
+package com.mycompany.pokedexoo.pokemon;
 
+import com.mycompany.pokedexoo.pokemon.region.PokemonRegion;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import java.io.BufferedReader;
@@ -19,8 +20,13 @@ import java.util.*;
  * Lucas de Oliveira Varino (202165090A)
  */
 public class Pokemon {
+    private static int totalPokemons; // Propriedade estática para sabermos o total de pokemons
+    private int idSistema; // Id do sistema, usado para saber qual pokemon editar, excluir, etc
+    
+    private String apelido;
+    
     @SerializedName("id")
-    private int id;
+    private int idPokedex; // Id da pokedex, por ex - ditto tem id 132
     
     @SerializedName("name")
     private String name;
@@ -39,26 +45,33 @@ public class Pokemon {
     
     private String region;
 
-    public Pokemon() throws IOException {
+    public Pokemon() throws IOException { // Construtor usado pelo Gson
+        this.idSistema = totalPokemons;
+        Pokemon.totalPokemons += 1;
         this.region = null;
+        this.apelido = this.name; // Caso não tenha nenhum apelido, por padrão ele é o nome do pokemon
     }
 
    
-    public Pokemon(int id, String nome, String altura, String peso) throws IOException {
-        this.id = id;
+    public Pokemon(int idPokedex, String nome, String altura, String peso) throws IOException {
+        this.idPokedex = idPokedex;
         this.name = nome;
         this.height = altura;
         this.weight = peso;
         
-        this.region = PokemonRegion.getPokemonRegionName(nome);
+        this.region = PokemonRegion.getPokemonRegionName(nome); // Método para pegar a região via API
+    }
+
+    public int getIdPokedex() {
+        return idPokedex;
+    }
+
+    public void setIdPokedex(int id) {
+        this.idPokedex = id;
     }
 
     public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        return this.idSistema;
     }
 
     public String getNome() {
@@ -68,6 +81,15 @@ public class Pokemon {
     public void setNome(String nome) {
         this.name = nome;
     }
+
+    public String getApelido() {
+        return apelido;
+    }
+
+    public void setApelido(String apelido) {
+        this.apelido = apelido;
+    }
+    
 
     public String getAltura() {
         return height;
@@ -109,7 +131,7 @@ public class Pokemon {
         this.region = region;
     }
     
-    public static Pokemon getPokemonByUrl(String pokemonName) {
+    public static Pokemon getPokemonByUrl(String pokemonName) { // Principal método da classe, busca um pokemon na API e retorna ele juntamente com sua região
         try {
             String url = "https://pokeapi.co/api/v2/pokemon/" + pokemonName.toLowerCase();
             
@@ -148,6 +170,7 @@ public class Pokemon {
     }
     
     public void imprimePokemon() throws IOException {
+        System.out.println("ID NOSSO - " + this.idSistema);
         System.out.println("NOME - " + this.name);
         System.out.println("ALTURA - " + this.height);
         System.out.println("PESO - " + this.weight);
