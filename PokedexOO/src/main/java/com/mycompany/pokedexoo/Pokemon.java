@@ -19,8 +19,11 @@ import java.util.*;
  * Lucas de Oliveira Varino (202165090A)
  */
 public class Pokemon {
+    private static int totalPokemons;
+    private int idSistema;
+    
     @SerializedName("id")
-    private int id;
+    private int idPokedex;
     
     @SerializedName("name")
     private String name;
@@ -40,12 +43,14 @@ public class Pokemon {
     private String region;
 
     public Pokemon() throws IOException {
+        this.idSistema = totalPokemons;
+        Pokemon.totalPokemons += 1;
         this.region = null;
     }
 
    
-    public Pokemon(int id, String nome, String altura, String peso) throws IOException {
-        this.id = id;
+    public Pokemon(int idPokedex, String nome, String altura, String peso) throws IOException {
+        this.idPokedex = idPokedex;
         this.name = nome;
         this.height = altura;
         this.weight = peso;
@@ -53,12 +58,16 @@ public class Pokemon {
         this.region = PokemonRegion.getPokemonRegionName(nome);
     }
 
-    public int getId() {
-        return id;
+    public int getIdPokedex() {
+        return idPokedex;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdPokedex(int id) {
+        this.idPokedex = id;
+    }
+
+    public int getId() {
+        return this.idSistema;
     }
 
     public String getNome() {
@@ -148,6 +157,7 @@ public class Pokemon {
     }
     
     public void imprimePokemon() throws IOException {
+        System.out.println("ID NOSSO - " + this.idSistema);
         System.out.println("NOME - " + this.name);
         System.out.println("ALTURA - " + this.height);
         System.out.println("PESO - " + this.weight);

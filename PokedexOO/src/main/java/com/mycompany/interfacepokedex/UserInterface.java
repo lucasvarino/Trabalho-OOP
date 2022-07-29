@@ -28,10 +28,7 @@ public class UserInterface {
         System.out.println("======================================");
         System.out.println("");
 
-        Scanner teclado = new Scanner(System.in);
-
-        int id = 1;
-        
+        Scanner teclado = new Scanner(System.in);        
 
         System.out.println("Digite seu nome: ");
         String nome = teclado.nextLine();
@@ -40,7 +37,14 @@ public class UserInterface {
 
         Pokemon pokemon = Pokemon.getPokemonByUrl(nome);
         
+        System.out.println("Pokemon 2");
+        String nome2 = teclado.nextLine();
+        
+        Pokemon pokemon2 = Pokemon.getPokemonByUrl(nome2);
+        
         pokemon.imprimePokemon();
+        System.out.println("");
+        pokemon2.imprimePokemon();
 
           
     }

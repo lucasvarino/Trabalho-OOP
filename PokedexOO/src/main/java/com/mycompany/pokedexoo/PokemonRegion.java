@@ -51,7 +51,6 @@ public class PokemonRegion {
     
     public static PokemonRegion getRegionFromAPI(String pokemonName) throws IOException {
         String url = "https://pokeapi.co/api/v2/pokemon-species/" + pokemonName;
-        System.out.println("URL - " + url);
         
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
 

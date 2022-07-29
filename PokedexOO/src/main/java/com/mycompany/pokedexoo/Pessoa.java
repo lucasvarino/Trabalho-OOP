@@ -15,7 +15,7 @@ public abstract class Pessoa {
 
     public Pessoa(int _id, String _nome) {
         id++;
-        this.nome = "";
+        this.nome = _nome;
     }
 
     public int getId() {
