@@ -19,11 +19,13 @@ import java.util.*;
  * Lucas de Oliveira Varino (202165090A)
  */
 public class Pokemon {
-    private static int totalPokemons;
-    private int idSistema;
+    private static int totalPokemons; // Propriedade estática para sabermos o total de pokemons
+    private int idSistema; // Id do sistema, usado para saber qual pokemon editar, excluir, etc
+    
+    private String apelido;
     
     @SerializedName("id")
-    private int idPokedex;
+    private int idPokedex; // Id da pokedex, por ex - ditto tem id 132
     
     @SerializedName("name")
     private String name;
@@ -42,10 +44,11 @@ public class Pokemon {
     
     private String region;
 
-    public Pokemon() throws IOException {
+    public Pokemon() throws IOException { // Construtor usado pelo Gson
         this.idSistema = totalPokemons;
         Pokemon.totalPokemons += 1;
         this.region = null;
+        this.apelido = this.name; // Caso não tenha nenhum apelido, por padrão ele é o nome do pokemon
     }
 
    
@@ -55,7 +58,7 @@ public class Pokemon {
         this.height = altura;
         this.weight = peso;
         
-        this.region = PokemonRegion.getPokemonRegionName(nome);
+        this.region = PokemonRegion.getPokemonRegionName(nome); // Método para pegar a região via API
     }
 
     public int getIdPokedex() {
@@ -77,6 +80,15 @@ public class Pokemon {
     public void setNome(String nome) {
         this.name = nome;
     }
+
+    public String getApelido() {
+        return apelido;
+    }
+
+    public void setApelido(String apelido) {
+        this.apelido = apelido;
+    }
+    
 
     public String getAltura() {
         return height;
@@ -118,7 +130,7 @@ public class Pokemon {
         this.region = region;
     }
     
-    public static Pokemon getPokemonByUrl(String pokemonName) {
+    public static Pokemon getPokemonByUrl(String pokemonName) { // Principal método da classe, busca um pokemon na API e retorna ele juntamente com sua região
         try {
             String url = "https://pokeapi.co/api/v2/pokemon/" + pokemonName.toLowerCase();
             
