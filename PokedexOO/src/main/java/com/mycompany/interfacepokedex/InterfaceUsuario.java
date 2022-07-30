@@ -16,6 +16,8 @@ public class InterfaceUsuario extends javax.swing.JFrame {
      */
     public InterfaceUsuario() {
         initComponents();
+        this.setSize(1000, 800);
+        this.setVisible(true);
     }
 
     /**
@@ -125,23 +127,23 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void deletaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletaPokemonActionPerformed
-        // TODO add your handling code here:
+        // podemos deixar para o admin deletar
     }//GEN-LAST:event_deletaPokemonActionPerformed
 
     private void inputPesoPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPesoPokemonActionPerformed
-        // TODO add your handling code here:
+        // pega peso pokemon, ja exibindo o padrao
     }//GEN-LAST:event_inputPesoPokemonActionPerformed
 
     private void inputAlturaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputAlturaPokemonActionPerformed
-        // TODO add your handling code here:
+        // pega altura pokemon, ja exibindo o padrao
     }//GEN-LAST:event_inputAlturaPokemonActionPerformed
 
     private void editaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editaPokemonActionPerformed
-        // TODO add your handling code here:
+        // confirma a edicao do pokemon e o cria e volta para a InterfaceRegistros
     }//GEN-LAST:event_editaPokemonActionPerformed
 
     private void inputApelidoPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputApelidoPokemonActionPerformed
-        // TODO add your handling code here:
+        // pega apelido pokemon, ja exibindo o padrao
     }//GEN-LAST:event_inputApelidoPokemonActionPerformed
 
     /**

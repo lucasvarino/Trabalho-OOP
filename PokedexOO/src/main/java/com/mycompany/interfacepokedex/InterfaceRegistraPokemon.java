@@ -16,6 +16,8 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame {
      */
     public InterfaceRegistraPokemon() {
         initComponents();
+        this.setSize(1000, 800);
+        this.setVisible(true);
     }
 
     /**
@@ -27,28 +29,26 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        criaPokemon = new javax.swing.JButton();
+        confirmaPokemon = new javax.swing.JButton();
         registrarPokemon = new javax.swing.JLabel();
         nomePokemon = new javax.swing.JLabel();
         inputNomePokemon = new javax.swing.JTextField();
         altura = new javax.swing.JLabel();
-        inputAlturaPokemon = new javax.swing.JTextField();
-        pesoPokemon = new javax.swing.JLabel();
-        inputPesoPokemon = new javax.swing.JTextField();
+        inputApelidoPokemon = new javax.swing.JTextField();
         pokedex = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        criaPokemon.setBackground(new java.awt.Color(102, 204, 255));
-        criaPokemon.setText("Registrar");
-        criaPokemon.addActionListener(new java.awt.event.ActionListener() {
+        confirmaPokemon.setBackground(new java.awt.Color(102, 204, 255));
+        confirmaPokemon.setText("Registrar");
+        confirmaPokemon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                criaPokemonActionPerformed(evt);
+                confirmaPokemonActionPerformed(evt);
             }
         });
-        getContentPane().add(criaPokemon);
-        criaPokemon.setBounds(200, 360, 90, 24);
+        getContentPane().add(confirmaPokemon);
+        confirmaPokemon.setBounds(200, 360, 90, 24);
 
         registrarPokemon.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         registrarPokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -60,7 +60,7 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame {
         nomePokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nomePokemon.setText("Nome:");
         getContentPane().add(nomePokemon);
-        nomePokemon.setBounds(140, 260, 60, 23);
+        nomePokemon.setBounds(140, 310, 60, 23);
 
         inputNomePokemon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,35 +68,21 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame {
             }
         });
         getContentPane().add(inputNomePokemon);
-        inputNomePokemon.setBounds(210, 260, 110, 24);
+        inputNomePokemon.setBounds(210, 310, 110, 24);
 
         altura.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         altura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        altura.setText("Altura:");
+        altura.setText("Apelido:");
         getContentPane().add(altura);
-        altura.setBounds(140, 290, 60, 23);
+        altura.setBounds(130, 270, 70, 23);
 
-        inputAlturaPokemon.addActionListener(new java.awt.event.ActionListener() {
+        inputApelidoPokemon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputAlturaPokemonActionPerformed(evt);
+                inputApelidoPokemonActionPerformed(evt);
             }
         });
-        getContentPane().add(inputAlturaPokemon);
-        inputAlturaPokemon.setBounds(210, 290, 60, 24);
-
-        pesoPokemon.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
-        pesoPokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pesoPokemon.setText("Peso:");
-        getContentPane().add(pesoPokemon);
-        pesoPokemon.setBounds(150, 320, 50, 23);
-
-        inputPesoPokemon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputPesoPokemonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(inputPesoPokemon);
-        inputPesoPokemon.setBounds(210, 320, 60, 24);
+        getContentPane().add(inputApelidoPokemon);
+        inputApelidoPokemon.setBounds(210, 270, 110, 24);
 
         pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
         getContentPane().add(pokedex);
@@ -105,21 +91,20 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void criaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criaPokemonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_criaPokemonActionPerformed
+    private void confirmaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaPokemonActionPerformed
+        // registra o novo pokemon com essas info e volta pra InterfaceRegistros
+        InterfaceRegistros interfaceRegistros = new InterfaceRegistros();
+        this.dispose();
+        interfaceRegistros.setVisible(true);
+    }//GEN-LAST:event_confirmaPokemonActionPerformed
 
     private void inputNomePokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomePokemonActionPerformed
-        // TODO add your handling code here:
+        // pega nome pokemon
     }//GEN-LAST:event_inputNomePokemonActionPerformed
 
-    private void inputAlturaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputAlturaPokemonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputAlturaPokemonActionPerformed
-
-    private void inputPesoPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPesoPokemonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputPesoPokemonActionPerformed
+    private void inputApelidoPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputApelidoPokemonActionPerformed
+        // pega apelido pokemon
+    }//GEN-LAST:event_inputApelidoPokemonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,12 +146,10 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel altura;
-    private javax.swing.JButton criaPokemon;
-    private javax.swing.JTextField inputAlturaPokemon;
+    private javax.swing.JButton confirmaPokemon;
+    private javax.swing.JTextField inputApelidoPokemon;
     private javax.swing.JTextField inputNomePokemon;
-    private javax.swing.JTextField inputPesoPokemon;
     private javax.swing.JLabel nomePokemon;
-    private javax.swing.JLabel pesoPokemon;
     private javax.swing.JLabel pokedex;
     private javax.swing.JLabel registrarPokemon;
     // End of variables declaration//GEN-END:variables

@@ -31,10 +31,10 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         listaPokemons = new javax.swing.JComboBox<>();
         modificaAdmin = new javax.swing.JButton();
         admin = new javax.swing.JLabel();
-        usuario = new javax.swing.JLabel();
+        jogador = new javax.swing.JLabel();
         treinador = new javax.swing.JLabel();
         inputTreinadorUsuario = new javax.swing.JTextField();
-        inputNomeUsuario = new javax.swing.JTextField();
+        inputNomeJogador = new javax.swing.JTextField();
         pokedex = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,17 +65,19 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         getContentPane().add(modificaAdmin);
         modificaAdmin.setBounds(200, 360, 100, 24);
 
+        admin.setBackground(new java.awt.Color(0, 153, 51));
         admin.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        admin.setForeground(new java.awt.Color(0, 204, 51));
         admin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         admin.setText("ADMIN");
         getContentPane().add(admin);
         admin.setBounds(200, 230, 90, 23);
 
-        usuario.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
-        usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        usuario.setText("Jogador:");
-        getContentPane().add(usuario);
-        usuario.setBounds(140, 260, 90, 23);
+        jogador.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        jogador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jogador.setText("Jogador:");
+        getContentPane().add(jogador);
+        jogador.setBounds(140, 260, 90, 23);
 
         treinador.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         treinador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -92,14 +94,14 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         getContentPane().add(inputTreinadorUsuario);
         inputTreinadorUsuario.setBounds(250, 290, 60, 24);
 
-        inputNomeUsuario.setText("Joao");
-        inputNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
+        inputNomeJogador.setText("Joao");
+        inputNomeJogador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputNomeUsuarioActionPerformed(evt);
+                inputNomeJogadorActionPerformed(evt);
             }
         });
-        getContentPane().add(inputNomeUsuario);
-        inputNomeUsuario.setBounds(250, 260, 60, 24);
+        getContentPane().add(inputNomeJogador);
+        inputNomeJogador.setBounds(250, 260, 60, 24);
 
         pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
         getContentPane().add(pokedex);
@@ -120,9 +122,9 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputTreinadorUsuarioActionPerformed
 
-    private void inputNomeUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomeUsuarioActionPerformed
+    private void inputNomeJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomeJogadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputNomeUsuarioActionPerformed
+    }//GEN-LAST:event_inputNomeJogadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,14 +164,14 @@ public class InterfaceAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel admin;
-    private javax.swing.JTextField inputNomeUsuario;
+    private javax.swing.JTextField inputNomeJogador;
     private javax.swing.JTextField inputTreinadorUsuario;
+    private javax.swing.JLabel jogador;
     private javax.swing.JComboBox<String> listaPokemons;
     private javax.swing.JButton modificaAdmin;
     private javax.swing.JLabel pokedex;
     private javax.swing.JLabel pokemons;
     private javax.swing.JLabel treinador;
-    private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 
     
