@@ -57,7 +57,7 @@ public class InterfaceInicial extends javax.swing.JFrame {
             }
         });
         getContentPane().add(listaUsuarios);
-        listaUsuarios.setBounds(210, 290, 72, 22);
+        listaUsuarios.setBounds(210, 290, 62, 26);
 
         entraAdmin.setBackground(new java.awt.Color(51, 255, 51));
         entraAdmin.setText("Entrar");
@@ -67,7 +67,7 @@ public class InterfaceInicial extends javax.swing.JFrame {
             }
         });
         getContentPane().add(entraAdmin);
-        entraAdmin.setBounds(620, 290, 75, 22);
+        entraAdmin.setBounds(620, 290, 75, 24);
 
         criaUsuario1.setBackground(new java.awt.Color(102, 204, 255));
         criaUsuario1.setText("Criar");
@@ -77,9 +77,9 @@ public class InterfaceInicial extends javax.swing.JFrame {
             }
         });
         getContentPane().add(criaUsuario1);
-        criaUsuario1.setBounds(210, 350, 75, 22);
+        criaUsuario1.setBounds(210, 350, 75, 24);
 
-        pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\663-6639628_trending-pokedex-png-transparent-png.png")); // NOI18N
+        pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
         getContentPane().add(pokedex);
         pokedex.setBounds(20, 15, 840, 639);
 

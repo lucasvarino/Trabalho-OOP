@@ -53,7 +53,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(listaPokemons);
-        listaPokemons.setBounds(250, 320, 100, 22);
+        listaPokemons.setBounds(250, 320, 100, 26);
 
         modificaAdmin.setBackground(new java.awt.Color(51, 255, 51));
         modificaAdmin.setText("Confirmar");
@@ -63,7 +63,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(modificaAdmin);
-        modificaAdmin.setBounds(200, 360, 100, 22);
+        modificaAdmin.setBounds(200, 360, 100, 24);
 
         admin.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         admin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -90,7 +90,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(inputTreinadorUsuario);
-        inputTreinadorUsuario.setBounds(250, 290, 60, 22);
+        inputTreinadorUsuario.setBounds(250, 290, 60, 24);
 
         inputNomeUsuario.setText("Joao");
         inputNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -99,9 +99,9 @@ public class InterfaceAdmin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(inputNomeUsuario);
-        inputNomeUsuario.setBounds(250, 260, 60, 22);
+        inputNomeUsuario.setBounds(250, 260, 60, 24);
 
-        pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\663-6639628_trending-pokedex-png-transparent-png.png")); // NOI18N
+        pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
         getContentPane().add(pokedex);
         pokedex.setBounds(20, 15, 840, 639);
 

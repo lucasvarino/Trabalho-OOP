@@ -54,7 +54,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(deletaPokemon);
-        deletaPokemon.setBounds(290, 360, 70, 22);
+        deletaPokemon.setBounds(290, 360, 70, 24);
 
         nomePokemon.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         nomePokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -69,7 +69,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(inputPesoPokemon);
-        inputPesoPokemon.setBounds(190, 290, 60, 22);
+        inputPesoPokemon.setBounds(190, 290, 60, 24);
 
         altura.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         altura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -84,7 +84,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(inputAlturaPokemon);
-        inputAlturaPokemon.setBounds(190, 260, 60, 22);
+        inputAlturaPokemon.setBounds(190, 260, 60, 24);
 
         editaPokemon.setBackground(new java.awt.Color(102, 204, 255));
         editaPokemon.setText("Editar");
@@ -94,13 +94,13 @@ public class InterfaceUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(editaPokemon);
-        editaPokemon.setBounds(140, 360, 70, 22);
+        editaPokemon.setBounds(140, 360, 70, 24);
 
         bulbasaur.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\bulbasaur (1).png")); // NOI18N
         getContentPane().add(bulbasaur);
         bulbasaur.setBounds(190, 130, 190, 240);
 
-        pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\663-6639628_trending-pokedex-png-transparent-png.png")); // NOI18N
+        pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
         getContentPane().add(pokedex);
         pokedex.setBounds(20, 15, 840, 639);
 

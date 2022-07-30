@@ -48,7 +48,7 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame {
             }
         });
         getContentPane().add(criaPokemon);
-        criaPokemon.setBounds(200, 360, 90, 22);
+        criaPokemon.setBounds(200, 360, 90, 24);
 
         registrarPokemon.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         registrarPokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -68,7 +68,7 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame {
             }
         });
         getContentPane().add(inputNomePokemon);
-        inputNomePokemon.setBounds(210, 260, 110, 22);
+        inputNomePokemon.setBounds(210, 260, 110, 24);
 
         altura.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         altura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -82,7 +82,7 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame {
             }
         });
         getContentPane().add(inputAlturaPokemon);
-        inputAlturaPokemon.setBounds(210, 290, 60, 22);
+        inputAlturaPokemon.setBounds(210, 290, 60, 24);
 
         pesoPokemon.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         pesoPokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -96,9 +96,9 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame {
             }
         });
         getContentPane().add(inputPesoPokemon);
-        inputPesoPokemon.setBounds(210, 320, 60, 22);
+        inputPesoPokemon.setBounds(210, 320, 60, 24);
 
-        pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\663-6639628_trending-pokedex-png-transparent-png.png")); // NOI18N
+        pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
         getContentPane().add(pokedex);
         pokedex.setBounds(20, 15, 840, 639);
 

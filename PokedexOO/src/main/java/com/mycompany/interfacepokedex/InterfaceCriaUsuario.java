@@ -52,7 +52,7 @@ public class InterfaceCriaUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(criaUsuario1);
-        criaUsuario1.setBounds(200, 350, 90, 22);
+        criaUsuario1.setBounds(200, 350, 90, 24);
 
         usuario.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -67,7 +67,7 @@ public class InterfaceCriaUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(inputNomeUsuario);
-        inputNomeUsuario.setBounds(210, 310, 140, 22);
+        inputNomeUsuario.setBounds(210, 310, 140, 24);
 
         nomeUsuario1.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         nomeUsuario1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -81,9 +81,9 @@ public class InterfaceCriaUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(inputNomeUsuario1);
-        inputNomeUsuario1.setBounds(210, 270, 140, 22);
+        inputNomeUsuario1.setBounds(210, 270, 140, 24);
 
-        pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\663-6639628_trending-pokedex-png-transparent-png.png")); // NOI18N
+        pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
         getContentPane().add(pokedex);
         pokedex.setBounds(20, 15, 840, 639);
 
