@@ -46,7 +46,7 @@ public class InterfaceInicial extends javax.swing.JFrame {
 
         usuario.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        usuario.setText("USUÁRIO");
+        usuario.setText("JOGADOR");
         getContentPane().add(usuario);
         usuario.setBounds(200, 230, 90, 23);
 

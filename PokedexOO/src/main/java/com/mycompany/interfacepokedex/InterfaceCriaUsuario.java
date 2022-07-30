@@ -56,7 +56,7 @@ public class InterfaceCriaUsuario extends javax.swing.JFrame {
 
         usuario.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        usuario.setText("CRIAR USUÁRIO");
+        usuario.setText("CRIAR JOGADOR");
         getContentPane().add(usuario);
         usuario.setBounds(170, 230, 160, 23);
 

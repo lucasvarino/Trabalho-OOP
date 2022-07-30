@@ -73,7 +73,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
 
         usuario.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        usuario.setText("Usuário:");
+        usuario.setText("Jogador:");
         getContentPane().add(usuario);
         usuario.setBounds(140, 260, 90, 23);
 
