@@ -16,6 +16,8 @@ public class InterfaceUsuario extends javax.swing.JFrame {
      */
     public InterfaceUsuario() {
         initComponents();
+        this.setSize(1000, 800);
+        this.setVisible(true);
     }
 
     /**
@@ -34,6 +36,8 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         altura = new javax.swing.JLabel();
         inputAlturaPokemon = new javax.swing.JTextField();
         editaPokemon = new javax.swing.JButton();
+        apelido = new javax.swing.JLabel();
+        inputApelidoPokemon = new javax.swing.JTextField();
         bulbasaur = new javax.swing.JLabel();
         pokedex = new javax.swing.JLabel();
 
@@ -54,7 +58,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(deletaPokemon);
-        deletaPokemon.setBounds(290, 360, 70, 22);
+        deletaPokemon.setBounds(290, 360, 70, 24);
 
         nomePokemon.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         nomePokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -69,7 +73,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(inputPesoPokemon);
-        inputPesoPokemon.setBounds(190, 290, 60, 22);
+        inputPesoPokemon.setBounds(200, 290, 60, 24);
 
         altura.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         altura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -84,7 +88,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(inputAlturaPokemon);
-        inputAlturaPokemon.setBounds(190, 260, 60, 22);
+        inputAlturaPokemon.setBounds(200, 260, 60, 24);
 
         editaPokemon.setBackground(new java.awt.Color(102, 204, 255));
         editaPokemon.setText("Editar");
@@ -94,13 +98,28 @@ public class InterfaceUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(editaPokemon);
-        editaPokemon.setBounds(140, 360, 70, 22);
+        editaPokemon.setBounds(140, 360, 70, 24);
+
+        apelido.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        apelido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        apelido.setText("Apelido:");
+        getContentPane().add(apelido);
+        apelido.setBounds(130, 320, 70, 23);
+
+        inputApelidoPokemon.setText("cebolinha");
+        inputApelidoPokemon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputApelidoPokemonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(inputApelidoPokemon);
+        inputApelidoPokemon.setBounds(200, 320, 60, 24);
 
         bulbasaur.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\bulbasaur (1).png")); // NOI18N
         getContentPane().add(bulbasaur);
         bulbasaur.setBounds(190, 130, 190, 240);
 
-        pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\663-6639628_trending-pokedex-png-transparent-png.png")); // NOI18N
+        pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
         getContentPane().add(pokedex);
         pokedex.setBounds(20, 15, 840, 639);
 
@@ -108,20 +127,24 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void deletaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletaPokemonActionPerformed
-        // TODO add your handling code here:
+        // podemos deixar para o admin deletar
     }//GEN-LAST:event_deletaPokemonActionPerformed
 
     private void inputPesoPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPesoPokemonActionPerformed
-        // TODO add your handling code here:
+        // pega peso pokemon, ja exibindo o padrao
     }//GEN-LAST:event_inputPesoPokemonActionPerformed
 
     private void inputAlturaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputAlturaPokemonActionPerformed
-        // TODO add your handling code here:
+        // pega altura pokemon, ja exibindo o padrao
     }//GEN-LAST:event_inputAlturaPokemonActionPerformed
 
     private void editaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editaPokemonActionPerformed
-        // TODO add your handling code here:
+        // confirma a edicao do pokemon e o cria e volta para a InterfaceRegistros
     }//GEN-LAST:event_editaPokemonActionPerformed
+
+    private void inputApelidoPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputApelidoPokemonActionPerformed
+        // pega apelido pokemon, ja exibindo o padrao
+    }//GEN-LAST:event_inputApelidoPokemonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,10 +186,12 @@ public class InterfaceUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel altura;
+    private javax.swing.JLabel apelido;
     private javax.swing.JLabel bulbasaur;
     private javax.swing.JButton deletaPokemon;
     private javax.swing.JButton editaPokemon;
     private javax.swing.JTextField inputAlturaPokemon;
+    private javax.swing.JTextField inputApelidoPokemon;
     private javax.swing.JTextField inputPesoPokemon;
     private javax.swing.JLabel nomePokemon;
     private javax.swing.JLabel pesoPokemon;
