@@ -5,6 +5,9 @@
 package com.mycompany.interfacepokedex;
 
 import com.mycompany.pokedexoo.users.Jogador;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * autores:
@@ -56,7 +59,7 @@ public class InterfaceJogadorTreinador extends javax.swing.JFrame {
         admin.setForeground(new java.awt.Color(0, 204, 51));
         admin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         
-        admin.setText(Jogador.getJogadorAtual());
+        admin.setText(Jogador.getNomeAtual());
         
         getContentPane().add(admin);
         admin.setBounds(200, 230, 90, 23);
@@ -105,10 +108,14 @@ public class InterfaceJogadorTreinador extends javax.swing.JFrame {
     }//GEN-LAST:event_listaTreinadoresActionPerformed
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
-        // volta para a InterfaceAdminTreinador
-        this.dispose();
-        InterfaceAdminTreinador interfaceAdminTreinador = new InterfaceAdminTreinador();
-        interfaceAdminTreinador.setVisible(true);
+        try {
+            // volta para a InterfaceAdminTreinador
+            this.dispose();
+            InterfaceAdminTreinador interfaceAdminTreinador = new InterfaceAdminTreinador();
+            interfaceAdminTreinador.setVisible(true);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Nao foi possivel encontrar o arquivo.");
+        }
     }//GEN-LAST:event_sairActionPerformed
 
     /**

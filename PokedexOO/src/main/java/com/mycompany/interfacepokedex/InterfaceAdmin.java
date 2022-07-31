@@ -99,13 +99,18 @@ public class InterfaceAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_listaJogadoresActionPerformed
 
     private void selecionaJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionaJogadorActionPerformed
-        // seleciona um jogador 
-        String jogadorSelecionado = listaJogadores.getSelectedItem().toString();
-        Jogador.setJogadorAtual(jogadorSelecionado);
-        // e vai para sua tela de edicao, primeiro aos treinadores
-        this.dispose();
-        InterfaceAdminTreinador interfaceAdminTreinador = new InterfaceAdminTreinador();
-        interfaceAdminTreinador.setVisible(true);
+        try {
+            // seleciona um jogador
+            String jogadorSelecionado = listaJogadores.getSelectedItem().toString();
+            Jogador.setNomeAtual(jogadorSelecionado);
+            Jogador.setJogadorAtualByName(jogadorSelecionado);
+            // e vai para sua tela de edicao, primeiro aos treinadores
+            this.dispose();
+            InterfaceAdminTreinador interfaceAdminTreinador = new InterfaceAdminTreinador();
+            interfaceAdminTreinador.setVisible(true);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Nao foi possivel encontrar o arquivo.");
+        }
     }//GEN-LAST:event_selecionaJogadorActionPerformed
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed

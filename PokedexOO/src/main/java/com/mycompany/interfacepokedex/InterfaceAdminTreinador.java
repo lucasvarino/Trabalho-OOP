@@ -19,7 +19,7 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame {
     /**
      * Creates new form InterfaceInicial
      */
-    public InterfaceAdminTreinador() {
+    public InterfaceAdminTreinador() throws FileNotFoundException {
         initComponents();
         this.setSize(1000, 800);
         this.setVisible(true);
@@ -32,7 +32,7 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
-    private void initComponents() {
+    private void initComponents() throws FileNotFoundException {
 
         modificaAdmin = new javax.swing.JButton();
         jogador = new javax.swing.JLabel();
@@ -58,7 +58,7 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame {
         jogador.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jogador.setForeground(new java.awt.Color(0, 204, 51));
         jogador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jogador.setText(Jogador.getJogadorAtual());
+        jogador.setText(Jogador.getNomeAtual());
         getContentPane().add(jogador);
         jogador.setBounds(200, 230, 90, 23);
 
@@ -68,7 +68,7 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame {
         getContentPane().add(treinador);
         treinador.setBounds(130, 290, 120, 23);
 
-        listaTreinadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Treinador 1", "Treinador 2", "Treinador 3", "Treinador 4" }));
+        listaTreinadores.setModel(new javax.swing.DefaultComboBoxModel<>(Jogador.getJogadorAtual().getAllNomesTreinadores()));
         listaTreinadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listaTreinadoresActionPerformed(evt);
@@ -149,7 +149,11 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceAdminTreinador().setVisible(true);
+                try {
+                    new InterfaceAdminTreinador().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    System.out.println("Nao foi possivel encontrar o arquivo.");
+                }
             }
         });
     }

@@ -5,6 +5,9 @@
 package com.mycompany.interfacepokedex;
 
 import com.mycompany.pokedexoo.users.Jogador;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * autores:
@@ -71,7 +74,7 @@ public class InterfaceAdminPokemons extends javax.swing.JFrame {
         jogador.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jogador.setForeground(new java.awt.Color(0, 204, 51));
         jogador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jogador.setText(Jogador.getJogadorAtual());
+        jogador.setText(Jogador.getNomeAtual());
         getContentPane().add(jogador);
         jogador.setBounds(200, 230, 90, 23);
 
@@ -114,10 +117,14 @@ public class InterfaceAdminPokemons extends javax.swing.JFrame {
     }//GEN-LAST:event_modificaAdminActionPerformed
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
-        // volta para a InterfaceAdminTreinador
-        this.dispose();
-        InterfaceAdminTreinador interfaceAdminTreinador = new InterfaceAdminTreinador();
-        interfaceAdminTreinador.setVisible(true);
+        try {
+            // volta para a InterfaceAdminTreinador
+            this.dispose();
+            InterfaceAdminTreinador interfaceAdminTreinador = new InterfaceAdminTreinador();
+            interfaceAdminTreinador.setVisible(true);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Nao foi possivel encontrar o arquivo.");
+        }
     }//GEN-LAST:event_sairActionPerformed
 
     private void registraPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registraPokemonActionPerformed

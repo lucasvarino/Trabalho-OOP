@@ -8,6 +8,9 @@ import com.mycompany.pokedexoo.users.Jogador;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JPanel;
 /**
  * autores:
  * João Pedro Banhato Pereira (202165506B)
@@ -158,13 +161,18 @@ public class InterfaceInicial extends javax.swing.JFrame {
     private void entraAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entraAdminActionPerformed
         try {
             // a partir do admin selecionado da combo-box verificar se a senha e nome batem,
+            boolean credenciaisCorretasAdmin = true;
             // caso nao bater, informar por um JOP que as credenciais nao batem,
-            
-            // caso esteja correto, enviar o jogador para a InterfaceAdmin
-            // onde ele terá acesso as funcionalidades de um admin
-            this.dispose();
-            InterfaceAdmin interfaceAdmin = new InterfaceAdmin();
-            interfaceAdmin.setVisible(true);
+            if (!credenciaisCorretasAdmin) {
+                JPanel painel = new JPanel();
+                JOptionPane.showInternalMessageDialog(painel, "Credenciais incorretas!", "Login inváido", ERROR_MESSAGE);
+            } else {
+                // caso esteja correto, enviar o jogador para a InterfaceAdmin
+                // onde ele terá acesso as funcionalidades de um admin
+                this.dispose();
+                InterfaceAdmin interfaceAdmin = new InterfaceAdmin();
+                interfaceAdmin.setVisible(true);
+            }
         } catch (FileNotFoundException ex) {
             System.out.println("Nao foi possivel encontrar o arquivo.");
         }
@@ -172,13 +180,20 @@ public class InterfaceInicial extends javax.swing.JFrame {
 
     private void entraJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entraJogadorActionPerformed
         // a partir do jogador selecionado da combo-box verificar se a senha e nome batem, 
+//        Jogador j = Jogador.getJogadorAtual();
+//        j.logar(j.getNome(), j.getSenha());
+        boolean credenciaisCorretasJogador = true;
         // caso nao bater, informar por um JOP que as credenciais nao batem, 
-        
-        // caso esteja correto, enviar o jogador para a InterfaceJogadorTreinador
-        // onde ele terá acesso aos seus treinadores e depois aos seus respectivos pokemons
-        this.dispose();
-        InterfaceJogadorTreinador interfaceJogadorTreinador = new InterfaceJogadorTreinador();
-        interfaceJogadorTreinador.setVisible(true);
+        if (!credenciaisCorretasJogador) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Credenciais incorretas!", "Login inváido", ERROR_MESSAGE);
+        } else {
+            // caso esteja correto, enviar o jogador para a InterfaceJogadorTreinador
+            // onde ele terá acesso aos seus treinadores e depois aos seus respectivos pokemons
+            this.dispose();
+            InterfaceJogadorTreinador interfaceJogadorTreinador = new InterfaceJogadorTreinador();
+            interfaceJogadorTreinador.setVisible(true);
+        }
     }//GEN-LAST:event_entraJogadorActionPerformed
 
     private void criaJogador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criaJogador1ActionPerformed

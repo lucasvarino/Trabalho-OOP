@@ -23,7 +23,8 @@ public class Jogador extends Usuario {
     private ArrayList<Treinador> treinadores;
     public static final JsonUtil<Jogador> jsonUtil = new JsonUtil<>(Jogador.class);
     
-    private static String jogadorAtual = "";
+    private static String nomeAtual = "";
+    private static Jogador jogadorAtual;
     
     public Jogador(String _nome, String _senha) throws IOException {
         super(_nome, _senha);
@@ -33,12 +34,34 @@ public class Jogador extends Usuario {
         this.salvarJogadorJson();
     }
 
-    public static String getJogadorAtual() {
+    public static Jogador getJogadorAtual() {
         return jogadorAtual;
     }
 
-    public static void setJogadorAtual(String jogadorAtual) {
+    public static void setJogadorAtual(Jogador jogadorAtual) {
         Jogador.jogadorAtual = jogadorAtual;
+    }
+
+    public static void setJogadorAtualByName(String nome) {
+        // System.out.println("Jogador atual ainda nao setado!");
+        // System.out.println(nome);
+        // System.out.println(jogadores);
+        for (Jogador j : Jogador.jogadores) {
+            // System.out.println("Jogador atual verificando...");
+            if (j.getNome().equals(nome)) {
+                setJogadorAtual(j);
+                // System.out.println("Jogador atual setado!");
+            }
+        }
+    }
+    
+    public static String getNomeAtual() {
+        return nomeAtual;
+    }
+
+    public static void setNomeAtual(String nomeAtual) {
+        Jogador.nomeAtual = nomeAtual;
+        System.out.println("Nome atual setado!");
     }
     
     
@@ -84,6 +107,17 @@ public class Jogador extends Usuario {
             nomes[i] = t.get("nome").toString();
             // System.out.println(nomes[i]);
         
+        }
+        
+        return nomes;
+    }
+    
+    public String[] getAllNomesTreinadores() throws FileNotFoundException {
+        String[] nomes = new String[this.getTreinadores().size()];
+        int i = 0;
+        for(Treinador t : this.getTreinadores()) {
+            nomes[i] = t.getNome();
+            i++;
         }
         
         return nomes;
