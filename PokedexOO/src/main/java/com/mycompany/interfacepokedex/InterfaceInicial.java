@@ -39,9 +39,9 @@ public class InterfaceInicial extends javax.swing.JFrame {
         criaJogador1 = new javax.swing.JButton();
         inputSenhaJogador = new javax.swing.JPasswordField();
         emailAdmin = new javax.swing.JLabel();
-        listaAdmin = new javax.swing.JComboBox<>();
         senhaAdmin = new javax.swing.JLabel();
         inputSenhaAdmin = new javax.swing.JPasswordField();
+        inputEmailAdmin = new javax.swing.JTextField();
         pokedex = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -120,15 +120,6 @@ public class InterfaceInicial extends javax.swing.JFrame {
         getContentPane().add(emailAdmin);
         emailAdmin.setBounds(560, 260, 50, 20);
 
-        listaAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin1", "Admin2", "Admin3", "Admin4" }));
-        listaAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listaAdminActionPerformed(evt);
-            }
-        });
-        getContentPane().add(listaAdmin);
-        listaAdmin.setBounds(610, 260, 140, 20);
-
         senhaAdmin.setFont(new java.awt.Font("Impact", 0, 12)); // NOI18N
         senhaAdmin.setForeground(new java.awt.Color(255, 255, 255));
         senhaAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -139,6 +130,15 @@ public class InterfaceInicial extends javax.swing.JFrame {
         inputSenhaAdmin.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         getContentPane().add(inputSenhaAdmin);
         inputSenhaAdmin.setBounds(610, 280, 140, 20);
+
+        inputEmailAdmin.setText("admin@admin.com");
+        inputEmailAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputEmailAdminActionPerformed(evt);
+            }
+        });
+        getContentPane().add(inputEmailAdmin);
+        inputEmailAdmin.setBounds(610, 260, 140, 20);
 
         pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
         getContentPane().add(pokedex);
@@ -180,9 +180,9 @@ public class InterfaceInicial extends javax.swing.JFrame {
         System.out.println("Indo para tela de criar jogador");
     }//GEN-LAST:event_criaJogador1ActionPerformed
 
-    private void listaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaAdminActionPerformed
-        // lista os admins ja existentes
-    }//GEN-LAST:event_listaAdminActionPerformed
+    private void inputEmailAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputEmailAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputEmailAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,9 +225,9 @@ public class InterfaceInicial extends javax.swing.JFrame {
     private javax.swing.JLabel emailAdmin;
     private javax.swing.JButton entraAdmin;
     private javax.swing.JButton entraJogador;
+    private javax.swing.JTextField inputEmailAdmin;
     private javax.swing.JPasswordField inputSenhaAdmin;
     private javax.swing.JPasswordField inputSenhaJogador;
-    private javax.swing.JComboBox<String> listaAdmin;
     private javax.swing.JComboBox<String> listaJogadores;
     private javax.swing.JLabel nomeJogador1;
     private javax.swing.JLabel pokedex;
