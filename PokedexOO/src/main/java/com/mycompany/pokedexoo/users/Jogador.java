@@ -60,4 +60,36 @@ public class Jogador extends Usuario {
         gson.toJson(Jogador.jogadores, writter);
         writter.close();
     }
+    
+    @Override
+    public boolean logar(String username, String senha) {
+        for (Jogador jogador : jogadores) {
+            if(jogador.getNome().equals(username))
+            {
+                if(jogador.getSenha().equals(senha))
+                {
+                    return true;
+                }
+                
+                System.out.println("Senha Incorreta!");
+                return false;
+            }
+        }
+        
+        System.out.println("Não foi encontrado usuário com esse nome!");
+        return false;
+    }
+    
+    public static boolean registrar(String username, String senha) throws IOException {
+        for (Jogador jogador : jogadores) {
+            if(username.equals(jogador.getNome()))
+            {
+                System.out.println("Não é possível criar um jogador! Nome já utilizado");
+                return false;
+            }
+        }
+        
+        Jogador jogador = new Jogador(username, senha);
+        return true;
+    }
 }
