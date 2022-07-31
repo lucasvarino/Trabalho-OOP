@@ -18,4 +18,22 @@ public abstract class Usuario extends Pessoa {
         super(_nome);
         this.senha = _senha;
     }
+
+    public String getSenha() {
+        return senha;
+    }
+    
+    public boolean logar(String username, String senha) {
+        if (username.equals(this.getNome())) {
+            if(senha.equals(this.getSenha())) {
+                return true;
+            }
+            
+            System.out.println("Senha incorreta!");
+            return false;
+        }
+        
+        return false;
+    }
+
 }

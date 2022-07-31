@@ -60,4 +60,23 @@ public class Jogador extends Usuario {
         gson.toJson(Jogador.jogadores, writter);
         writter.close();
     }
+    
+    @Override
+    public boolean logar(String username, String senha) {
+        for (Jogador jogador : jogadores) {
+            if(jogador.getNome().equals(username))
+            {
+                if(jogador.getSenha().equals(senha))
+                {
+                    return true;
+                }
+                
+                System.out.println("Senha Incorreta!");
+                return false;
+            }
+        }
+        
+        System.out.println("Não foi encontrado usuário com esse nome!");
+        return false;
+    }
 }
