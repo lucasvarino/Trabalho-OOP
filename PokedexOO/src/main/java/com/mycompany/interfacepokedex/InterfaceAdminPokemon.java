@@ -33,12 +33,16 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame {
         deletaPokemon = new javax.swing.JButton();
         nomePokemon = new javax.swing.JLabel();
         inputPesoPokemon = new javax.swing.JTextField();
-        altura = new javax.swing.JLabel();
+        regiaoNome = new javax.swing.JLabel();
         inputAlturaPokemon = new javax.swing.JTextField();
         editaPokemon = new javax.swing.JButton();
         apelido = new javax.swing.JLabel();
         inputApelidoPokemon = new javax.swing.JTextField();
         bulbasaur = new javax.swing.JLabel();
+        altura1 = new javax.swing.JLabel();
+        treinadorNome = new javax.swing.JLabel();
+        treinador1 = new javax.swing.JLabel();
+        regiao1 = new javax.swing.JLabel();
         pokedex = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,6 +65,7 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame {
         deletaPokemon.setBounds(290, 360, 70, 24);
 
         nomePokemon.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        nomePokemon.setForeground(new java.awt.Color(0, 204, 0));
         nomePokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nomePokemon.setText("#1 Bulbasaur");
         getContentPane().add(nomePokemon);
@@ -75,11 +80,12 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame {
         getContentPane().add(inputPesoPokemon);
         inputPesoPokemon.setBounds(200, 290, 60, 24);
 
-        altura.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
-        altura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        altura.setText("Altura:");
-        getContentPane().add(altura);
-        altura.setBounds(130, 260, 60, 23);
+        regiaoNome.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        regiaoNome.setForeground(new java.awt.Color(255, 255, 255));
+        regiaoNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        regiaoNome.setText("Região1");
+        getContentPane().add(regiaoNome);
+        regiaoNome.setBounds(650, 290, 100, 30);
 
         inputAlturaPokemon.setText("1,25");
         inputAlturaPokemon.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +124,33 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame {
         bulbasaur.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\bulbasaur (1).png")); // NOI18N
         getContentPane().add(bulbasaur);
         bulbasaur.setBounds(190, 130, 190, 240);
+
+        altura1.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        altura1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        altura1.setText("Altura:");
+        getContentPane().add(altura1);
+        altura1.setBounds(130, 260, 60, 23);
+
+        treinadorNome.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        treinadorNome.setForeground(new java.awt.Color(255, 255, 255));
+        treinadorNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        treinadorNome.setText("Treinador 1");
+        getContentPane().add(treinadorNome);
+        treinadorNome.setBounds(650, 260, 120, 30);
+
+        treinador1.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        treinador1.setForeground(new java.awt.Color(255, 255, 255));
+        treinador1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        treinador1.setText("Treinador:");
+        getContentPane().add(treinador1);
+        treinador1.setBounds(530, 260, 120, 23);
+
+        regiao1.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        regiao1.setForeground(new java.awt.Color(255, 255, 255));
+        regiao1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        regiao1.setText("Região:");
+        getContentPane().add(regiao1);
+        regiao1.setBounds(550, 290, 100, 23);
 
         pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
         getContentPane().add(pokedex);
@@ -199,7 +232,7 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel altura;
+    private javax.swing.JLabel altura1;
     private javax.swing.JLabel apelido;
     private javax.swing.JLabel bulbasaur;
     private javax.swing.JButton deletaPokemon;
@@ -210,6 +243,10 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame {
     private javax.swing.JLabel nomePokemon;
     private javax.swing.JLabel pesoPokemon;
     private javax.swing.JLabel pokedex;
+    private javax.swing.JLabel regiao1;
+    private javax.swing.JLabel regiaoNome;
+    private javax.swing.JLabel treinador1;
+    private javax.swing.JLabel treinadorNome;
     // End of variables declaration//GEN-END:variables
 
     

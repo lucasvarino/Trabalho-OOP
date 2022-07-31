@@ -51,6 +51,7 @@ public class InterfaceRegistraPokemonAdmin extends javax.swing.JFrame {
         confirmaPokemon.setBounds(200, 360, 90, 24);
 
         registrarPokemon.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        registrarPokemon.setForeground(new java.awt.Color(0, 204, 0));
         registrarPokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         registrarPokemon.setText("REGISTRAR POKEMON");
         getContentPane().add(registrarPokemon);

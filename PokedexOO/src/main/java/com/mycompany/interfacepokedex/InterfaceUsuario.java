@@ -38,6 +38,10 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         apelido = new javax.swing.JLabel();
         inputApelidoPokemon = new javax.swing.JTextField();
         bulbasaur = new javax.swing.JLabel();
+        treinador1 = new javax.swing.JLabel();
+        treinadorNome = new javax.swing.JLabel();
+        regiao1 = new javax.swing.JLabel();
+        regiaoNome = new javax.swing.JLabel();
         pokedex = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -107,6 +111,34 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         bulbasaur.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\bulbasaur (1).png")); // NOI18N
         getContentPane().add(bulbasaur);
         bulbasaur.setBounds(190, 130, 190, 240);
+
+        treinador1.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        treinador1.setForeground(new java.awt.Color(255, 255, 255));
+        treinador1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        treinador1.setText("Treinador:");
+        getContentPane().add(treinador1);
+        treinador1.setBounds(530, 260, 120, 23);
+
+        treinadorNome.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        treinadorNome.setForeground(new java.awt.Color(255, 255, 255));
+        treinadorNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        treinadorNome.setText("Treinador 1");
+        getContentPane().add(treinadorNome);
+        treinadorNome.setBounds(650, 260, 120, 30);
+
+        regiao1.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        regiao1.setForeground(new java.awt.Color(255, 255, 255));
+        regiao1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        regiao1.setText("Região:");
+        getContentPane().add(regiao1);
+        regiao1.setBounds(550, 290, 100, 23);
+
+        regiaoNome.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        regiaoNome.setForeground(new java.awt.Color(255, 255, 255));
+        regiaoNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        regiaoNome.setText("Região1");
+        getContentPane().add(regiaoNome);
+        regiaoNome.setBounds(650, 290, 100, 30);
 
         pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
         getContentPane().add(pokedex);
@@ -183,6 +215,10 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel nomePokemon;
     private javax.swing.JLabel pesoPokemon;
     private javax.swing.JLabel pokedex;
+    private javax.swing.JLabel regiao1;
+    private javax.swing.JLabel regiaoNome;
+    private javax.swing.JLabel treinador1;
+    private javax.swing.JLabel treinadorNome;
     // End of variables declaration//GEN-END:variables
 
     
