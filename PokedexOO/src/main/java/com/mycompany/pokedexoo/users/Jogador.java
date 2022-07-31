@@ -7,6 +7,7 @@ package com.mycompany.pokedexoo.users;
 import com.google.gson.Gson;
 import com.mycompany.pokedexoo.users.Usuario;
 import com.mycompany.pokedexoo.users.Treinador;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
@@ -19,6 +20,7 @@ import java.util.*;
 public class Jogador extends Usuario {
     private static ArrayList<Jogador> jogadores = new ArrayList<>();
     private ArrayList<Treinador> treinadores;
+    public static final JsonUtil<Jogador> jsonUtil = new JsonUtil<>(Jogador.class);
     
     public Jogador(String _nome, String _senha) throws IOException {
         super(_nome, _senha);

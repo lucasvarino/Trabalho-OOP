@@ -50,24 +50,10 @@ public class UserInterface {
         
         Jogador jogador2 = new Jogador("Teste", senha);
         
-         
-        JsonUtil<Jogador> util = new JsonUtil<>(Jogador.class);
-        
-        StringBuilder conteudo = new StringBuilder();
-
-        File arquivo = new File("users.json");
-
-        Scanner leitor = new Scanner(arquivo);
-
-        // varrendo o conteúdo do arquivo linha por linha
-        while (leitor.hasNextLine()) {
-            conteudo.append(leitor.nextLine()).append("\n");
-        }
-        
-        List<Jogador> jogadores = util.fromJsonToList(conteudo.toString());
+        List<Jogador> jogadores = Jogador.jsonUtil.fromJsonToList();
         
         System.out.println(jogadores);
-
+       
     }
 
     public static void limparTela() {  
