@@ -17,12 +17,14 @@ import java.util.*;
  * Lucas de Oliveira Varino (202165090A)
  */
 public class Jogador extends Usuario {
+    private static ArrayList<Jogador> jogadores = new ArrayList<>();
     private ArrayList<Treinador> treinadores;
     
     public Jogador(String _nome, String _senha) throws IOException {
         super(_nome, _senha);
         this.treinadores = new ArrayList<>();
         this.treinadores.add(new Treinador("Ash", "Kanto")); // Por padrão o Jogador começa com um treinador
+        jogadores.add(this);
         this.salvarJogadorJson();
     }
     
@@ -53,7 +55,7 @@ public class Jogador extends Usuario {
     private void salvarJogadorJson() throws IOException {
         Gson gson = new Gson();
         FileWriter writter = new FileWriter("users.json");
-        gson.toJson(this, writter);
+        gson.toJson(Jogador.jogadores, writter);
         writter.close();
     }
 }

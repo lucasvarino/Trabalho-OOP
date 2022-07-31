@@ -3,9 +3,12 @@ package com.mycompany.interfacepokedex;
 
 import com.mycompany.pokedexoo.pokemon.Pokemon;
 import com.mycompany.pokedexoo.users.Jogador;
+import com.mycompany.pokedexoo.users.JsonUtil;
 import com.mycompany.pokedexoo.users.Treinador;
 import com.mycompany.pokedexoo.users.Usuario;
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 /*
@@ -45,6 +48,25 @@ public class UserInterface {
         Treinador treinador = new Treinador("Ash2", "Sinnoh");
         jogador.setTreinador(treinador);
         
+        Jogador jogador2 = new Jogador("Teste", senha);
+        
+         
+        JsonUtil<Jogador> util = new JsonUtil<>(Jogador.class);
+        
+        StringBuilder conteudo = new StringBuilder();
+
+        File arquivo = new File("users.json");
+
+        Scanner leitor = new Scanner(arquivo);
+
+        // varrendo o conteúdo do arquivo linha por linha
+        while (leitor.hasNextLine()) {
+            conteudo.append(leitor.nextLine()).append("\n");
+        }
+        
+        List<Jogador> jogadores = util.fromJsonToList(conteudo.toString());
+        
+        System.out.println(jogadores);
 
     }
 
