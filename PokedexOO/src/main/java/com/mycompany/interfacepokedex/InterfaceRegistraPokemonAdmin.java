@@ -9,12 +9,12 @@ package com.mycompany.interfacepokedex;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class InterfaceRegistraPokemon extends javax.swing.JFrame {
+public class InterfaceRegistraPokemonAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form InterfaceInicial
      */
-    public InterfaceRegistraPokemon() {
+    public InterfaceRegistraPokemonAdmin() {
         initComponents();
         this.setSize(1000, 800);
         this.setVisible(true);
@@ -51,6 +51,7 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame {
         confirmaPokemon.setBounds(200, 360, 90, 24);
 
         registrarPokemon.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        registrarPokemon.setForeground(new java.awt.Color(0, 204, 0));
         registrarPokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         registrarPokemon.setText("REGISTRAR POKEMON");
         getContentPane().add(registrarPokemon);
@@ -92,10 +93,10 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaPokemonActionPerformed
-        // registra o novo pokemon com essas info e volta pra InterfaceRegistros
-        InterfaceRegistros interfaceRegistros = new InterfaceRegistros();
+        // registra o novo pokemon com essas info e volta pra InterfaceAdminPokemons
+        InterfaceAdminPokemons interfaceAdminPokemons = new InterfaceAdminPokemons();
         this.dispose();
-        interfaceRegistros.setVisible(true);
+        interfaceAdminPokemons.setVisible(true);
     }//GEN-LAST:event_confirmaPokemonActionPerformed
 
     private void inputNomePokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomePokemonActionPerformed
@@ -123,14 +124,18 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceRegistraPokemon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceRegistraPokemonAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceRegistraPokemon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceRegistraPokemonAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceRegistraPokemon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceRegistraPokemonAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceRegistraPokemon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceRegistraPokemonAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -139,7 +144,7 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceRegistraPokemon().setVisible(true);
+                new InterfaceRegistraPokemonAdmin().setVisible(true);
             }
         });
     }

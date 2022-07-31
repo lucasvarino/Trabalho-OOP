@@ -38,10 +38,10 @@ public class InterfaceInicial extends javax.swing.JFrame {
         nomeJogador1 = new javax.swing.JLabel();
         criaJogador1 = new javax.swing.JButton();
         inputSenhaJogador = new javax.swing.JPasswordField();
-        nomeAdmin = new javax.swing.JLabel();
-        listaAdmin = new javax.swing.JComboBox<>();
+        emailAdmin = new javax.swing.JLabel();
         senhaAdmin = new javax.swing.JLabel();
         inputSenhaAdmin = new javax.swing.JPasswordField();
+        inputEmailAdmin = new javax.swing.JTextField();
         pokedex = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -113,21 +113,12 @@ public class InterfaceInicial extends javax.swing.JFrame {
         getContentPane().add(inputSenhaJogador);
         inputSenhaJogador.setBounds(220, 310, 140, 22);
 
-        nomeAdmin.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
-        nomeAdmin.setForeground(new java.awt.Color(255, 255, 255));
-        nomeAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nomeAdmin.setText("Nome:");
-        getContentPane().add(nomeAdmin);
-        nomeAdmin.setBounds(560, 260, 50, 20);
-
-        listaAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin1", "Admin2", "Admin3", "Admin4" }));
-        listaAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listaAdminActionPerformed(evt);
-            }
-        });
-        getContentPane().add(listaAdmin);
-        listaAdmin.setBounds(610, 260, 140, 20);
+        emailAdmin.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
+        emailAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        emailAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        emailAdmin.setText("Email:");
+        getContentPane().add(emailAdmin);
+        emailAdmin.setBounds(560, 260, 50, 20);
 
         senhaAdmin.setFont(new java.awt.Font("Impact", 0, 12)); // NOI18N
         senhaAdmin.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,6 +130,15 @@ public class InterfaceInicial extends javax.swing.JFrame {
         inputSenhaAdmin.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         getContentPane().add(inputSenhaAdmin);
         inputSenhaAdmin.setBounds(610, 280, 140, 20);
+
+        inputEmailAdmin.setText("admin@admin.com");
+        inputEmailAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputEmailAdminActionPerformed(evt);
+            }
+        });
+        getContentPane().add(inputEmailAdmin);
+        inputEmailAdmin.setBounds(610, 260, 140, 20);
 
         pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
         getContentPane().add(pokedex);
@@ -154,15 +154,23 @@ public class InterfaceInicial extends javax.swing.JFrame {
     private void entraAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entraAdminActionPerformed
         // a partir do admin selecionado da combo-box verificar se a senha e nome batem, 
         // caso nao bater, informar por um JOP que as credenciais nao batem, 
+        
         // caso esteja correto, enviar o jogador para a InterfaceAdmin
         // onde ele terá acesso as funcionalidades de um admin
+        this.dispose();
+        InterfaceAdmin interfaceAdmin = new InterfaceAdmin();
+        interfaceAdmin.setVisible(true);
     }//GEN-LAST:event_entraAdminActionPerformed
 
     private void entraJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entraJogadorActionPerformed
         // a partir do jogador selecionado da combo-box verificar se a senha e nome batem, 
         // caso nao bater, informar por um JOP que as credenciais nao batem, 
-        // caso esteja correto, enviar o jogador para a InterfaceRegistro
-        // onde ele terá acesso aos seus pokemons
+        
+        // caso esteja correto, enviar o jogador para a InterfaceJogadorTreinador
+        // onde ele terá acesso aos seus treinadores e depois aos seus respectivos pokemons
+        this.dispose();
+        InterfaceJogadorTreinador interfaceJogadorTreinador = new InterfaceJogadorTreinador();
+        interfaceJogadorTreinador.setVisible(true);
     }//GEN-LAST:event_entraJogadorActionPerformed
 
     private void criaJogador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criaJogador1ActionPerformed
@@ -172,9 +180,9 @@ public class InterfaceInicial extends javax.swing.JFrame {
         System.out.println("Indo para tela de criar jogador");
     }//GEN-LAST:event_criaJogador1ActionPerformed
 
-    private void listaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaAdminActionPerformed
-        // lista os admins ja existentes
-    }//GEN-LAST:event_listaAdminActionPerformed
+    private void inputEmailAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputEmailAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputEmailAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,13 +222,13 @@ public class InterfaceInicial extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel admin;
     private javax.swing.JButton criaJogador1;
+    private javax.swing.JLabel emailAdmin;
     private javax.swing.JButton entraAdmin;
     private javax.swing.JButton entraJogador;
+    private javax.swing.JTextField inputEmailAdmin;
     private javax.swing.JPasswordField inputSenhaAdmin;
     private javax.swing.JPasswordField inputSenhaJogador;
-    private javax.swing.JComboBox<String> listaAdmin;
     private javax.swing.JComboBox<String> listaJogadores;
-    private javax.swing.JLabel nomeAdmin;
     private javax.swing.JLabel nomeJogador1;
     private javax.swing.JLabel pokedex;
     private javax.swing.JLabel senhaAdmin;
