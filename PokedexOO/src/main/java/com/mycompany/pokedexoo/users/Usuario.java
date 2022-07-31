@@ -35,5 +35,4 @@ public abstract class Usuario extends Pessoa {
         
         return false;
     }
-
 }

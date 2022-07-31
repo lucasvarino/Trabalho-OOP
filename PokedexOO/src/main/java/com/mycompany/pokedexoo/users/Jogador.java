@@ -79,4 +79,17 @@ public class Jogador extends Usuario {
         System.out.println("Não foi encontrado usuário com esse nome!");
         return false;
     }
+    
+    public static boolean registrar(String username, String senha) throws IOException {
+        for (Jogador jogador : jogadores) {
+            if(username.equals(jogador.getNome()))
+            {
+                System.out.println("Não é possível criar um jogador! Nome já utilizado");
+                return false;
+            }
+        }
+        
+        Jogador jogador = new Jogador(username, senha);
+        return true;
+    }
 }
