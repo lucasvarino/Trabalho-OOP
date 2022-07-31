@@ -19,9 +19,9 @@ import java.util.*;
  * Lucas de Oliveira Varino (202165090A)
  */
 public class Jogador extends Usuario {
-    private static ArrayList<Jogador> jogadores = new ArrayList<>();
+    private static List<Jogador> jogadores = new ArrayList<>();
     private ArrayList<Treinador> treinadores;
-    public static final JsonUtil<Jogador> jsonUtil = new JsonUtil<>(Jogador.class);
+    public static final JogadorUtil jsonUtil = new JogadorUtil();
     
     private static String nomeAtual = "";
     private static Jogador jogadorAtual;
@@ -29,6 +29,7 @@ public class Jogador extends Usuario {
     public Jogador(String _nome, String _senha) throws IOException {
         super(_nome, _senha);
         this.treinadores = new ArrayList<>();
+        jogadores = jsonUtil.fromJsonToList();
         this.treinadores.add(new Treinador("Ash", "Kanto")); // Por padrão o Jogador começa com um treinador
         jogadores.add(this);
         this.salvarJogadorJson();
