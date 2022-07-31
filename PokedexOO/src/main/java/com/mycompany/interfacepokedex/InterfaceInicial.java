@@ -154,15 +154,23 @@ public class InterfaceInicial extends javax.swing.JFrame {
     private void entraAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entraAdminActionPerformed
         // a partir do admin selecionado da combo-box verificar se a senha e nome batem, 
         // caso nao bater, informar por um JOP que as credenciais nao batem, 
+        
         // caso esteja correto, enviar o jogador para a InterfaceAdmin
         // onde ele terá acesso as funcionalidades de um admin
+        this.dispose();
+        InterfaceAdmin interfaceAdmin = new InterfaceAdmin();
+        interfaceAdmin.setVisible(true);
     }//GEN-LAST:event_entraAdminActionPerformed
 
     private void entraJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entraJogadorActionPerformed
         // a partir do jogador selecionado da combo-box verificar se a senha e nome batem, 
         // caso nao bater, informar por um JOP que as credenciais nao batem, 
-        // caso esteja correto, enviar o jogador para a InterfaceRegistro
-        // onde ele terá acesso aos seus pokemons
+        
+        // caso esteja correto, enviar o jogador para a InterfaceJogadorTreinador
+        // onde ele terá acesso aos seus treinadores e depois aos seus respectivos pokemons
+        this.dispose();
+        InterfaceJogadorTreinador interfaceJogadorTreinador = new InterfaceJogadorTreinador();
+        interfaceJogadorTreinador.setVisible(true);
     }//GEN-LAST:event_entraJogadorActionPerformed
 
     private void criaJogador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criaJogador1ActionPerformed

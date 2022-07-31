@@ -9,12 +9,12 @@ package com.mycompany.interfacepokedex;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class InterfaceAdmin extends javax.swing.JFrame {
+public class InterfaceAdminTreinador extends javax.swing.JFrame {
 
     /**
      * Creates new form InterfaceInicial
      */
-    public InterfaceAdmin() {
+    public InterfaceAdminTreinador() {
         initComponents();
         this.setSize(1000, 800);
         this.setVisible(true);
@@ -29,48 +29,48 @@ public class InterfaceAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        listaJogadores = new javax.swing.JComboBox<>();
-        selecionaJogador = new javax.swing.JButton();
-        admin = new javax.swing.JLabel();
+        modificaAdmin = new javax.swing.JButton();
         jogador = new javax.swing.JLabel();
+        treinador = new javax.swing.JLabel();
+        listaTreinadores = new javax.swing.JComboBox<>();
         sair = new javax.swing.JButton();
         pokedex = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        listaJogadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jogador1", "Jogador2", "Jogador3", "Jogador4" }));
-        listaJogadores.addActionListener(new java.awt.event.ActionListener() {
+        modificaAdmin.setBackground(new java.awt.Color(51, 255, 51));
+        modificaAdmin.setText("Confirmar");
+        modificaAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listaJogadoresActionPerformed(evt);
+                modificaAdminActionPerformed(evt);
             }
         });
-        getContentPane().add(listaJogadores);
-        listaJogadores.setBounds(240, 290, 120, 26);
+        getContentPane().add(modificaAdmin);
+        modificaAdmin.setBounds(140, 350, 110, 24);
 
-        selecionaJogador.setBackground(new java.awt.Color(51, 255, 51));
-        selecionaJogador.setText("Confirmar");
-        selecionaJogador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selecionaJogadorActionPerformed(evt);
-            }
-        });
-        getContentPane().add(selecionaJogador);
-        selecionaJogador.setBounds(140, 360, 110, 24);
-
-        admin.setBackground(new java.awt.Color(0, 153, 51));
-        admin.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
-        admin.setForeground(new java.awt.Color(0, 204, 51));
-        admin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        admin.setText("ADMIN 1");
-        getContentPane().add(admin);
-        admin.setBounds(200, 230, 90, 23);
-
+        jogador.setBackground(new java.awt.Color(0, 153, 51));
         jogador.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        jogador.setForeground(new java.awt.Color(0, 204, 51));
         jogador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jogador.setText("Jogadores:");
+        jogador.setText("Jogador 1");
         getContentPane().add(jogador);
-        jogador.setBounds(130, 290, 110, 23);
+        jogador.setBounds(200, 230, 90, 23);
+
+        treinador.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        treinador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        treinador.setText("Treinadores:");
+        getContentPane().add(treinador);
+        treinador.setBounds(130, 290, 120, 23);
+
+        listaTreinadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Treinador 1", "Treinador 2", "Treinador 3", "Treinador 4" }));
+        listaTreinadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaTreinadoresActionPerformed(evt);
+            }
+        });
+        getContentPane().add(listaTreinadores);
+        listaTreinadores.setBounds(250, 290, 110, 26);
 
         sair.setBackground(new java.awt.Color(255, 0, 0));
         sair.setText("Sair");
@@ -80,7 +80,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(sair);
-        sair.setBounds(260, 360, 100, 24);
+        sair.setBounds(260, 350, 100, 24);
 
         pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
         getContentPane().add(pokedex);
@@ -89,22 +89,22 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void listaJogadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaJogadoresActionPerformed
-        // combo-box com os jogadores para o admin selecionar
-    }//GEN-LAST:event_listaJogadoresActionPerformed
-
-    private void selecionaJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionaJogadorActionPerformed
-        // seleciona um jogador e vai para sua tela de edicao, primeiro aos treinadores
+    private void modificaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaAdminActionPerformed
+        // confirma a edicao dos treinadores e manda para InterfaceAdminPokemons
         this.dispose();
-        InterfaceAdminTreinador interfaceAdminTreinador = new InterfaceAdminTreinador();
-        interfaceAdminTreinador.setVisible(true);
-    }//GEN-LAST:event_selecionaJogadorActionPerformed
+        InterfaceAdminPokemons interfaceAdminPokemons = new InterfaceAdminPokemons();
+        interfaceAdminPokemons.setVisible(true);
+    }//GEN-LAST:event_modificaAdminActionPerformed
+
+    private void listaTreinadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaTreinadoresActionPerformed
+        // lista de treinadores para serem selecionados pelo admin
+    }//GEN-LAST:event_listaTreinadoresActionPerformed
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
-        // volta para a InterfaceInicial
+        // volta para a InterfaceAdmin
         this.dispose();
-        InterfaceInicial interfaceInicial = new InterfaceInicial();
-        interfaceInicial.setVisible(true);
+        InterfaceAdmin interfaceAdmin = new InterfaceAdmin();
+        interfaceAdmin.setVisible(true);
     }//GEN-LAST:event_sairActionPerformed
 
     /**
@@ -124,32 +124,34 @@ public class InterfaceAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAdminTreinador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAdminTreinador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAdminTreinador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAdminTreinador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceAdmin().setVisible(true);
+                new InterfaceAdminTreinador().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel admin;
     private javax.swing.JLabel jogador;
-    private javax.swing.JComboBox<String> listaJogadores;
+    private javax.swing.JComboBox<String> listaTreinadores;
+    private javax.swing.JButton modificaAdmin;
     private javax.swing.JLabel pokedex;
     private javax.swing.JButton sair;
-    private javax.swing.JButton selecionaJogador;
+    private javax.swing.JLabel treinador;
     // End of variables declaration//GEN-END:variables
 
     
