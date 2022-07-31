@@ -9,12 +9,12 @@ package com.mycompany.interfacepokedex;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class InterfaceRegistros extends javax.swing.JFrame {
+public class InterfaceAdminPokemons extends javax.swing.JFrame {
 
     /**
      * Creates new form InterfaceInicial
      */
-    public InterfaceRegistros() {
+    public InterfaceAdminPokemons() {
         initComponents();
         this.setSize(1000, 800);
         this.setVisible(true);
@@ -31,9 +31,10 @@ public class InterfaceRegistros extends javax.swing.JFrame {
 
         pokemons = new javax.swing.JLabel();
         listaPokemons = new javax.swing.JComboBox<>();
-        registraPokemon = new javax.swing.JButton();
+        modificaAdmin = new javax.swing.JButton();
+        jogador = new javax.swing.JLabel();
         sair = new javax.swing.JButton();
-        selecionaPokemon = new javax.swing.JButton();
+        registraPokemon = new javax.swing.JButton();
         pokedex = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -41,28 +42,36 @@ public class InterfaceRegistros extends javax.swing.JFrame {
 
         pokemons.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         pokemons.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pokemons.setText("POKÉMONS");
+        pokemons.setText("Pokémons:");
         getContentPane().add(pokemons);
-        pokemons.setBounds(200, 230, 90, 23);
+        pokemons.setBounds(140, 290, 100, 20);
 
-        listaPokemons.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bulbasaur", "Pikachu", "Charmander", "Squirtle" }));
+        listaPokemons.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bulbasaur", "Lucas", "Pedro", "José" }));
         listaPokemons.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listaPokemonsActionPerformed(evt);
             }
         });
         getContentPane().add(listaPokemons);
-        listaPokemons.setBounds(160, 270, 170, 26);
+        listaPokemons.setBounds(250, 290, 110, 26);
 
-        registraPokemon.setBackground(new java.awt.Color(0, 0, 255));
-        registraPokemon.setText("Adicionar Novo");
-        registraPokemon.addActionListener(new java.awt.event.ActionListener() {
+        modificaAdmin.setBackground(new java.awt.Color(51, 255, 51));
+        modificaAdmin.setText("Confirmar");
+        modificaAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registraPokemonActionPerformed(evt);
+                modificaAdminActionPerformed(evt);
             }
         });
-        getContentPane().add(registraPokemon);
-        registraPokemon.setBounds(140, 350, 120, 24);
+        getContentPane().add(modificaAdmin);
+        modificaAdmin.setBounds(190, 320, 120, 24);
+
+        jogador.setBackground(new java.awt.Color(0, 153, 51));
+        jogador.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        jogador.setForeground(new java.awt.Color(0, 204, 51));
+        jogador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jogador.setText("Jogador 1");
+        getContentPane().add(jogador);
+        jogador.setBounds(200, 230, 90, 23);
 
         sair.setBackground(new java.awt.Color(255, 0, 0));
         sair.setText("Sair");
@@ -72,17 +81,17 @@ public class InterfaceRegistros extends javax.swing.JFrame {
             }
         });
         getContentPane().add(sair);
-        sair.setBounds(284, 350, 70, 24);
+        sair.setBounds(270, 360, 100, 24);
 
-        selecionaPokemon.setBackground(new java.awt.Color(255, 153, 51));
-        selecionaPokemon.setText("Selecionar");
-        selecionaPokemon.addActionListener(new java.awt.event.ActionListener() {
+        registraPokemon.setBackground(new java.awt.Color(0, 0, 255));
+        registraPokemon.setText("Adicionar Novo");
+        registraPokemon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selecionaPokemonActionPerformed(evt);
+                registraPokemonActionPerformed(evt);
             }
         });
-        getContentPane().add(selecionaPokemon);
-        selecionaPokemon.setBounds(190, 300, 110, 24);
+        getContentPane().add(registraPokemon);
+        registraPokemon.setBounds(130, 360, 130, 24);
 
         pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
         getContentPane().add(pokedex);
@@ -91,31 +100,30 @@ public class InterfaceRegistros extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void registraPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registraPokemonActionPerformed
-        // manda o jogador para a InterfaceRegistraPokemon
-        InterfaceRegistraPokemon interfaceRegistraPokemon = new InterfaceRegistraPokemon();
-        this.dispose();
-        interfaceRegistraPokemon.setVisible(true);
-    }//GEN-LAST:event_registraPokemonActionPerformed
-
     private void listaPokemonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaPokemonsActionPerformed
-        // lista os pokemons do Treinador selecionado para o Jogador na combo-box
+        // lista os pokemons para que o admin edite o que ele quiser pro jogador
     }//GEN-LAST:event_listaPokemonsActionPerformed
 
-    private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
-        // volta para a InterfaceJogadorTreinador
+    private void modificaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaAdminActionPerformed
+        // manda pra InterfaceAdminPokemon do pokemon selecionado na combo-box
         this.dispose();
-        InterfaceJogadorTreinador interfaceJogadorTreinador = new InterfaceJogadorTreinador();
-        interfaceJogadorTreinador.setVisible(true);
+        InterfaceAdminPokemon interfaceAdminPokemon = new InterfaceAdminPokemon();
+        interfaceAdminPokemon.setVisible(true);
+    }//GEN-LAST:event_modificaAdminActionPerformed
+
+    private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
+        // volta para a InterfaceAdminTreinador
+        this.dispose();
+        InterfaceAdminTreinador interfaceAdminTreinador = new InterfaceAdminTreinador();
+        interfaceAdminTreinador.setVisible(true);
     }//GEN-LAST:event_sairActionPerformed
 
-    private void selecionaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionaPokemonActionPerformed
-        // manda o jogador para a InterfaceUsuario com as informacoes do Pokemon
-        // selecionado na combo-box
+    private void registraPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registraPokemonActionPerformed
+        // manda o jogador para a InterfaceRegistraPokemon
+        InterfaceRegistraPokemonAdmin interfaceRegistraPokemonAdmin = new InterfaceRegistraPokemonAdmin();
         this.dispose();
-        InterfaceUsuario interfaceUsuario = new InterfaceUsuario();
-        interfaceUsuario.setVisible(true);
-    }//GEN-LAST:event_selecionaPokemonActionPerformed
+        interfaceRegistraPokemonAdmin.setVisible(true);
+    }//GEN-LAST:event_registraPokemonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,32 +142,39 @@ public class InterfaceRegistros extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceRegistros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAdminPokemons.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceRegistros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAdminPokemons.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceRegistros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAdminPokemons.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceRegistros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAdminPokemons.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceRegistros().setVisible(true);
+                new InterfaceAdminPokemons().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jogador;
     private javax.swing.JComboBox<String> listaPokemons;
+    private javax.swing.JButton modificaAdmin;
     private javax.swing.JLabel pokedex;
     private javax.swing.JLabel pokemons;
     private javax.swing.JButton registraPokemon;
     private javax.swing.JButton sair;
-    private javax.swing.JButton selecionaPokemon;
     // End of variables declaration//GEN-END:variables
 
     

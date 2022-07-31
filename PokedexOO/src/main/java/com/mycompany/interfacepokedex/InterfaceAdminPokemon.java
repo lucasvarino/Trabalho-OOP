@@ -9,12 +9,12 @@ package com.mycompany.interfacepokedex;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class InterfaceUsuario extends javax.swing.JFrame {
+public class InterfaceAdminPokemon extends javax.swing.JFrame {
 
     /**
      * Creates new form InterfaceInicial
      */
-    public InterfaceUsuario() {
+    public InterfaceAdminPokemon() {
         initComponents();
         this.setSize(1000, 800);
         this.setVisible(true);
@@ -30,6 +30,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         pesoPokemon = new javax.swing.JLabel();
+        deletaPokemon = new javax.swing.JButton();
         nomePokemon = new javax.swing.JLabel();
         inputPesoPokemon = new javax.swing.JTextField();
         altura = new javax.swing.JLabel();
@@ -48,6 +49,16 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         pesoPokemon.setText("Peso:");
         getContentPane().add(pesoPokemon);
         pesoPokemon.setBounds(130, 290, 50, 23);
+
+        deletaPokemon.setBackground(new java.awt.Color(255, 51, 51));
+        deletaPokemon.setText("Deletar");
+        deletaPokemon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletaPokemonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(deletaPokemon);
+        deletaPokemon.setBounds(290, 360, 70, 24);
 
         nomePokemon.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         nomePokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -87,7 +98,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(editaPokemon);
-        editaPokemon.setBounds(210, 360, 70, 24);
+        editaPokemon.setBounds(140, 360, 70, 24);
 
         apelido.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         apelido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -115,6 +126,15 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void deletaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletaPokemonActionPerformed
+        // admin deleta o pokemon
+        
+        // e volta para InterfaceAdminPokemons
+        this.dispose();
+        InterfaceAdminPokemons interfaceAdminPokemons = new InterfaceAdminPokemons();
+        interfaceAdminPokemons.setVisible(true);
+    }//GEN-LAST:event_deletaPokemonActionPerformed
+
     private void inputPesoPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPesoPokemonActionPerformed
         // pega peso pokemon, ja exibindo o padrao
     }//GEN-LAST:event_inputPesoPokemonActionPerformed
@@ -124,10 +144,12 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_inputAlturaPokemonActionPerformed
 
     private void editaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editaPokemonActionPerformed
-        // confirma a edicao do pokemon e o cria e volta para a InterfaceRegistros
+        // confirma a edicao do pokemon e o cria
+        
+        // e volta para a InterfaceAdminPokemons
         this.dispose();
-        InterfaceRegistros interfaceRegistros = new InterfaceRegistros();
-        interfaceRegistros.setVisible(true);
+        InterfaceAdminPokemons interfaceAdminPokemons = new InterfaceAdminPokemons();
+        interfaceAdminPokemons.setVisible(true);
     }//GEN-LAST:event_editaPokemonActionPerformed
 
     private void inputApelidoPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputApelidoPokemonActionPerformed
@@ -151,14 +173,18 @@ public class InterfaceUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAdminPokemon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAdminPokemon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAdminPokemon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceAdminPokemon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -167,7 +193,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceUsuario().setVisible(true);
+                new InterfaceAdminPokemon().setVisible(true);
             }
         });
     }
@@ -176,6 +202,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel altura;
     private javax.swing.JLabel apelido;
     private javax.swing.JLabel bulbasaur;
+    private javax.swing.JButton deletaPokemon;
     private javax.swing.JButton editaPokemon;
     private javax.swing.JTextField inputAlturaPokemon;
     private javax.swing.JTextField inputApelidoPokemon;

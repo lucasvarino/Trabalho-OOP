@@ -33,7 +33,7 @@ public class InterfaceCriaUsuario extends javax.swing.JFrame {
 
         senhaJogador = new javax.swing.JLabel();
         criaJogador = new javax.swing.JButton();
-        usuario = new javax.swing.JLabel();
+        criarJogador = new javax.swing.JLabel();
         nomeJogador = new javax.swing.JLabel();
         inputNomeJogador = new javax.swing.JTextField();
         inputSenhaJogador = new javax.swing.JPasswordField();
@@ -58,11 +58,11 @@ public class InterfaceCriaUsuario extends javax.swing.JFrame {
         getContentPane().add(criaJogador);
         criaJogador.setBounds(200, 350, 90, 24);
 
-        usuario.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
-        usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        usuario.setText("CRIAR JOGADOR");
-        getContentPane().add(usuario);
-        usuario.setBounds(170, 230, 160, 23);
+        criarJogador.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        criarJogador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        criarJogador.setText("CRIAR JOGADOR");
+        getContentPane().add(criarJogador);
+        criarJogador.setBounds(170, 230, 160, 23);
 
         nomeJogador.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         nomeJogador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -140,12 +140,12 @@ public class InterfaceCriaUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton criaJogador;
+    private javax.swing.JLabel criarJogador;
     private javax.swing.JTextField inputNomeJogador;
     private javax.swing.JPasswordField inputSenhaJogador;
     private javax.swing.JLabel nomeJogador;
     private javax.swing.JLabel pokedex;
     private javax.swing.JLabel senhaJogador;
-    private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 
     

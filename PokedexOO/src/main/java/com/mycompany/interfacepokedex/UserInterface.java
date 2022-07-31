@@ -29,7 +29,7 @@ public class UserInterface {
         System.out.println("");
 
         //InterfaceInicial interfaceInicial = new InterfaceInicial();
-        InterfaceRegistros interfaceRegistros = new InterfaceRegistros();
+        InterfaceInicial interfaceInicial = new InterfaceInicial();
         
         Scanner teclado = new Scanner(System.in);        
 
