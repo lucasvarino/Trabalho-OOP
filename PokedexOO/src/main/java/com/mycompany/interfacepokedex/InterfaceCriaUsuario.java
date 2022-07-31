@@ -8,6 +8,9 @@ import com.mycompany.pokedexoo.users.Jogador;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JPanel;
 
 /**
  * autores:
@@ -95,14 +98,20 @@ public class InterfaceCriaUsuario extends javax.swing.JFrame {
     }// </editor-fold>//
 
     private void criaJogadorActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//
-        Jogador jogador = new Jogador(inputNomeJogador.getText(), inputSenhaJogador.getPassword().toString());
-        InterfaceInicial interfaceInicial = new InterfaceInicial();
-        this.dispose();
-        interfaceInicial.setVisible(true);
-        System.out.println("Jogador: ");
-        System.out.println("Nome: " + inputNomeJogador.getText());
-        System.out.println("Senha: " + String.valueOf(inputSenhaJogador.getPassword()));
-        System.out.println("Indo para tela inicial");
+//        Jogador jogador = new Jogador(inputNomeJogador.getText(), inputSenhaJogador.getPassword().toString());
+        boolean podeCriar = Jogador.registrar(inputNomeJogador.getText(), inputSenhaJogador.getPassword().toString());
+        if (!podeCriar) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Nome já existe! Tente outro.", "Inválido", ERROR_MESSAGE);
+        } else {
+            InterfaceInicial interfaceInicial = new InterfaceInicial();
+            this.dispose();
+            interfaceInicial.setVisible(true);
+            System.out.println("Jogador: ");
+            System.out.println("Nome: " + inputNomeJogador.getText());
+            System.out.println("Senha: " + String.valueOf(inputSenhaJogador.getPassword()));
+            System.out.println("Indo para tela inicial");
+        }
     }//
 
     private void inputNomeJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomeJogadorActionPerformed

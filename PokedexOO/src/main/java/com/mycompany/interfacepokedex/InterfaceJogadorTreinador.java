@@ -19,7 +19,7 @@ public class InterfaceJogadorTreinador extends javax.swing.JFrame {
     /**
      * Creates new form InterfaceInicial
      */
-    public InterfaceJogadorTreinador() {
+    public InterfaceJogadorTreinador() throws FileNotFoundException {
         initComponents();
         this.setSize(1000, 800);
         this.setVisible(true);
@@ -32,7 +32,7 @@ public class InterfaceJogadorTreinador extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//
-    private void initComponents() {
+    private void initComponents() throws FileNotFoundException {
 
         modificaAdmin = new javax.swing.JButton();
         admin = new javax.swing.JLabel();
@@ -59,7 +59,7 @@ public class InterfaceJogadorTreinador extends javax.swing.JFrame {
         admin.setForeground(new java.awt.Color(0, 204, 51));
         admin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         
-        admin.setText(Jogador.getNomeAtual());
+        admin.setText(Jogador.getJogadorAtual().getNome());
         
         getContentPane().add(admin);
         admin.setBounds(200, 230, 90, 23);
@@ -70,7 +70,7 @@ public class InterfaceJogadorTreinador extends javax.swing.JFrame {
         getContentPane().add(treinador);
         treinador.setBounds(130, 290, 120, 23);
 
-        listaTreinadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Treinador 1", "Treinador 2", "Treinador 3", "Treinador 4" }));
+        listaTreinadores.setModel(new javax.swing.DefaultComboBoxModel<>(Jogador.getJogadorAtual().getAllNomesTreinadores()));
         listaTreinadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listaTreinadoresActionPerformed(evt);
@@ -109,10 +109,10 @@ public class InterfaceJogadorTreinador extends javax.swing.JFrame {
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
         try {
-            // volta para a InterfaceAdminTreinador
+            // volta para a InterfaceInicial
             this.dispose();
-            InterfaceAdminTreinador interfaceAdminTreinador = new InterfaceAdminTreinador();
-            interfaceAdminTreinador.setVisible(true);
+            InterfaceInicial interfaceInicial = new InterfaceInicial();
+            interfaceInicial.setVisible(true);
         } catch (FileNotFoundException ex) {
             System.out.println("Nao foi possivel encontrar o arquivo.");
         }
@@ -155,7 +155,11 @@ public class InterfaceJogadorTreinador extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceJogadorTreinador().setVisible(true);
+                try {
+                    new InterfaceJogadorTreinador().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    System.out.println("Nao foi possivel encontrar o arquivo.");
+                }
             }
         });
     }

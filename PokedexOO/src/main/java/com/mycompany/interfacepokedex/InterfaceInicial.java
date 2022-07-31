@@ -23,6 +23,7 @@ public class InterfaceInicial extends javax.swing.JFrame {
      */
     public InterfaceInicial() throws FileNotFoundException {
         initComponents();
+        Jogador.atualizaJogadores();
         this.setSize(1000, 800);
         this.setVisible(true);
     }
@@ -180,19 +181,24 @@ public class InterfaceInicial extends javax.swing.JFrame {
 
     private void entraJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entraJogadorActionPerformed
         // a partir do jogador selecionado da combo-box verificar se a senha e nome batem, 
-//        Jogador j = Jogador.getJogadorAtual();
-//        j.logar(j.getNome(), j.getSenha());
-        boolean credenciaisCorretasJogador = true;
+        //Jogador.setJogadorAtualByName(listaJogadores.getSelectedItem().toString());
+        Jogador j = Jogador.getJogadorAtual();
+        boolean credenciaisCorretasJogador = j.logar(j.getNome(), j.getSenha());
         // caso nao bater, informar por um JOP que as credenciais nao batem, 
         if (!credenciaisCorretasJogador) {
             JPanel painel = new JPanel();
             JOptionPane.showInternalMessageDialog(painel, "Credenciais incorretas!", "Login inváido", ERROR_MESSAGE);
         } else {
-            // caso esteja correto, enviar o jogador para a InterfaceJogadorTreinador
-            // onde ele terá acesso aos seus treinadores e depois aos seus respectivos pokemons
-            this.dispose();
-            InterfaceJogadorTreinador interfaceJogadorTreinador = new InterfaceJogadorTreinador();
-            interfaceJogadorTreinador.setVisible(true);
+            try {
+                // caso esteja correto, enviar o jogador para a InterfaceJogadorTreinador
+                // onde ele terá acesso aos seus treinadores e depois aos seus respectivos pokemons
+                Jogador.setJogadorAtualByName(listaJogadores.getSelectedItem().toString());
+                this.dispose();
+                InterfaceJogadorTreinador interfaceJogadorTreinador = new InterfaceJogadorTreinador();
+                interfaceJogadorTreinador.setVisible(true);
+            } catch (FileNotFoundException ex) {
+                System.out.println("Nao foi possivel encontrar o arquivo.");
+            }
         }
     }//GEN-LAST:event_entraJogadorActionPerformed
 

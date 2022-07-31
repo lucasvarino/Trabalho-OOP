@@ -44,14 +44,9 @@ public class Jogador extends Usuario {
     }
 
     public static void setJogadorAtualByName(String nome) {
-        // System.out.println("Jogador atual ainda nao setado!");
-        // System.out.println(nome);
-        // System.out.println(jogadores);
         for (Jogador j : Jogador.jogadores) {
-            // System.out.println("Jogador atual verificando...");
             if (j.getNome().equals(nome)) {
                 setJogadorAtual(j);
-                // System.out.println("Jogador atual setado!");
             }
         }
     }
@@ -62,7 +57,6 @@ public class Jogador extends Usuario {
 
     public static void setNomeAtual(String nomeAtual) {
         Jogador.nomeAtual = nomeAtual;
-        System.out.println("Nome atual setado!");
     }
     
     
@@ -103,20 +97,16 @@ public class Jogador extends Usuario {
         String[] nomes = new String[jogadoresJson.size()];
         
         for (int i = 0; i < jogadoresJson.size(); i++) {
-            Object getrow = jogadoresJson.get(i);
-            LinkedTreeMap<Object,Object> t = (LinkedTreeMap) getrow;
-            nomes[i] = t.get("nome").toString();
-            // System.out.println(nomes[i]);
-        
+            nomes[i] = jogadoresJson.get(i).getNome();
         }
         
         return nomes;
     }
     
     public String[] getAllNomesTreinadores() throws FileNotFoundException {
-        String[] nomes = new String[this.getTreinadores().size()];
+        String[] nomes = new String[jogadorAtual.getTreinadores().size()];
         int i = 0;
-        for(Treinador t : this.getTreinadores()) {
+        for(Treinador t : jogadorAtual.getTreinadores()) {
             nomes[i] = t.getNome();
             i++;
         }
@@ -154,5 +144,9 @@ public class Jogador extends Usuario {
         
         Jogador jogador = new Jogador(username, senha);
         return true;
+    }
+    
+    public static void atualizaJogadores() throws FileNotFoundException {
+        jogadores = jsonUtil.fromJsonToList();
     }
 }
