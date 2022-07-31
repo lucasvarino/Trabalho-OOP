@@ -156,14 +156,18 @@ public class InterfaceInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_listaJogadoresActionPerformed
 
     private void entraAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entraAdminActionPerformed
-        // a partir do admin selecionado da combo-box verificar se a senha e nome batem, 
-        // caso nao bater, informar por um JOP que as credenciais nao batem, 
-        
-        // caso esteja correto, enviar o jogador para a InterfaceAdmin
-        // onde ele terá acesso as funcionalidades de um admin
-        this.dispose();
-        InterfaceAdmin interfaceAdmin = new InterfaceAdmin();
-        interfaceAdmin.setVisible(true);
+        try {
+            // a partir do admin selecionado da combo-box verificar se a senha e nome batem,
+            // caso nao bater, informar por um JOP que as credenciais nao batem,
+            
+            // caso esteja correto, enviar o jogador para a InterfaceAdmin
+            // onde ele terá acesso as funcionalidades de um admin
+            this.dispose();
+            InterfaceAdmin interfaceAdmin = new InterfaceAdmin();
+            interfaceAdmin.setVisible(true);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Nao foi possivel encontrar o arquivo.");
+        }
     }//GEN-LAST:event_entraAdminActionPerformed
 
     private void entraJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entraJogadorActionPerformed

@@ -23,6 +23,8 @@ public class Jogador extends Usuario {
     private ArrayList<Treinador> treinadores;
     public static final JsonUtil<Jogador> jsonUtil = new JsonUtil<>(Jogador.class);
     
+    private static String jogadorAtual = "";
+    
     public Jogador(String _nome, String _senha) throws IOException {
         super(_nome, _senha);
         this.treinadores = new ArrayList<>();
@@ -30,6 +32,16 @@ public class Jogador extends Usuario {
         jogadores.add(this);
         this.salvarJogadorJson();
     }
+
+    public static String getJogadorAtual() {
+        return jogadorAtual;
+    }
+
+    public static void setJogadorAtual(String jogadorAtual) {
+        Jogador.jogadorAtual = jogadorAtual;
+    }
+    
+    
     
     public ArrayList<Treinador> getTreinadores() {
         return treinadores;
