@@ -1,0 +1,19 @@
+{
+    "treinadores": [
+        {
+            "regiao": "kanto",
+            "pokemons": [],
+            "id": 1,
+            "nome": "Ash"
+        },
+        {
+            "regiao": "sinnoh",
+            "pokemons": [],
+            "id": 2,
+            "nome": "Ash2"
+        }
+    ],
+    "senha": "a",
+    "id": 0,
+    "nome": "Lucas"
+}
