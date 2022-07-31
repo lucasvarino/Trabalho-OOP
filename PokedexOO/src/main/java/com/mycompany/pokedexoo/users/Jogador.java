@@ -5,6 +5,7 @@
 package com.mycompany.pokedexoo.users;
 
 import com.google.gson.Gson;
+import com.google.gson.internal.LinkedTreeMap;
 import com.mycompany.pokedexoo.users.Usuario;
 import com.mycompany.pokedexoo.users.Treinador;
 import java.io.FileNotFoundException;
@@ -62,11 +63,15 @@ public class Jogador extends Usuario {
     }
     
     public static String[] getAllNomes() throws FileNotFoundException {
-        List<Jogador> jogadoresJson = jsonUtil.fromJsonToList();
+        List<Jogador> jogadoresJson = (List<Jogador>) jsonUtil.fromJsonToList();
         String[] nomes = new String[jogadoresJson.size()];
         
         for (int i = 0; i < jogadoresJson.size(); i++) {
-            nomes[i] = jogadoresJson.get(i).getNome();
+            Object getrow = jogadoresJson.get(i);
+            LinkedTreeMap<Object,Object> t = (LinkedTreeMap) getrow;
+            nomes[i] = t.get("nome").toString();
+            // System.out.println(nomes[i]);
+        
         }
         
         return nomes;

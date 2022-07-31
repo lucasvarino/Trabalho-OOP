@@ -4,6 +4,10 @@
  */
 package com.mycompany.interfacepokedex;
 
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * autores:
  * João Pedro Banhato Pereira (202165506B)
@@ -101,10 +105,14 @@ public class InterfaceAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_selecionaJogadorActionPerformed
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
-        // volta para a InterfaceInicial
-        this.dispose();
-        InterfaceInicial interfaceInicial = new InterfaceInicial();
-        interfaceInicial.setVisible(true);
+        try {
+            // volta para a InterfaceInicial
+            this.dispose();
+            InterfaceInicial interfaceInicial = new InterfaceInicial();
+            interfaceInicial.setVisible(true);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Nao foi possivel encontrar o arquivo.");
+        }
     }//GEN-LAST:event_sairActionPerformed
 
     /**

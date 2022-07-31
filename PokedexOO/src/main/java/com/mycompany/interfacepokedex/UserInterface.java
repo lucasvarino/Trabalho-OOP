@@ -32,7 +32,7 @@ public class UserInterface {
         System.out.println("======================================");
         System.out.println("");
 
-        //InterfaceInicial interfaceInicial = new InterfaceInicial();
+         InterfaceInicial interfaceInicial = new InterfaceInicial();
         //InterfaceRegistros interfaceRegistros = new InterfaceRegistros();
         
         Scanner teclado = new Scanner(System.in);        
@@ -53,6 +53,8 @@ public class UserInterface {
         List<Jogador> jogadores = Jogador.jsonUtil.fromJsonToList();
         
         System.out.println(jogadores);
+        
+        Jogador.getAllNomes();
        
     }
 
