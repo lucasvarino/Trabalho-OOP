@@ -38,7 +38,7 @@ public class InterfaceInicial extends javax.swing.JFrame {
         nomeJogador1 = new javax.swing.JLabel();
         criaJogador1 = new javax.swing.JButton();
         inputSenhaJogador = new javax.swing.JPasswordField();
-        nomeAdmin = new javax.swing.JLabel();
+        emailAdmin = new javax.swing.JLabel();
         listaAdmin = new javax.swing.JComboBox<>();
         senhaAdmin = new javax.swing.JLabel();
         inputSenhaAdmin = new javax.swing.JPasswordField();
@@ -113,12 +113,12 @@ public class InterfaceInicial extends javax.swing.JFrame {
         getContentPane().add(inputSenhaJogador);
         inputSenhaJogador.setBounds(220, 310, 140, 22);
 
-        nomeAdmin.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
-        nomeAdmin.setForeground(new java.awt.Color(255, 255, 255));
-        nomeAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nomeAdmin.setText("Nome:");
-        getContentPane().add(nomeAdmin);
-        nomeAdmin.setBounds(560, 260, 50, 20);
+        emailAdmin.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
+        emailAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        emailAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        emailAdmin.setText("Email:");
+        getContentPane().add(emailAdmin);
+        emailAdmin.setBounds(560, 260, 50, 20);
 
         listaAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin1", "Admin2", "Admin3", "Admin4" }));
         listaAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -222,13 +222,13 @@ public class InterfaceInicial extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel admin;
     private javax.swing.JButton criaJogador1;
+    private javax.swing.JLabel emailAdmin;
     private javax.swing.JButton entraAdmin;
     private javax.swing.JButton entraJogador;
     private javax.swing.JPasswordField inputSenhaAdmin;
     private javax.swing.JPasswordField inputSenhaJogador;
     private javax.swing.JComboBox<String> listaAdmin;
     private javax.swing.JComboBox<String> listaJogadores;
-    private javax.swing.JLabel nomeAdmin;
     private javax.swing.JLabel nomeJogador1;
     private javax.swing.JLabel pokedex;
     private javax.swing.JLabel senhaAdmin;
