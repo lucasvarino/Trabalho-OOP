@@ -61,6 +61,17 @@ public class Jogador extends Usuario {
         writter.close();
     }
     
+    public static String[] getAllNomes() throws FileNotFoundException {
+        List<Jogador> jogadoresJson = jsonUtil.fromJsonToList();
+        String[] nomes = new String[jogadoresJson.size()];
+        
+        for (int i = 0; i < jogadoresJson.size(); i++) {
+            nomes[i] = jogadoresJson.get(i).getNome();
+        }
+        
+        return nomes;
+    }
+    
     @Override
     public boolean logar(String username, String senha) {
         for (Jogador jogador : jogadores) {
