@@ -4,6 +4,8 @@
  */
 package com.mycompany.interfacepokedex;
 
+import com.mycompany.pokedexoo.users.Treinador;
+
 /**
  * autores:
  * João Pedro Banhato Pereira (202165506B)
@@ -83,7 +85,7 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame {
         regiaoNome.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         regiaoNome.setForeground(new java.awt.Color(255, 255, 255));
         regiaoNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        regiaoNome.setText("Região1");
+        regiaoNome.setText(Treinador.getTreinadorAtual().getRegiao());
         getContentPane().add(regiaoNome);
         regiaoNome.setBounds(650, 290, 100, 30);
 
@@ -121,7 +123,7 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame {
         getContentPane().add(inputApelidoPokemon);
         inputApelidoPokemon.setBounds(200, 320, 60, 24);
 
-        bulbasaur.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\bulbasaur (1).png")); // NOI18N
+        bulbasaur.setIcon(new javax.swing.ImageIcon("img/bulbasaur (1).png")); // NOI18N
         getContentPane().add(bulbasaur);
         bulbasaur.setBounds(190, 130, 190, 240);
 
@@ -134,7 +136,7 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame {
         treinadorNome.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         treinadorNome.setForeground(new java.awt.Color(255, 255, 255));
         treinadorNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        treinadorNome.setText("Treinador 1");
+        treinadorNome.setText(Treinador.getTreinadorAtual().getNome());
         getContentPane().add(treinadorNome);
         treinadorNome.setBounds(650, 260, 120, 30);
 

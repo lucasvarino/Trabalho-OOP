@@ -5,6 +5,7 @@
 package com.mycompany.interfacepokedex;
 
 import com.mycompany.pokedexoo.users.Jogador;
+import com.mycompany.pokedexoo.users.Treinador;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -97,7 +98,9 @@ public class InterfaceJogadorTreinador extends javax.swing.JFrame {
     }// </editor-fold>//
 
     private void modificaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaAdminActionPerformed
-        // confirma a selecao dos treinadores e manda para InterfaceRegistros
+        // confirma a selecao dos treinadores
+        Treinador.setTreinadorAtualByName(listaTreinadores.getSelectedItem().toString());
+        // e manda para InterfaceRegistros
         this.dispose();
         InterfaceRegistros interfaceRegistros = new InterfaceRegistros();
         interfaceRegistros.setVisible(true);
