@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.interfacepokedex;
+package com.mycompany.interfacepokedex.jogador;
 
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
@@ -93,7 +93,7 @@ public class InterfaceRegistros extends javax.swing.JFrame {
         pokedex.setBounds(20, 15, 840, 639);
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
     private void registraPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registraPokemonActionPerformed
         // manda o jogador para a InterfaceRegistraPokemon
@@ -161,7 +161,7 @@ public class InterfaceRegistros extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JComboBox<String> listaPokemons;
     private javax.swing.JLabel pokedex;
     private javax.swing.JLabel pokemons;

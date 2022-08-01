@@ -4,6 +4,9 @@
  */
 package com.mycompany.interfacepokedex;
 
+import com.mycompany.interfacepokedex.jogador.InterfaceCriaUsuario;
+import com.mycompany.interfacepokedex.jogador.InterfaceJogadorTreinador;
+import com.mycompany.interfacepokedex.admin.InterfaceAdmin;
 import com.mycompany.pokedexoo.users.Jogador;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;

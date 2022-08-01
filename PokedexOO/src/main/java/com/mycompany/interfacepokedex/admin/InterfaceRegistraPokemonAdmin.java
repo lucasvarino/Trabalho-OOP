@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.interfacepokedex;
+package com.mycompany.interfacepokedex.admin;
 
 /**
  * autores:
@@ -90,7 +90,7 @@ public class InterfaceRegistraPokemonAdmin extends javax.swing.JFrame {
         pokedex.setBounds(20, 15, 840, 639);
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
     private void confirmaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaPokemonActionPerformed
         // registra o novo pokemon com essas info e volta pra InterfaceAdminPokemons
@@ -157,7 +157,7 @@ public class InterfaceRegistraPokemonAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel nomePokemon;
     private javax.swing.JLabel pokedex;
     private javax.swing.JLabel registrarPokemon;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 
     
     
