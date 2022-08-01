@@ -87,7 +87,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
         getContentPane().add(sair);
         sair.setBounds(260, 360, 100, 24);
 
-        pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
+        pokedex.setIcon(new javax.swing.ImageIcon("img/pokedex.png")); // NOI18N
         getContentPane().add(pokedex);
         pokedex.setBounds(20, 15, 840, 639);
 

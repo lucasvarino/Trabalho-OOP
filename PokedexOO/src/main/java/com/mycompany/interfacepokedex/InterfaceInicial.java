@@ -148,7 +148,7 @@ public class InterfaceInicial extends javax.swing.JFrame {
         getContentPane().add(inputEmailAdmin);
         inputEmailAdmin.setBounds(610, 260, 140, 20);
 
-        pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
+        pokedex.setIcon(new javax.swing.ImageIcon("img/pokedex.png")); // NOI18N
         getContentPane().add(pokedex);
         pokedex.setBounds(20, 15, 840, 639);
 
@@ -181,9 +181,10 @@ public class InterfaceInicial extends javax.swing.JFrame {
 
     private void entraJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entraJogadorActionPerformed
         // a partir do jogador selecionado da combo-box verificar se a senha e nome batem, 
-        //Jogador.setJogadorAtualByName(listaJogadores.getSelectedItem().toString());
+        Jogador.setJogadorAtualByName(listaJogadores.getSelectedItem().toString());
         Jogador j = Jogador.getJogadorAtual();
-        boolean credenciaisCorretasJogador = j.logar(j.getNome(), j.getSenha());
+        boolean credenciaisCorretasJogador = j.logar(listaJogadores.getSelectedItem().toString(), String.valueOf(inputSenhaJogador.getPassword()));
+        System.out.println(inputSenhaJogador.getPassword().toString());
         // caso nao bater, informar por um JOP que as credenciais nao batem, 
         if (!credenciaisCorretasJogador) {
             JPanel painel = new JPanel();

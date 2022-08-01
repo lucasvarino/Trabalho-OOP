@@ -90,7 +90,7 @@ public class InterfaceCriaUsuario extends javax.swing.JFrame {
         getContentPane().add(inputSenhaJogador);
         inputSenhaJogador.setBounds(220, 310, 140, 22);
 
-        pokedex.setIcon(new javax.swing.ImageIcon("C:\\Users\\jpbba\\Documents\\Coding\\Ufjf\\OO\\trabalho-oo\\Trabalho-OOP\\PokedexOO\\img\\pokedex-png-transparent-png.png")); // NOI18N
+        pokedex.setIcon(new javax.swing.ImageIcon("img/pokedex.png")); // NOI18N
         getContentPane().add(pokedex);
         pokedex.setBounds(20, 15, 840, 639);
 
@@ -99,7 +99,7 @@ public class InterfaceCriaUsuario extends javax.swing.JFrame {
 
     private void criaJogadorActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//
 //        Jogador jogador = new Jogador(inputNomeJogador.getText(), inputSenhaJogador.getPassword().toString());
-        boolean podeCriar = Jogador.registrar(inputNomeJogador.getText(), inputSenhaJogador.getPassword().toString());
+        boolean podeCriar = Jogador.registrar(inputNomeJogador.getText(), String.valueOf(inputSenhaJogador.getPassword()));
         if (!podeCriar) {
             JPanel painel = new JPanel();
             JOptionPane.showInternalMessageDialog(painel, "Nome já existe! Tente outro.", "Inválido", ERROR_MESSAGE);
