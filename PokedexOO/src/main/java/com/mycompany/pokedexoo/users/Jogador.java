@@ -5,6 +5,7 @@
 package com.mycompany.pokedexoo.users;
 
 import com.google.gson.Gson;
+import com.google.gson.internal.LinkedTreeMap;
 import com.mycompany.pokedexoo.users.Usuario;
 import com.mycompany.pokedexoo.users.Treinador;
 import java.io.FileNotFoundException;
@@ -18,17 +19,47 @@ import java.util.*;
  * Lucas de Oliveira Varino (202165090A)
  */
 public class Jogador extends Usuario {
-    private static ArrayList<Jogador> jogadores = new ArrayList<>();
+    private static List<Jogador> jogadores = new ArrayList<>();
     private ArrayList<Treinador> treinadores;
-    public static final JsonUtil<Jogador> jsonUtil = new JsonUtil<>(Jogador.class);
+    public static final JogadorUtil jsonUtil = new JogadorUtil();
+    
+    private static String nomeAtual = "";
+    private static Jogador jogadorAtual;
     
     public Jogador(String _nome, String _senha) throws IOException {
         super(_nome, _senha);
         this.treinadores = new ArrayList<>();
+        jogadores = jsonUtil.fromJsonToList();
         this.treinadores.add(new Treinador("Ash", "Kanto")); // Por padrão o Jogador começa com um treinador
         jogadores.add(this);
         this.salvarJogadorJson();
     }
+
+    public static Jogador getJogadorAtual() {
+        return jogadorAtual;
+    }
+
+    public static void setJogadorAtual(Jogador jogadorAtual) {
+        Jogador.jogadorAtual = jogadorAtual;
+    }
+
+    public static void setJogadorAtualByName(String nome) {
+        for (Jogador j : Jogador.jogadores) {
+            if (j.getNome().equals(nome)) {
+                setJogadorAtual(j);
+            }
+        }
+    }
+    
+    public static String getNomeAtual() {
+        return nomeAtual;
+    }
+
+    public static void setNomeAtual(String nomeAtual) {
+        Jogador.nomeAtual = nomeAtual;
+    }
+    
+    
     
     public ArrayList<Treinador> getTreinadores() {
         return treinadores;
@@ -61,6 +92,28 @@ public class Jogador extends Usuario {
         writter.close();
     }
     
+    public static String[] getAllNomes() throws FileNotFoundException {
+        List<Jogador> jogadoresJson = (List<Jogador>) jsonUtil.fromJsonToList();
+        String[] nomes = new String[jogadoresJson.size()];
+        
+        for (int i = 0; i < jogadoresJson.size(); i++) {
+            nomes[i] = jogadoresJson.get(i).getNome();
+        }
+        
+        return nomes;
+    }
+    
+    public String[] getAllNomesTreinadores() throws FileNotFoundException {
+        String[] nomes = new String[jogadorAtual.getTreinadores().size()];
+        int i = 0;
+        for(Treinador t : jogadorAtual.getTreinadores()) {
+            nomes[i] = t.getNome();
+            i++;
+        }
+        
+        return nomes;
+    }
+    
     @Override
     public boolean logar(String username, String senha) {
         for (Jogador jogador : jogadores) {
@@ -91,5 +144,9 @@ public class Jogador extends Usuario {
         
         Jogador jogador = new Jogador(username, senha);
         return true;
+    }
+    
+    public static void atualizaJogadores() throws FileNotFoundException {
+        jogadores = jsonUtil.fromJsonToList();
     }
 }
