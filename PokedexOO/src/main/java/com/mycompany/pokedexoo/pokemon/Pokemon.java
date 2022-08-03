@@ -44,8 +44,9 @@ public class Pokemon {
     private PokemonSprites sprites;
     
     private String region;
+    private static Pokemon pokemonAtual;
 
-    public Pokemon() throws IOException { // Construtor usado pelo Gson
+    public Pokemon(String apelido) throws IOException { // Construtor usado pelo Gson
         this.idSistema = totalPokemons;
         Pokemon.totalPokemons += 1;
         this.region = null;
@@ -129,6 +130,14 @@ public class Pokemon {
 
     public void setRegion(String region) {
         this.region = region;
+    }
+
+    public static Pokemon getPokemonAtual() {
+        return pokemonAtual;
+    }
+
+    public static void setPokemonAtual(Pokemon pokemonAtual) {
+        Pokemon.pokemonAtual = pokemonAtual;
     }
     
     public static Pokemon getPokemonByUrl(String pokemonName) { // Principal método da classe, busca um pokemon na API e retorna ele juntamente com sua região

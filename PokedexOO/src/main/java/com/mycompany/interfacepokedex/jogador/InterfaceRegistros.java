@@ -5,6 +5,8 @@
 package com.mycompany.interfacepokedex.jogador;
 
 import com.mycompany.interfacepokedex.InitComponents;
+import com.mycompany.pokedexoo.pokemon.Pokemon;
+import com.mycompany.pokedexoo.users.Treinador;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -51,7 +53,7 @@ public class InterfaceRegistros extends javax.swing.JFrame implements InitCompon
         getContentPane().add(pokemons);
         pokemons.setBounds(200, 230, 90, 23);
 
-        listaPokemons.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bulbasaur", "Pikachu", "Charmander", "Squirtle" }));
+        listaPokemons.setModel(new javax.swing.DefaultComboBoxModel<>(Treinador.getTreinadorAtual().getAllNomes()));
         listaPokemons.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listaPokemonsActionPerformed(evt);
@@ -124,7 +126,8 @@ public class InterfaceRegistros extends javax.swing.JFrame implements InitCompon
             // manda o jogador para a InterfaceUsuario com as informacoes do Pokemon
             // selecionado na combo-box
             this.dispose();
-            InterfaceUsuario interfaceUsuario = new InterfaceUsuario();
+            Pokemon.setPokemonAtual(Treinador.getTreinadorAtual().getPokemonByName(this.listaPokemons.getSelectedItem().toString()));
+            InterfaceUsuario interfaceUsuario = new InterfaceUsuario(Pokemon.getPokemonAtual());
             interfaceUsuario.setVisible(true);
         } catch (IOException ex) {
             System.out.println("Nao foi possivel encontrar a imagem.");

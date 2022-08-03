@@ -5,6 +5,7 @@
 package com.mycompany.interfacepokedex.jogador;
 
 import com.mycompany.interfacepokedex.InitComponents;
+import com.mycompany.pokedexoo.pokemon.Pokemon;
 import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
 import java.awt.Image;
@@ -24,9 +25,12 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
 
     /**
      * Creates new form InterfaceInicial
+     * @param pokemonAtual
+     * @throws java.io.IOException
      */
-    public InterfaceUsuario() throws IOException {
+    public InterfaceUsuario(Pokemon pokemonAtual) throws IOException {
         initComponents();
+        pokemonAtual = this.pokemonAtual;
         this.setSize(1000, 800);
         this.setVisible(true);
     }
@@ -66,11 +70,11 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
 
         nomePokemon.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         nomePokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nomePokemon.setText("#1 Bulbasaur");
+        nomePokemon.setText("#" + Pokemon.getPokemonAtual().getIdPokedex() + " " + Pokemon.getPokemonAtual().getNome());
         getContentPane().add(nomePokemon);
         nomePokemon.setBounds(170, 230, 160, 20);
 
-        inputPesoPokemon.setText("45");
+        inputPesoPokemon.setText(Pokemon.getPokemonAtual().getPeso());
         inputPesoPokemon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputPesoPokemonActionPerformed(evt);
@@ -85,7 +89,7 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
         getContentPane().add(altura);
         altura.setBounds(130, 260, 60, 23);
 
-        inputAlturaPokemon.setText("1,25");
+        inputAlturaPokemon.setText(Pokemon.getPokemonAtual().getAltura());
         inputAlturaPokemon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputAlturaPokemonActionPerformed(evt);
@@ -110,7 +114,7 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
         getContentPane().add(apelido);
         apelido.setBounds(130, 320, 70, 23);
 
-        inputApelidoPokemon.setText("cebolinha");
+        inputApelidoPokemon.setText(Pokemon.getPokemonAtual().getApelido());
         inputApelidoPokemon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputApelidoPokemonActionPerformed(evt);
@@ -118,9 +122,10 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
         });
         getContentPane().add(inputApelidoPokemon);
         inputApelidoPokemon.setBounds(200, 320, 60, 24);
-
-        URL url = new URL("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png");
+        
         System.out.println("Buscando imagem na api...");
+        URL url = new URL(Pokemon.getPokemonAtual().getSprites().getSprite());
+
         Image image = ImageIO.read(url);
         
         bulbasaur.setIcon(new javax.swing.ImageIcon(image)); // NOI18N
@@ -215,7 +220,7 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new InterfaceUsuario().setVisible(true);
+                    new InterfaceUsuario(Pokemon.getPokemonAtual()).setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(InterfaceUsuario.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -240,6 +245,6 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
     private javax.swing.JLabel treinadorNome;
     // End of variables declaration//GEN-END:variables
 
-    
+    private Pokemon pokemonAtual;
     
 }
