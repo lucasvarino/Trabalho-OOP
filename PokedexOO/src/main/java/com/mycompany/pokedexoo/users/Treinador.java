@@ -17,12 +17,29 @@ import java.util.List;
 public class Treinador extends Pessoa {
     private String regiao;
     private ArrayList<Pokemon> pokemons;
-    public static Treinador treinadorAtual;
+
+    private static Treinador treinadorAtual;
     
     public Treinador(String _nome, String regiao) {
         super(_nome);
         this.regiao = regiao.toLowerCase();
         this.pokemons = new ArrayList<>();
+    }
+
+    public static Treinador getTreinadorAtual() {
+        return treinadorAtual;
+    }
+
+    public static void setTreinadorAtual(Treinador treinadorAtual) {
+        Treinador.treinadorAtual = treinadorAtual;
+    }
+    
+    public static void setTreinadorAtualByName(String nome) {
+        for (Treinador t : Jogador.getJogadorAtual().getTreinadores()) {
+            if (t.getNome().equals(nome)) {
+                setTreinadorAtual(t);
+            }
+        }
     }
 
     public String getRegiao() {

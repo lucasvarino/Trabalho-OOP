@@ -2,9 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.interfacepokedex;
+package com.mycompany.interfacepokedex.jogador;
 
+import com.mycompany.interfacepokedex.InitComponents;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,7 +15,7 @@ import java.util.logging.Logger;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class InterfaceRegistros extends javax.swing.JFrame {
+public class InterfaceRegistros extends javax.swing.JFrame implements InitComponents {
 
     /**
      * Creates new form InterfaceInicial
@@ -31,7 +33,7 @@ public class InterfaceRegistros extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//
-    private void initComponents() {
+    public void initComponents() {
 
         pokemons = new javax.swing.JLabel();
         listaPokemons = new javax.swing.JComboBox<>();
@@ -93,7 +95,7 @@ public class InterfaceRegistros extends javax.swing.JFrame {
         pokedex.setBounds(20, 15, 840, 639);
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
     private void registraPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registraPokemonActionPerformed
         // manda o jogador para a InterfaceRegistraPokemon
@@ -118,11 +120,15 @@ public class InterfaceRegistros extends javax.swing.JFrame {
     }//GEN-LAST:event_sairActionPerformed
 
     private void selecionaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionaPokemonActionPerformed
-        // manda o jogador para a InterfaceUsuario com as informacoes do Pokemon
-        // selecionado na combo-box
-        this.dispose();
-        InterfaceUsuario interfaceUsuario = new InterfaceUsuario();
-        interfaceUsuario.setVisible(true);
+        try {
+            // manda o jogador para a InterfaceUsuario com as informacoes do Pokemon
+            // selecionado na combo-box
+            this.dispose();
+            InterfaceUsuario interfaceUsuario = new InterfaceUsuario();
+            interfaceUsuario.setVisible(true);
+        } catch (IOException ex) {
+            System.out.println("Nao foi possivel encontrar a imagem.");
+        }
     }//GEN-LAST:event_selecionaPokemonActionPerformed
 
     /**
@@ -161,7 +167,7 @@ public class InterfaceRegistros extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JComboBox<String> listaPokemons;
     private javax.swing.JLabel pokedex;
     private javax.swing.JLabel pokemons;

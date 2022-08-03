@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.interfacepokedex;
+package com.mycompany.interfacepokedex.admin;
 
+import com.mycompany.interfacepokedex.InitComponents;
+import com.mycompany.interfacepokedex.InterfaceInicial;
 import com.mycompany.pokedexoo.users.Jogador;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
@@ -14,7 +16,7 @@ import java.util.logging.Logger;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class InterfaceAdmin extends javax.swing.JFrame {
+public class InterfaceAdmin extends javax.swing.JFrame implements InitComponents {
 
     /**
      * Creates new form InterfaceInicial
@@ -32,7 +34,7 @@ public class InterfaceAdmin extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() throws FileNotFoundException {
+    public void initComponents() throws FileNotFoundException {
 
         listaJogadores = new javax.swing.JComboBox<>();
         selecionaJogador = new javax.swing.JButton();
