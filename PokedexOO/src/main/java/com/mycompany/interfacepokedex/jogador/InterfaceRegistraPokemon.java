@@ -102,7 +102,7 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame implements Init
     private void confirmaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaPokemonActionPerformed
         Treinador treinadorAtual = Treinador.getTreinadorAtual();
         
-        treinadorAtual.addPokemon(inputNomePokemon.getText());
+        treinadorAtual.addPokemon(inputNomePokemon.getText(), inputApelidoPokemon.getText());
         
         try {
             Jogador.atualizaJogadores();

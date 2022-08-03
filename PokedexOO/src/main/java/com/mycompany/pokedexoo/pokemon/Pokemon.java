@@ -13,6 +13,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JPanel;
 
 /**
  * autores:
@@ -44,16 +47,33 @@ public class Pokemon {
     private PokemonSprites sprites;
     
     private String region;
+    private static Pokemon pokemonAtual;
 
-    public Pokemon() throws IOException { // Construtor usado pelo Gson
+    public Pokemon() {
+        this.idSistema = totalPokemons;
+        Pokemon.totalPokemons += 1;
+    }
+    
+    
+    public Pokemon(String apelido) throws IOException { // Construtor usado pelo Gson
         this.idSistema = totalPokemons;
         Pokemon.totalPokemons += 1;
         this.region = null;
         this.apelido = this.name; // Caso não tenha nenhum apelido, por padrão ele é o nome do pokemon
     }
 
+    public Pokemon(String apelido, String height, String weight) {
+        this.idSistema = totalPokemons;
+        Pokemon.totalPokemons += 1;
+        this.apelido = apelido;
+        this.setAltura(height);
+        this.setPeso(weight);
+    }
+
    
     public Pokemon(int idPokedex, String nome, String altura, String peso) throws IOException {
+        this.idSistema = totalPokemons;
+        Pokemon.totalPokemons += 1;
         this.idPokedex = idPokedex;
         this.name = nome;
         this.height = altura;
@@ -73,6 +93,20 @@ public class Pokemon {
     public int getId() {
         return this.idSistema;
     }
+
+    public void setId(int idSistema) {
+        this.idSistema = idSistema;
+    }
+
+    public static int getTotalPokemons() {
+        return totalPokemons;
+    }
+
+    public static void setTotalPokemons(int totalPokemons) {
+        Pokemon.totalPokemons = totalPokemons;
+    }
+    
+    
 
     public String getNome() {
         return name;
@@ -96,6 +130,13 @@ public class Pokemon {
     }
 
     public void setAltura(String altura) {
+        try {
+            Float.parseFloat(altura);
+        } catch(NumberFormatException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Favor Inserir Valores Numéricos!", "Valor de Altura Inválido", ERROR_MESSAGE);
+            return;
+        }
         this.height = altura;
     }
 
@@ -104,6 +145,14 @@ public class Pokemon {
     }
 
     public void setPeso(String peso) {
+        try {
+            Float.parseFloat(peso);
+        } catch(NumberFormatException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Favor Inserir Valores Numéricos!", "Valor de Peso Inválido", ERROR_MESSAGE);
+            return;
+        }
+        
         this.weight = peso;
     }
 
@@ -129,6 +178,14 @@ public class Pokemon {
 
     public void setRegion(String region) {
         this.region = region;
+    }
+
+    public static Pokemon getPokemonAtual() {
+        return pokemonAtual;
+    }
+
+    public static void setPokemonAtual(Pokemon pokemonAtual) {
+        Pokemon.pokemonAtual = pokemonAtual;
     }
     
     public static Pokemon getPokemonByUrl(String pokemonName) { // Principal método da classe, busca um pokemon na API e retorna ele juntamente com sua região

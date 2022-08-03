@@ -77,12 +77,13 @@ public class Treinador extends Pessoa {
         }
     }
 
-    public void addPokemon(String pokemonName) {
+    public void addPokemon(String pokemonName, String apelido) {
         //TODO: Adicionar Tratamento de Exceção aqui
         
         try {
             Pokemon pokemon = Pokemon.getPokemonByUrl(pokemonName);
-            
+            pokemon.setApelido(apelido);
+                 
             if(!pokemon.getRegion().equals(this.regiao)) {
                 // Tratamento de Exceção aqui
                 
@@ -132,14 +133,14 @@ public class Treinador extends Pessoa {
 
     }
 
-    public void editarPokemon(int id, Pokemon pokemonEditado) throws IOException {
+    public void editarPokemon(Pokemon pokemonEditado) throws IOException {
 
         
         if(this.pokemons.isEmpty()) {
             System.out.println("Você ainda não registrou nenhum pokemon!");
         } else {
             for (Pokemon pokemon : pokemons) {
-                if(pokemon.getId() == id) {
+                if(pokemon.getId() == pokemonEditado.getId()) {
                     pokemons.set(pokemons.indexOf(pokemon), pokemonEditado);
 
                     System.out.println("Pokemon editado com sucesso!");
@@ -152,6 +153,25 @@ public class Treinador extends Pessoa {
         }
 
         System.out.println("Não foi encontrado nenhum pokemon com esse id!");
+    }
+    
+    public String[] getAllNomes() {
+        String[] nomes = new String[this.pokemons.size()];
+        
+        for (int i = 0; i < this.pokemons.size(); i++) {
+            nomes[i] = this.pokemons.get(i).getApelido();
+        }
+        
+        return nomes;
+    }
+    
+    public Pokemon getPokemonByName(String name) {
+        for (Pokemon pokemon : pokemons) {
+            if(pokemon.getApelido().equals(name))
+                return pokemon;
+        }
+        
+        return null;
     }
     
     

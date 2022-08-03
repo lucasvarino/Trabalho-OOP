@@ -41,4 +41,10 @@ public class UserInterface {
         System.out.print("\033[H\033[2J");  
         System.out.flush();  
     } 
+    
+     public static String upperCaseFirst(String val) {
+      char[] arr = val.toCharArray();
+      arr[0] = Character.toUpperCase(arr[0]);
+      return new String(arr);
+   }
 }
