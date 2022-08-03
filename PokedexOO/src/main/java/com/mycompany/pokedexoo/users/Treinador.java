@@ -133,14 +133,14 @@ public class Treinador extends Pessoa {
 
     }
 
-    public void editarPokemon(int id, Pokemon pokemonEditado) throws IOException {
+    public void editarPokemon(Pokemon pokemonEditado) throws IOException {
 
         
         if(this.pokemons.isEmpty()) {
             System.out.println("Você ainda não registrou nenhum pokemon!");
         } else {
             for (Pokemon pokemon : pokemons) {
-                if(pokemon.getId() == id) {
+                if(pokemon.getId() == pokemonEditado.getId()) {
                     pokemons.set(pokemons.indexOf(pokemon), pokemonEditado);
 
                     System.out.println("Pokemon editado com sucesso!");

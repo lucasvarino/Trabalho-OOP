@@ -5,6 +5,7 @@
 package com.mycompany.interfacepokedex.jogador;
 
 import com.mycompany.interfacepokedex.InitComponents;
+import com.mycompany.interfacepokedex.UserInterface;
 import com.mycompany.pokedexoo.pokemon.Pokemon;
 import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
@@ -70,7 +71,7 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
 
         nomePokemon.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         nomePokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nomePokemon.setText("#" + Pokemon.getPokemonAtual().getIdPokedex() + " " + Pokemon.getPokemonAtual().getNome());
+        nomePokemon.setText("#" + Pokemon.getPokemonAtual().getIdPokedex() + " " + UserInterface.upperCaseFirst(Pokemon.getPokemonAtual().getNome()));
         getContentPane().add(nomePokemon);
         nomePokemon.setBounds(170, 230, 160, 20);
 
@@ -114,7 +115,7 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
         getContentPane().add(apelido);
         apelido.setBounds(130, 320, 70, 23);
 
-        inputApelidoPokemon.setText(Pokemon.getPokemonAtual().getApelido());
+        inputApelidoPokemon.setText(UserInterface.upperCaseFirst(Pokemon.getPokemonAtual().getApelido()));
         inputApelidoPokemon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputApelidoPokemonActionPerformed(evt);
@@ -142,7 +143,7 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
         treinadorNome.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         treinadorNome.setForeground(new java.awt.Color(255, 255, 255));
         treinadorNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        treinadorNome.setText(Treinador.getTreinadorAtual().getNome());
+        treinadorNome.setText(UserInterface.upperCaseFirst(Treinador.getTreinadorAtual().getNome()));
         getContentPane().add(treinadorNome);
         treinadorNome.setBounds(650, 260, 120, 30);
 
@@ -156,7 +157,7 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
         regiaoNome.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         regiaoNome.setForeground(new java.awt.Color(255, 255, 255));
         regiaoNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        regiaoNome.setText(Treinador.getTreinadorAtual().getRegiao());
+        regiaoNome.setText(UserInterface.upperCaseFirst(Treinador.getTreinadorAtual().getRegiao()));
         getContentPane().add(regiaoNome);
         regiaoNome.setBounds(650, 290, 100, 30);
 
@@ -176,7 +177,20 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
     }//GEN-LAST:event_inputAlturaPokemonActionPerformed
 
     private void editaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editaPokemonActionPerformed
-        // confirma a edicao do pokemon e o cria e volta para a InterfaceRegistros
+        try {
+            // confirma a edicao do pokemon e o cria e volta para a InterfaceRegistros
+            
+            Pokemon pokemon = Pokemon.getPokemonByUrl(Pokemon.getPokemonAtual().getNome());
+            pokemon.setApelido(inputApelidoPokemon.getText());
+            pokemon.setAltura(inputAlturaPokemon.getText());
+            pokemon.setPeso(inputPesoPokemon.getText());
+            pokemon.setId(Pokemon.getPokemonAtual().getId());
+            Pokemon.setTotalPokemons(Pokemon.getTotalPokemons() - 1);
+            Treinador.getTreinadorAtual().editarPokemon(pokemon);
+        } catch (IOException ex) {
+            Logger.getLogger(InterfaceUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         this.dispose();
         InterfaceRegistros interfaceRegistros = new InterfaceRegistros();
         interfaceRegistros.setVisible(true);
