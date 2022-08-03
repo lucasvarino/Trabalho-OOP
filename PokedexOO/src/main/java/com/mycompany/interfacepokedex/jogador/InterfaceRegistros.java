@@ -5,6 +5,7 @@
 package com.mycompany.interfacepokedex.jogador;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -118,11 +119,15 @@ public class InterfaceRegistros extends javax.swing.JFrame {
     }//GEN-LAST:event_sairActionPerformed
 
     private void selecionaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionaPokemonActionPerformed
-        // manda o jogador para a InterfaceUsuario com as informacoes do Pokemon
-        // selecionado na combo-box
-        this.dispose();
-        InterfaceUsuario interfaceUsuario = new InterfaceUsuario();
-        interfaceUsuario.setVisible(true);
+        try {
+            // manda o jogador para a InterfaceUsuario com as informacoes do Pokemon
+            // selecionado na combo-box
+            this.dispose();
+            InterfaceUsuario interfaceUsuario = new InterfaceUsuario();
+            interfaceUsuario.setVisible(true);
+        } catch (IOException ex) {
+            System.out.println("Nao foi possivel encontrar a imagem.");
+        }
     }//GEN-LAST:event_selecionaPokemonActionPerformed
 
     /**

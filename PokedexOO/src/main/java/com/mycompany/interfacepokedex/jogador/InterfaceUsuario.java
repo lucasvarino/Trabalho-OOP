@@ -119,6 +119,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         inputApelidoPokemon.setBounds(200, 320, 60, 24);
 
         URL url = new URL("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png");
+        System.out.println("Buscando imagem na api...");
         Image image = ImageIO.read(url);
         
         bulbasaur.setIcon(new javax.swing.ImageIcon(image)); // NOI18N
