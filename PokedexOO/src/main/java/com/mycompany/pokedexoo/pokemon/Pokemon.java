@@ -130,29 +130,40 @@ public class Pokemon {
     }
 
     public void setAltura(String altura) {
+        this.height = altura;
+    }
+    
+    public boolean editarAltura(String altura) {
         try {
             Float.parseFloat(altura);
         } catch(NumberFormatException ex) {
             JPanel painel = new JPanel();
             JOptionPane.showInternalMessageDialog(painel, "Favor Inserir Valores Numéricos!", "Valor de Altura Inválido", ERROR_MESSAGE);
-            return;
+            return false;
         }
+        
         this.height = altura;
+        return true;
+    }
+    
+    public boolean editarPeso(String peso) {
+        try {
+            Float.parseFloat(peso);
+        } catch(NumberFormatException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Favor Inserir Valores Numéricos!", "Valor de Peso Inválido", ERROR_MESSAGE);
+            return false;
+        }
+        
+        this.weight = peso;
+        return true;
     }
 
     public String getPeso() {
         return weight;
     }
 
-    public void setPeso(String peso) {
-        try {
-            Float.parseFloat(peso);
-        } catch(NumberFormatException ex) {
-            JPanel painel = new JPanel();
-            JOptionPane.showInternalMessageDialog(painel, "Favor Inserir Valores Numéricos!", "Valor de Peso Inválido", ERROR_MESSAGE);
-            return;
-        }
-        
+    public void setPeso(String peso) {        
         this.weight = peso;
     }
 

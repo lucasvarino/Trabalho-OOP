@@ -182,18 +182,22 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
             
             Pokemon pokemon = Pokemon.getPokemonByUrl(Pokemon.getPokemonAtual().getNome());
             pokemon.setApelido(inputApelidoPokemon.getText());
-            pokemon.setAltura(inputAlturaPokemon.getText());
-            pokemon.setPeso(inputPesoPokemon.getText());
-            pokemon.setId(Pokemon.getPokemonAtual().getId());
-            Pokemon.setTotalPokemons(Pokemon.getTotalPokemons() - 1);
-            Treinador.getTreinadorAtual().editarPokemon(pokemon);
+            boolean editouAltura = pokemon.editarAltura(inputAlturaPokemon.getText());
+            boolean editouPeso = pokemon.editarPeso(inputPesoPokemon.getText());
+            
+            if(editouAltura && editouPeso)
+            {
+                pokemon.setId(Pokemon.getPokemonAtual().getId());
+                Pokemon.setTotalPokemons(Pokemon.getTotalPokemons() - 1);
+                Treinador.getTreinadorAtual().editarPokemon(pokemon);
+                
+                this.dispose();
+                InterfaceRegistros interfaceRegistros = new InterfaceRegistros();
+                interfaceRegistros.setVisible(true);
+            }
         } catch (IOException ex) {
             Logger.getLogger(InterfaceUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        this.dispose();
-        InterfaceRegistros interfaceRegistros = new InterfaceRegistros();
-        interfaceRegistros.setVisible(true);
     }//GEN-LAST:event_editaPokemonActionPerformed
 
     private void inputApelidoPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputApelidoPokemonActionPerformed
