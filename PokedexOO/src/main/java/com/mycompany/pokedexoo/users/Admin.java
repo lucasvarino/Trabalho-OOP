@@ -22,7 +22,7 @@ public class Admin extends Usuario {
     }
     
     public void editaUsuario(List<Usuario> usuariosBanco, int usuarioId) {
-
+        
     }
     
     public void deletaUsuario() {
