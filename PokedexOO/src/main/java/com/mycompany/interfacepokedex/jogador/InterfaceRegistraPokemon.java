@@ -2,14 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.interfacepokedex;
+package com.mycompany.interfacepokedex.jogador;
+
+import com.mycompany.interfacepokedex.InitComponents;
 
 /**
  * autores:
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class InterfaceRegistraPokemon extends javax.swing.JFrame {
+public class InterfaceRegistraPokemon extends javax.swing.JFrame implements InitComponents {
 
     /**
      * Creates new form InterfaceInicial
@@ -27,7 +29,7 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//
-    private void initComponents() {
+    public void initComponents() {
 
         confirmaPokemon = new javax.swing.JButton();
         registrarPokemon = new javax.swing.JLabel();

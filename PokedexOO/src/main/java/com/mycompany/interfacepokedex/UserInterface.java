@@ -35,26 +35,26 @@ public class UserInterface {
          InterfaceInicial interfaceInicial = new InterfaceInicial();
         //InterfaceRegistros interfaceRegistros = new InterfaceRegistros();
         
-        Scanner teclado = new Scanner(System.in);        
+//        Scanner teclado = new Scanner(System.in);        
 
-        System.out.println("Digite seu nome: ");
-        String nome = teclado.nextLine();
+//        System.out.println("Digite seu nome: ");
+//        String nome = teclado.nextLine();
+//        
+//        System.out.println("Digite sua senha: ");
+//        String senha = teclado.nextLine();
         
-        System.out.println("Digite sua senha: ");
-        String senha = teclado.nextLine();
+//        Jogador jogador = new Jogador(nome, senha);
         
-        Jogador jogador = new Jogador(nome, senha);
+//        Treinador treinador = new Treinador("Ash2", "Sinnoh");
+//        jogador.setTreinador(treinador);
+//        
+//        Jogador jogador2 = new Jogador("Teste", senha);
         
-        Treinador treinador = new Treinador("Ash2", "Sinnoh");
-        jogador.setTreinador(treinador);
+//        List<Jogador> jogadores = Jogador.jsonUtil.fromJsonToList();
         
-        Jogador jogador2 = new Jogador("Teste", senha);
+//        System.out.println(jogadores);
         
-        List<Jogador> jogadores = Jogador.jsonUtil.fromJsonToList();
-        
-        System.out.println(jogadores);
-        
-        Jogador.getAllNomes();
+//        Jogador.getAllNomes();
        
     }
 
