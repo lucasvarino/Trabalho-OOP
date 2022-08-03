@@ -32,10 +32,10 @@ public class UserInterface {
         System.out.println("======================================");
         System.out.println("");
 
-         InterfaceInicial interfaceInicial = new InterfaceInicial();
+        //InterfaceInicial interfaceInicial = new InterfaceInicial();
         //InterfaceRegistros interfaceRegistros = new InterfaceRegistros();
         
-        Scanner teclado = new Scanner(System.in);        
+        Scanner teclado = new Scanner(System.in);
 
         System.out.println("Digite seu nome: ");
         String nome = teclado.nextLine();
@@ -46,10 +46,10 @@ public class UserInterface {
         Jogador jogador = new Jogador(nome, senha);
         
         Treinador treinador = new Treinador("Ash2", "Sinnoh");
-        jogador.setTreinador(treinador);
+        jogador.adicionarTreinador(treinador);
         
         Jogador jogador2 = new Jogador("Teste", senha);
-        
+       
         List<Jogador> jogadores = Jogador.jsonUtil.fromJsonToList();
         
         System.out.println(jogadores);

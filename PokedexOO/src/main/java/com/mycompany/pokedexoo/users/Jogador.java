@@ -20,7 +20,7 @@ import java.util.*;
  */
 public class Jogador extends Usuario {
     private static List<Jogador> jogadores = new ArrayList<>();
-    private ArrayList<Treinador> treinadores;
+    private final ArrayList<Treinador> treinadores;
     public static final JogadorUtil jsonUtil = new JogadorUtil();
     
     private static String nomeAtual = "";
@@ -32,7 +32,7 @@ public class Jogador extends Usuario {
         jogadores = jsonUtil.fromJsonToList();
         this.treinadores.add(new Treinador("Ash", "Kanto")); // Por padrão o Jogador começa com um treinador
         jogadores.add(this);
-        this.salvarJogadorJson();
+        Jogador.salvarJogadorJson();
     }
 
     public static Jogador getJogadorAtual() {
@@ -65,9 +65,9 @@ public class Jogador extends Usuario {
         return treinadores;
     }
 
-    public void setTreinador(Treinador treinador) throws IOException {
+    public void adicionarTreinador(Treinador treinador) throws IOException {
         this.treinadores.add(treinador);
-        this.salvarJogadorJson();
+        Jogador.salvarJogadorJson();
     }
     
     public Treinador getTreinadorById(int id) {
@@ -85,7 +85,7 @@ public class Jogador extends Usuario {
         }
     }
     
-    private void salvarJogadorJson() throws IOException {
+    public static void salvarJogadorJson() throws IOException {
         Gson gson = new Gson();
         FileWriter writter = new FileWriter("users.json");
         gson.toJson(Jogador.jogadores, writter);
@@ -148,5 +148,13 @@ public class Jogador extends Usuario {
     
     public static void atualizaJogadores() throws FileNotFoundException {
         jogadores = jsonUtil.fromJsonToList();
+    }
+    
+    public static void imprimeTodosOsJogadores() {
+        for (Jogador jogador : jogadores) {
+            System.out.println("NOME - " + jogador.getNome());
+            System.out.println("SENHA - " + jogador.getSenha());
+            System.out.println("");
+        }
     }
 }

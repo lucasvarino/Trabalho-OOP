@@ -5,7 +5,9 @@
 package com.mycompany.pokedexoo.users;
 
 import com.mycompany.pokedexoo.pokemon.Pokemon;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * autores:
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 public class Treinador extends Pessoa {
     private String regiao;
     private ArrayList<Pokemon> pokemons;
+    public static Treinador treinadorAtual;
     
     public Treinador(String _nome, String regiao) {
         super(_nome);
@@ -51,7 +54,7 @@ public class Treinador extends Pessoa {
         try {
             Pokemon pokemon = Pokemon.getPokemonByUrl(pokemonName);
             
-            if(pokemon.getRegion() != this.regiao) {
+            if(!pokemon.getRegion().equals(this.regiao)) {
                 // Tratamento de Exceção aqui
                 
                 System.out.println("O pokemon não é da mesma região do treinador!");
@@ -59,7 +62,8 @@ public class Treinador extends Pessoa {
             }
             
             this.pokemons.add(pokemon);
-        } catch (Exception e) {
+             Jogador.salvarJogadorJson();
+        } catch (IOException e) {
             System.out.println("Esse pokemon não existe!");
         }
     }
@@ -77,7 +81,7 @@ public class Treinador extends Pessoa {
         return false;
     }
 
-    public void deletarPokemon(int id) {
+    public void deletarPokemon(int id) throws IOException {
 
         if(this.pokemons.isEmpty()) {
             System.out.println("Você ainda não registrou nenhum pokemon!");
@@ -88,7 +92,7 @@ public class Treinador extends Pessoa {
                     pokemons.remove(pokemon);
 
                     System.out.println("Pokemon removido com sucesso!");
-                    this.imprimePokemons();
+                    Jogador.salvarJogadorJson();
 
                     return;
                 }
@@ -99,7 +103,7 @@ public class Treinador extends Pessoa {
 
     }
 
-    public void editarPokemon(int id, Pokemon pokemonEditado) {
+    public void editarPokemon(int id, Pokemon pokemonEditado) throws IOException {
 
         
         if(this.pokemons.isEmpty()) {
@@ -111,6 +115,7 @@ public class Treinador extends Pessoa {
 
                     System.out.println("Pokemon editado com sucesso!");
                     this.imprimePokemons();
+                    Jogador.salvarJogadorJson();
 
                     return;
                 }
