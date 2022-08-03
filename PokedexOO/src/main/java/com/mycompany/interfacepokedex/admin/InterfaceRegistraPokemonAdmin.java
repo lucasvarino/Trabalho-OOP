@@ -4,12 +4,14 @@
  */
 package com.mycompany.interfacepokedex.admin;
 
+import com.mycompany.interfacepokedex.InitComponents;
+
 /**
  * autores:
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class InterfaceRegistraPokemonAdmin extends javax.swing.JFrame {
+public class InterfaceRegistraPokemonAdmin extends javax.swing.JFrame implements InitComponents {
 
     /**
      * Creates new form InterfaceInicial
@@ -27,7 +29,7 @@ public class InterfaceRegistraPokemonAdmin extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//
-    private void initComponents() {
+    public void initComponents() {
 
         confirmaPokemon = new javax.swing.JButton();
         registrarPokemon = new javax.swing.JLabel();

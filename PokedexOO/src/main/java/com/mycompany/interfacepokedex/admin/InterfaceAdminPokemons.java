@@ -4,6 +4,7 @@
  */
 package com.mycompany.interfacepokedex.admin;
 
+import com.mycompany.interfacepokedex.InitComponents;
 import com.mycompany.pokedexoo.users.Jogador;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,7 +16,7 @@ import java.util.logging.Logger;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class InterfaceAdminPokemons extends javax.swing.JFrame {
+public class InterfaceAdminPokemons extends javax.swing.JFrame implements InitComponents {
 
     /**
      * Creates new form InterfaceInicial
@@ -33,7 +34,7 @@ public class InterfaceAdminPokemons extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
-    private void initComponents() {
+    public void initComponents() {
 
         pokemons = new javax.swing.JLabel();
         listaPokemons = new javax.swing.JComboBox<>();

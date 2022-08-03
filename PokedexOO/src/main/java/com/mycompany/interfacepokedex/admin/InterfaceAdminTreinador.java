@@ -4,6 +4,7 @@
  */
 package com.mycompany.interfacepokedex.admin;
 
+import com.mycompany.interfacepokedex.InitComponents;
 import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
 import java.io.FileNotFoundException;
@@ -15,7 +16,7 @@ import java.util.logging.Logger;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class InterfaceAdminTreinador extends javax.swing.JFrame {
+public class InterfaceAdminTreinador extends javax.swing.JFrame implements InitComponents {
 
     /**
      * Creates new form InterfaceInicial
@@ -33,7 +34,7 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
-    private void initComponents() throws FileNotFoundException {
+    public void initComponents() throws FileNotFoundException {
 
         modificaAdmin = new javax.swing.JButton();
         jogador = new javax.swing.JLabel();

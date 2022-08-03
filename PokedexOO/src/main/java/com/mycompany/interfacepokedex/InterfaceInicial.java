@@ -19,7 +19,7 @@ import javax.swing.JPanel;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class InterfaceInicial extends javax.swing.JFrame {
+public class InterfaceInicial extends javax.swing.JFrame implements InitComponents {
 
     /**
      * Creates new form InterfaceInicial
@@ -38,7 +38,8 @@ public class InterfaceInicial extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//
-    private void initComponents() throws FileNotFoundException {
+    @Override
+    public void initComponents() throws FileNotFoundException {
 
         admin = new javax.swing.JLabel();
         usuario = new javax.swing.JLabel();

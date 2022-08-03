@@ -4,6 +4,7 @@
  */
 package com.mycompany.interfacepokedex.jogador;
 
+import com.mycompany.interfacepokedex.InitComponents;
 import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
 import java.awt.Image;
@@ -19,7 +20,7 @@ import javax.imageio.ImageIO;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class InterfaceUsuario extends javax.swing.JFrame {
+public class InterfaceUsuario extends javax.swing.JFrame implements InitComponents {
 
     /**
      * Creates new form InterfaceInicial
@@ -37,7 +38,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//
-    private void initComponents() throws MalformedURLException, IOException {
+    public void initComponents() throws MalformedURLException, IOException {
 
         pesoPokemon = new javax.swing.JLabel();
         nomePokemon = new javax.swing.JLabel();

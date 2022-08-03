@@ -4,6 +4,7 @@
  */
 package com.mycompany.interfacepokedex.jogador;
 
+import com.mycompany.interfacepokedex.InitComponents;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class InterfaceRegistros extends javax.swing.JFrame {
+public class InterfaceRegistros extends javax.swing.JFrame implements InitComponents {
 
     /**
      * Creates new form InterfaceInicial
@@ -32,7 +33,7 @@ public class InterfaceRegistros extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//
-    private void initComponents() {
+    public void initComponents() {
 
         pokemons = new javax.swing.JLabel();
         listaPokemons = new javax.swing.JComboBox<>();
