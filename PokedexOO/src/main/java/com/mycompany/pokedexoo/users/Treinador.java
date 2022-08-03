@@ -5,6 +5,7 @@
 package com.mycompany.pokedexoo.users;
 
 import com.mycompany.pokedexoo.pokemon.Pokemon;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,15 +16,26 @@ import java.util.List;
  * Lucas de Oliveira Varino (202165090A)
  */
 public class Treinador extends Pessoa {
+    private int jogadorId;
     private String regiao;
-    private ArrayList<Pokemon> pokemons;
+    private List<Pokemon> pokemons;
+    public static final PokemonUtil jsonUtil = new PokemonUtil();
 
     private static Treinador treinadorAtual;
     
-    public Treinador(String _nome, String regiao) {
+    public Treinador(String _nome, String regiao) throws FileNotFoundException {
         super(_nome);
         this.regiao = regiao.toLowerCase();
         this.pokemons = new ArrayList<>();
+        this.pokemons = jsonUtil.fromJsonToList(jogadorId, this.id);
+    }
+
+    public void setJogadorId(int jogadorId) {
+        this.jogadorId = jogadorId;
+    }
+
+    public int getJogadorId() {
+        return jogadorId;
     }
 
     public static Treinador getTreinadorAtual() {
@@ -50,7 +62,7 @@ public class Treinador extends Pessoa {
         this.regiao = regiao;
     }
 
-    public ArrayList<Pokemon> getPokemons() {
+    public List<Pokemon> getPokemons() {
         return pokemons;
     }
     

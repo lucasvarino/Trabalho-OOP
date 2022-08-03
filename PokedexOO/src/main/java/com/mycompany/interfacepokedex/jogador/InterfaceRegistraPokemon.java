@@ -5,6 +5,12 @@
 package com.mycompany.interfacepokedex.jogador;
 
 import com.mycompany.interfacepokedex.InitComponents;
+import com.mycompany.pokedexoo.pokemon.Pokemon;
+import com.mycompany.pokedexoo.users.Jogador;
+import com.mycompany.pokedexoo.users.Treinador;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * autores:
@@ -94,7 +100,15 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame implements Init
     }// </editor-fold>                        
 
     private void confirmaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaPokemonActionPerformed
-        // registra o novo pokemon com essas info e volta pra InterfaceRegistros
+        Treinador treinadorAtual = Treinador.getTreinadorAtual();
+        
+        treinadorAtual.addPokemon(inputNomePokemon.getText());
+        
+        try {
+            Jogador.atualizaJogadores();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(InterfaceRegistraPokemon.class.getName()).log(Level.SEVERE, null, ex);
+        }
         InterfaceRegistros interfaceRegistros = new InterfaceRegistros();
         this.dispose();
         interfaceRegistros.setVisible(true);

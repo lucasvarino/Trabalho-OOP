@@ -33,6 +33,10 @@ public class Jogador extends Usuario {
         this.treinadores.add(new Treinador("Ash", "Kanto")); // Por padrão o Jogador começa com um treinador
         jogadores.add(this);
         Jogador.salvarJogadorJson();
+        
+        for (Treinador treinador : treinadores) {
+            treinador.setJogadorId(this.id);
+        }
     }
 
     public static Jogador getJogadorAtual() {
