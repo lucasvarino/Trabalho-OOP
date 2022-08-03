@@ -6,6 +6,13 @@ package com.mycompany.interfacepokedex.jogador;
 
 import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
+import java.awt.Image;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 /**
  * autores:
@@ -17,7 +24,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     /**
      * Creates new form InterfaceInicial
      */
-    public InterfaceUsuario() {
+    public InterfaceUsuario() throws IOException {
         initComponents();
         this.setSize(1000, 800);
         this.setVisible(true);
@@ -30,7 +37,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//
-    private void initComponents() {
+    private void initComponents() throws MalformedURLException, IOException {
 
         pesoPokemon = new javax.swing.JLabel();
         nomePokemon = new javax.swing.JLabel();
@@ -111,9 +118,12 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         getContentPane().add(inputApelidoPokemon);
         inputApelidoPokemon.setBounds(200, 320, 60, 24);
 
-        bulbasaur.setIcon(new javax.swing.ImageIcon("img/bulbasaur (1).png")); // NOI18N
+        URL url = new URL("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png");
+        Image image = ImageIO.read(url);
+        
+        bulbasaur.setIcon(new javax.swing.ImageIcon(image)); // NOI18N
         getContentPane().add(bulbasaur);
-        bulbasaur.setBounds(190, 130, 190, 240);
+        bulbasaur.setBounds(270, 190, 190, 240);
 
         treinador1.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         treinador1.setForeground(new java.awt.Color(255, 255, 255));
@@ -202,7 +212,11 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceUsuario().setVisible(true);
+                try {
+                    new InterfaceUsuario().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(InterfaceUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

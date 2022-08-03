@@ -5,6 +5,14 @@
 package com.mycompany.interfacepokedex.admin;
 
 import com.mycompany.pokedexoo.users.Treinador;
+import java.awt.Image;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  * autores:
@@ -16,7 +24,7 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame {
     /**
      * Creates new form InterfaceInicial
      */
-    public InterfaceAdminPokemon() {
+    public InterfaceAdminPokemon() throws IOException {
         initComponents();
         this.setSize(1000, 800);
         this.setVisible(true);
@@ -29,7 +37,7 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//
-    private void initComponents() {
+    private void initComponents() throws MalformedURLException, IOException {
 
         pesoPokemon = new javax.swing.JLabel();
         deletaPokemon = new javax.swing.JButton();
@@ -123,9 +131,12 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame {
         getContentPane().add(inputApelidoPokemon);
         inputApelidoPokemon.setBounds(200, 320, 60, 24);
 
-        bulbasaur.setIcon(new javax.swing.ImageIcon("img/bulbasaur (1).png")); // NOI18N
+        URL url = new URL("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png");
+        Image image = ImageIO.read(url);
+        
+        bulbasaur.setIcon(new javax.swing.ImageIcon(image)); // NOI18N
         getContentPane().add(bulbasaur);
-        bulbasaur.setBounds(190, 130, 190, 240);
+        bulbasaur.setBounds(270, 190, 190, 240);
 
         altura1.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         altura1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -228,7 +239,11 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceAdminPokemon().setVisible(true);
+                try {
+                    new InterfaceAdminPokemon().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(InterfaceAdminPokemon.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
