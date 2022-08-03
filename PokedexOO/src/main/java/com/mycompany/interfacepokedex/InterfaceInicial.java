@@ -187,7 +187,7 @@ public class InterfaceInicial extends javax.swing.JFrame {
         Jogador.setJogadorAtualByName(listaJogadores.getSelectedItem().toString());
         Jogador j = Jogador.getJogadorAtual();
         boolean credenciaisCorretasJogador = j.logar(listaJogadores.getSelectedItem().toString(), String.valueOf(inputSenhaJogador.getPassword()));
-        System.out.println(inputSenhaJogador.getPassword().toString());
+//        System.out.println(inputSenhaJogador.getPassword().toString());
         // caso nao bater, informar por um JOP que as credenciais nao batem, 
         if (!credenciaisCorretasJogador) {
             JPanel painel = new JPanel();
@@ -210,7 +210,7 @@ public class InterfaceInicial extends javax.swing.JFrame {
         // manda para InterfaceCriaUsuario
         this.dispose();
         InterfaceCriaUsuario interfaceCriaUsuario = new InterfaceCriaUsuario();
-        System.out.println("Indo para tela de criar jogador");
+//        System.out.println("Indo para tela de criar jogador");
     }//GEN-LAST:event_criaJogador1ActionPerformed
 
     private void inputEmailAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputEmailAdminActionPerformed
@@ -250,7 +250,7 @@ public class InterfaceInicial extends javax.swing.JFrame {
                 try {
                     new InterfaceInicial().setVisible(true);
                 } catch (FileNotFoundException ex) {
-                    Logger.getLogger(InterfaceInicial.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Nao foi possivel encontrar o arquivo.");
                 }
             }
         });

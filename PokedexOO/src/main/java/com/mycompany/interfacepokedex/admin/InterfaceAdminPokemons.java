@@ -6,6 +6,7 @@ package com.mycompany.interfacepokedex.admin;
 
 import com.mycompany.pokedexoo.users.Jogador;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -110,10 +111,14 @@ public class InterfaceAdminPokemons extends javax.swing.JFrame {
     }//GEN-LAST:event_listaPokemonsActionPerformed
 
     private void modificaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaAdminActionPerformed
-        // manda pra InterfaceAdminPokemon do pokemon selecionado na combo-box
-        this.dispose();
-        InterfaceAdminPokemon interfaceAdminPokemon = new InterfaceAdminPokemon();
-        interfaceAdminPokemon.setVisible(true);
+        try {
+            // manda pra InterfaceAdminPokemon do pokemon selecionado na combo-box
+            this.dispose();
+            InterfaceAdminPokemon interfaceAdminPokemon = new InterfaceAdminPokemon();
+            interfaceAdminPokemon.setVisible(true);
+        } catch (IOException ex) {
+            System.out.println("Nao foi possivel encontrar a imagem.");
+        }
     }//GEN-LAST:event_modificaAdminActionPerformed
 
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
