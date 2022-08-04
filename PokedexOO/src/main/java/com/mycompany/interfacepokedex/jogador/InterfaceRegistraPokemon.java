@@ -9,6 +9,7 @@ import com.mycompany.pokedexoo.pokemon.Pokemon;
 import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
 import excecoes.InputException;
+import excecoes.PokemonApiException;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -104,13 +105,18 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame implements Init
     }// </editor-fold>                        
 
     private void confirmaPokemonActionPerformed(java.awt.event.ActionEvent evt) {
-        Treinador treinadorAtual = Treinador.getTreinadorAtual();
+         Treinador treinadorAtual = Treinador.getTreinadorAtual();
         
         try {
             treinadorAtual.addPokemon(inputNomePokemon.getText(), inputApelidoPokemon.getText());
         } catch(InputException ex) {
             JPanel painel = new JPanel();
             JOptionPane.showInternalMessageDialog(painel, "Valores em Branco, favor inserir", "Valores em Branco", ERROR_MESSAGE);
+            return;
+        } catch(PokemonApiException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Erro na requisição", "Erro na API", ERROR_MESSAGE);
+            return;
         }
         
         

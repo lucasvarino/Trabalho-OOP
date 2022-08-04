@@ -9,6 +9,7 @@ import com.mycompany.interfacepokedex.UserInterface;
 import com.mycompany.pokedexoo.pokemon.Pokemon;
 import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
+import excecoes.PokemonApiException;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -16,6 +17,9 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JPanel;
 
 /**
  * autores:
@@ -177,26 +181,28 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
     }//GEN-LAST:event_inputAlturaPokemonActionPerformed
 
     private void editaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editaPokemonActionPerformed
+        Pokemon pokemon;
         try {
-            // confirma a edicao do pokemon e o cria e volta para a InterfaceRegistros
-            
-            Pokemon pokemon = Pokemon.getPokemonByUrl(Pokemon.getPokemonAtual().getNome());
+            pokemon = Pokemon.getPokemonByUrl(Pokemon.getPokemonAtual().getNome());
+
             pokemon.setApelido(inputApelidoPokemon.getText());
             boolean editouAltura = pokemon.editarAltura(inputAlturaPokemon.getText());
             boolean editouPeso = pokemon.editarPeso(inputPesoPokemon.getText());
-            
-            if(editouAltura && editouPeso)
-            {
+
+            if (editouAltura && editouPeso) {
                 pokemon.setId(Pokemon.getPokemonAtual().getId());
                 Pokemon.setTotalPokemons(Pokemon.getTotalPokemons() - 1);
                 Treinador.getTreinadorAtual().editarPokemon(pokemon);
-                
+
                 this.dispose();
                 InterfaceRegistros interfaceRegistros = new InterfaceRegistros();
                 interfaceRegistros.setVisible(true);
             }
         } catch (IOException ex) {
             Logger.getLogger(InterfaceUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (PokemonApiException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Valores em Branco, favor inserir", "Erro na API", ERROR_MESSAGE);
         }
     }//GEN-LAST:event_editaPokemonActionPerformed
 
