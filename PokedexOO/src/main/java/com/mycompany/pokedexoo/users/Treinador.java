@@ -26,16 +26,16 @@ import javax.swing.JPanel;
  * Lucas de Oliveira Varino (202165090A)
  */
 public class Treinador extends Pessoa {
-    private int jogadorId;
-    private String regiao;
-    private List<Pokemon> pokemons;
-    public static final PokemonUtil jsonUtil = new PokemonUtil();
+    private int jogadorId; // Id do jogador
+    private String regiao; // Região (já tratada com possíveis exceções)
+    private List<Pokemon> pokemons; // Lista de pokemons do treinador
+    public static final PokemonUtil jsonUtil = new PokemonUtil(); // Para interagir com o JSON
 
-    private static Treinador treinadorAtual;
+    private static Treinador treinadorAtual; // Treinador atual para usar nas interfaces após o login
     
     public Treinador(String _nome, String regiao) throws FileNotFoundException {
         super(_nome);
-        this.regiao = regiao.toLowerCase();
+        this.regiao = regiao.toLowerCase(); // Colocando em minúsculo para evitar erros
         this.pokemons = new ArrayList<>();
     }
 
@@ -55,7 +55,7 @@ public class Treinador extends Pessoa {
         Treinador.treinadorAtual = treinadorAtual;
     }
     
-    public static void setTreinadorAtualByName(String nome) throws ComboBoxException {
+    public static void setTreinadorAtualByName(String nome) throws ComboBoxException { // Método para setar o treinador após login
         if(Jogador.getJogadorAtual().getTreinadores().isEmpty())
         {
             throw new ComboBoxException();
@@ -91,9 +91,7 @@ public class Treinador extends Pessoa {
         }
     }
 
-    public void addPokemon(String pokemonName, String apelido) throws InputException, PokemonApiException {
-        //TODO: Adicionar Tratamento de Exceção aqui
-        
+    public void addPokemon(String pokemonName, String apelido) throws InputException, PokemonApiException, RegiaoException { // Método para adicionar pokémon no array de pokemons
         if(pokemonName.isBlank() || apelido.isBlank())
         {
             throw new InputException();
@@ -103,11 +101,9 @@ public class Treinador extends Pessoa {
             Pokemon pokemon = Pokemon.getPokemonByUrl(pokemonName);
             pokemon.setApelido(apelido);
                  
-            if(!pokemon.getRegion().equals(this.regiao)) {
-                // Tratamento de Exceção aqui
+            if(!pokemon.getRegion().equals(this.regiao)) { // Verifica se as regiões são iguais
                 
-                System.out.println("O pokemon não é da mesma região do treinador!");
-                return;
+                throw new RegiaoException();
             }
             
             this.pokemons.add(pokemon);
@@ -135,7 +131,7 @@ public class Treinador extends Pessoa {
         Jogador.salvarJogadorJson();
     }
 
-    public void editarPokemon(Pokemon pokemonEditado) throws IOException {
+    public void editarPokemon(Pokemon pokemonEditado) throws IOException { // Editar o pokemon
 
         
         if(this.pokemons.isEmpty()) {
@@ -157,7 +153,7 @@ public class Treinador extends Pessoa {
         System.out.println("Não foi encontrado nenhum pokemon com esse id!");
     }
     
-    public String[] getAllNomes() {
+    public String[] getAllNomes() { // Método para exibir todos os nomes na ComboBox
         String[] nomes = new String[this.pokemons.size()];
         
         for (int i = 0; i < this.pokemons.size(); i++) {
@@ -167,7 +163,7 @@ public class Treinador extends Pessoa {
         return nomes;
     }
     
-    public Pokemon getPokemonByName(String name) {
+    public Pokemon getPokemonByName(String name) { // Pegar o pokemon pelo nome
         for (Pokemon pokemon : pokemons) {
             if(pokemon.getApelido().equals(name))
                 return pokemon;
@@ -177,9 +173,7 @@ public class Treinador extends Pessoa {
     }
     
     
-
-    
-    public static boolean registrar(String username, String region) throws IOException, InputException, NameException, MalformedURLException, RegiaoException {
+    public static boolean registrar(String username, String region) throws IOException, InputException, NameException, MalformedURLException, RegiaoException { // Registrar o pokemon
         if(username.isBlank() || region.isBlank())
         {
             throw new InputException();

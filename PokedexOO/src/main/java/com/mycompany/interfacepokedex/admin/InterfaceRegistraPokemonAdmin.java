@@ -11,6 +11,7 @@ import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
 import excecoes.InputException;
 import excecoes.PokemonApiException;
+import excecoes.RegiaoException;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -118,6 +119,10 @@ public class InterfaceRegistraPokemonAdmin extends javax.swing.JFrame implements
         } catch(PokemonApiException ex) {
             JPanel painel = new JPanel();
             JOptionPane.showInternalMessageDialog(painel, "Erro na requisição", "Erro na API", ERROR_MESSAGE);
+            return;
+        } catch (RegiaoException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "O pokémon selecionado não é da mesma região do treinador!", "Erro na Região", ERROR_MESSAGE);
             return;
         }
         

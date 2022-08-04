@@ -22,27 +22,27 @@ import java.util.*;
  * Lucas de Oliveira Varino (202165090A)
  */
 public class Jogador extends Usuario {
-    private static List<Jogador> jogadores = new ArrayList<>();
-    private final ArrayList<Treinador> treinadores;
-    public static final JogadorUtil jsonUtil = new JogadorUtil();
+    private static List<Jogador> jogadores = new ArrayList<>(); // Array de Jogadores que estão no JSON
+    private final ArrayList<Treinador> treinadores; // Array de Treinadores do Jogador em específico
+    public static final JogadorUtil jsonUtil = new JogadorUtil(); // Classe para interagir com o JSON
     
     private static String nomeAtual = "";
-    private static Jogador jogadorAtual;
+    private static Jogador jogadorAtual; // Usado para saber o jogador selecionado na interface
     
     public Jogador(String _nome, String _senha) throws IOException {
         super(_nome, _senha);
         this.treinadores = new ArrayList<>();
-        jogadores = jsonUtil.fromJsonToList();
+        jogadores = jsonUtil.fromJsonToList(); // Atualizando o array para o que tem no JSON
         this.treinadores.add(new Treinador("Ash", "Kanto")); // Por padrão o Jogador começa com um treinador
         jogadores.add(this);
-        Jogador.salvarJogadorJson();
+        Jogador.salvarJogadorJson(); // Salvar o jogador no json
         
         for (Treinador treinador : treinadores) {
             treinador.setJogadorId(this.id);
         }
     }
 
-    public void deletaTreinador(String nome) throws IOException {
+    public void deletaTreinador(String nome) throws IOException { // Deletar treinador
         Treinador deletar = null;
         for (Treinador t : treinadores) {
             if (t.getNome().equals(nome)) {
@@ -50,10 +50,10 @@ public class Jogador extends Usuario {
             }
         }
         getTreinadores().remove(deletar);
-        Jogador.salvarJogadorJson();
+        Jogador.salvarJogadorJson(); // Salvar o jogador atualizado
     }
     
-    public void deletaJogador(String nome) throws IOException {
+    public void deletaJogador(String nome) throws IOException { // Deletar o Jogador
         Jogador deletar = null;
         for (Jogador j : jogadores) {
             if (j.getNome().equals(nome)) {
@@ -88,8 +88,6 @@ public class Jogador extends Usuario {
         Jogador.nomeAtual = nomeAtual;
     }
     
-    
-    
     public ArrayList<Treinador> getTreinadores() {
         return treinadores;
     }
@@ -114,14 +112,14 @@ public class Jogador extends Usuario {
         }
     }
     
-    public static void salvarJogadorJson() throws IOException {
+    public static void salvarJogadorJson() throws IOException { // Salvar jogador no JSON
         Gson gson = new Gson();
         FileWriter writter = new FileWriter("users.json");
         gson.toJson(Jogador.jogadores, writter);
         writter.close();
     }
     
-    public static String[] getAllNomes() throws FileNotFoundException {
+    public static String[] getAllNomes() throws FileNotFoundException { // Função utilizada na interface visual para colocar os nomes na ComboBox
         List<Jogador> jogadoresJson = (List<Jogador>) jsonUtil.fromJsonToList();
         String[] nomes = new String[jogadoresJson.size()];
         
@@ -144,7 +142,7 @@ public class Jogador extends Usuario {
     }
     
     @Override
-    public boolean logar(String username, String senha) throws LoginException {
+    public boolean logar(String username, String senha) throws LoginException { // Polimorfismo para a função de login
         for (Jogador jogador : jogadores) {
             if(jogador.getNome().equals(username))
             {
@@ -163,13 +161,13 @@ public class Jogador extends Usuario {
     public static boolean registrar(String username, String senha) throws IOException, InputException, NameException {
         if(username.isBlank() || senha.isBlank())
         {
-            throw new InputException();
+            throw new InputException(); //Caso o input esteja em branco
         }
         
         for (Jogador jogador : jogadores) {
             if(username.equals(jogador.getNome()))
             {
-                throw new NameException();
+                throw new NameException(); // Caso já exista o nome cadastrado no banco
             }
         }
         
@@ -179,13 +177,5 @@ public class Jogador extends Usuario {
     
     public static void atualizaJogadores() throws FileNotFoundException {
         jogadores = jsonUtil.fromJsonToList();
-    }
-    
-    public static void imprimeTodosOsJogadores() {
-        for (Jogador jogador : jogadores) {
-            System.out.println("NOME - " + jogador.getNome());
-            System.out.println("SENHA - " + jogador.getSenha());
-            System.out.println("");
-        }
     }
 }
