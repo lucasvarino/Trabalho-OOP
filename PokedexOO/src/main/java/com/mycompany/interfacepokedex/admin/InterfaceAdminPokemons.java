@@ -8,15 +8,18 @@ import com.mycompany.interfacepokedex.InitComponents;
 import com.mycompany.pokedexoo.pokemon.Pokemon;
 import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
+import excecoes.ComboBoxException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JPanel;
 
 /**
- * autores:
- * João Pedro Banhato Pereira (202165506B)
- * Lucas de Oliveira Varino (202165090A)
+ * autores: João Pedro Banhato Pereira (202165506B) Lucas de Oliveira Varino
+ * (202165090A)
  */
 public class InterfaceAdminPokemons extends javax.swing.JFrame implements InitComponents {
 
@@ -116,12 +119,22 @@ public class InterfaceAdminPokemons extends javax.swing.JFrame implements InitCo
     private void modificaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaAdminActionPerformed
         try {
             // manda pra InterfaceAdminPokemon do pokemon selecionado na combo-box
+
+            if (this.listaPokemons.getItemCount() == 0) {
+                JPanel painel = new JPanel();
+                JOptionPane.showInternalMessageDialog(painel, "O seu treinador ainda não capturou nenhum pokémon!", "Pokedex vazia!", ERROR_MESSAGE);
+                return;
+            }
+
             Pokemon.setPokemonAtual(Treinador.getTreinadorAtual().getPokemonByName(listaPokemons.getSelectedItem().toString()));
             this.dispose();
             InterfaceAdminPokemon interfaceAdminPokemon = new InterfaceAdminPokemon(Pokemon.getPokemonAtual());
             interfaceAdminPokemon.setVisible(true);
         } catch (IOException ex) {
             System.out.println("Nao foi possivel encontrar a imagem.");
+        } catch (ComboBoxException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "O seu treinador ainda não capturou nenhum pokémon!", "Pokedex vazia!", ERROR_MESSAGE);
         }
     }//GEN-LAST:event_modificaAdminActionPerformed
 
@@ -195,6 +208,4 @@ public class InterfaceAdminPokemons extends javax.swing.JFrame implements InitCo
     private javax.swing.JButton sair;
     // End of variables declaration//GEN-END:variables
 
-    
-    
 }

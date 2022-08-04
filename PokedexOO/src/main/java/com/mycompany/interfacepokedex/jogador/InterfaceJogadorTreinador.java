@@ -8,15 +8,18 @@ import com.mycompany.interfacepokedex.InitComponents;
 import com.mycompany.interfacepokedex.InterfaceInicial;
 import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
+import excecoes.ComboBoxException;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JPanel;
 
 /**
- * autores:
- * João Pedro Banhato Pereira (202165506B)
- * Lucas de Oliveira Varino (202165090A)
+ * autores: João Pedro Banhato Pereira (202165506B) Lucas de Oliveira Varino
+ * (202165090A)
  */
 public class InterfaceJogadorTreinador extends javax.swing.JFrame implements InitComponents {
 
@@ -63,9 +66,9 @@ public class InterfaceJogadorTreinador extends javax.swing.JFrame implements Ini
         admin.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         admin.setForeground(new java.awt.Color(0, 204, 51));
         admin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        
+
         admin.setText(Jogador.getJogadorAtual().getNome());
-        
+
         getContentPane().add(admin);
         admin.setBounds(200, 230, 90, 23);
 
@@ -103,7 +106,7 @@ public class InterfaceJogadorTreinador extends javax.swing.JFrame implements Ini
         });
         getContentPane().add(registraPokemon);
         registraPokemon.setBounds(130, 360, 130, 24);
-        
+
         pokedex.setIcon(new javax.swing.ImageIcon("img/pokedex.png")); // NOI18N
         getContentPane().add(pokedex);
         pokedex.setBounds(20, 15, 840, 639);
@@ -112,8 +115,13 @@ public class InterfaceJogadorTreinador extends javax.swing.JFrame implements Ini
     }// </editor-fold>//
 
     private void modificaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaAdminActionPerformed
-        // confirma a selecao dos treinadores
-        Treinador.setTreinadorAtualByName(listaTreinadores.getSelectedItem().toString());
+        try {
+            // confirma a selecao dos treinadores
+            Treinador.setTreinadorAtualByName(listaTreinadores.getSelectedItem().toString());
+        } catch (ComboBoxException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Você ainda não registrou nenhum treinador!", "Você não tem treinadores", ERROR_MESSAGE);
+        }
         // e manda para InterfaceRegistros
         this.dispose();
         InterfaceRegistros interfaceRegistros = new InterfaceRegistros();
@@ -123,7 +131,7 @@ public class InterfaceJogadorTreinador extends javax.swing.JFrame implements Ini
     private void listaTreinadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaTreinadoresActionPerformed
         // lista de treinadores para serem selecionados pelo admin
     }//GEN-LAST:event_listaTreinadoresActionPerformed
-    
+
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
         try {
             // volta para a InterfaceInicial
@@ -141,7 +149,7 @@ public class InterfaceJogadorTreinador extends javax.swing.JFrame implements Ini
         this.dispose();
         interfaceCriaTreinador.setVisible(true);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -198,6 +206,4 @@ public class InterfaceJogadorTreinador extends javax.swing.JFrame implements Ini
     private JButton registraPokemon;
     // End of variables declaration//
 
-    
-    
 }

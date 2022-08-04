@@ -6,6 +6,7 @@ package com.mycompany.pokedexoo.users;
 
 import com.mycompany.pokedexoo.pokemon.Generation;
 import com.mycompany.pokedexoo.pokemon.Pokemon;
+import excecoes.ComboBoxException;
 import excecoes.InputException;
 import excecoes.NameException;
 import excecoes.PokemonApiException;
@@ -54,7 +55,12 @@ public class Treinador extends Pessoa {
         Treinador.treinadorAtual = treinadorAtual;
     }
     
-    public static void setTreinadorAtualByName(String nome) {
+    public static void setTreinadorAtualByName(String nome) throws ComboBoxException {
+        if(Jogador.getJogadorAtual().getTreinadores().isEmpty())
+        {
+            throw new ComboBoxException();
+        }
+        
         for (Treinador t : Jogador.getJogadorAtual().getTreinadores()) {
             if (t.getNome().equals(nome)) {
                 setTreinadorAtual(t);

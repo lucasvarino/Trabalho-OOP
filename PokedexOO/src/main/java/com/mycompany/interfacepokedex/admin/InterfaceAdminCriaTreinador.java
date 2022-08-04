@@ -11,7 +11,9 @@ import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
 import excecoes.InputException;
 import excecoes.NameException;
+import excecoes.RegiaoException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -70,6 +72,8 @@ public class InterfaceAdminCriaTreinador extends javax.swing.JFrame implements I
                     System.out.println("Nao foi possivel criar treinador.");
                 } catch (InputException ex) {
                     Logger.getLogger(InterfaceAdminCriaTreinador.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (RegiaoException ex) {
+                    Logger.getLogger(InterfaceAdminCriaTreinador.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -105,7 +109,7 @@ public class InterfaceAdminCriaTreinador extends javax.swing.JFrame implements I
         pack();
     }// </editor-fold>//
 
-    private void criaTreinadorActionPerformed(java.awt.event.ActionEvent evt) throws IOException, InputException {//
+    private void criaTreinadorActionPerformed(java.awt.event.ActionEvent evt) throws IOException, InputException, MalformedURLException, RegiaoException {//
 
         try {
             boolean podeCriar = Treinador.registrar(inputNomeTreinador.getText(), inputRegiaoTreinador.getText());

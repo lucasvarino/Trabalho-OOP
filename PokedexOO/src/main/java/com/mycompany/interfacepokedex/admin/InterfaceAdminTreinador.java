@@ -8,11 +8,15 @@ import com.mycompany.interfacepokedex.InitComponents;
 import com.mycompany.interfacepokedex.jogador.InterfaceCriaTreinador;
 import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
+import excecoes.ComboBoxException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JPanel;
 
 /**
  * autores:
@@ -132,8 +136,13 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame implements InitC
     }// </editor-fold>
 
     private void modificaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaAdminActionPerformed
-        // confirma a edicao dos treinadores
-        Treinador.setTreinadorAtualByName(listaTreinadores.getSelectedItem().toString());
+        try {
+            // confirma a edicao dos treinadores
+            Treinador.setTreinadorAtualByName(listaTreinadores.getSelectedItem().toString());
+        } catch (ComboBoxException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Você ainda não registrou nenhum treinador!", "Você não tem treinadores", ERROR_MESSAGE);
+        }
         // e manda para InterfaceAdminPokemons
         this.dispose();
         InterfaceAdminPokemons interfaceAdminPokemons = new InterfaceAdminPokemons();

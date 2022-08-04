@@ -7,6 +7,8 @@ package com.mycompany.pokedexoo.pokemon;
 import com.mycompany.pokedexoo.pokemon.region.PokemonRegion;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.mycompany.pokedexoo.users.Treinador;
+import excecoes.ComboBoxException;
 import excecoes.PokemonApiException;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -196,7 +198,12 @@ public class Pokemon {
         return pokemonAtual;
     }
 
-    public static void setPokemonAtual(Pokemon pokemonAtual) {
+    public static void setPokemonAtual(Pokemon pokemonAtual) throws ComboBoxException {
+        if(Treinador.getTreinadorAtual().getPokemons().isEmpty())
+        {
+            throw new ComboBoxException();
+        }
+        
         Pokemon.pokemonAtual = pokemonAtual;
     }
     

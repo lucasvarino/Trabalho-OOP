@@ -7,15 +7,18 @@ package com.mycompany.interfacepokedex.jogador;
 import com.mycompany.interfacepokedex.InitComponents;
 import com.mycompany.pokedexoo.pokemon.Pokemon;
 import com.mycompany.pokedexoo.users.Treinador;
+import excecoes.ComboBoxException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JPanel;
 
 /**
- * autores:
- * João Pedro Banhato Pereira (202165506B)
- * Lucas de Oliveira Varino (202165090A)
+ * autores: João Pedro Banhato Pereira (202165506B) Lucas de Oliveira Varino
+ * (202165090A)
  */
 public class InterfaceRegistros extends javax.swing.JFrame implements InitComponents {
 
@@ -126,11 +129,19 @@ public class InterfaceRegistros extends javax.swing.JFrame implements InitCompon
             // manda o jogador para a InterfaceUsuario com as informacoes do Pokemon
             // selecionado na combo-box
             this.dispose();
+            if (this.listaPokemons.getItemCount() == 0) {
+                JPanel painel = new JPanel();
+                JOptionPane.showInternalMessageDialog(painel, "O seu treinador ainda não capturou nenhum pokémon!", "Pokedex vazia!", ERROR_MESSAGE);
+                return;
+            }
             Pokemon.setPokemonAtual(Treinador.getTreinadorAtual().getPokemonByName(this.listaPokemons.getSelectedItem().toString()));
             InterfaceUsuario interfaceUsuario = new InterfaceUsuario(Pokemon.getPokemonAtual());
             interfaceUsuario.setVisible(true);
         } catch (IOException ex) {
             System.out.println("Nao foi possivel encontrar a imagem.");
+        } catch (ComboBoxException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "O seu treinador ainda não capturou nenhum pokémon!", "Pokedex vazia!", ERROR_MESSAGE);
         }
     }//GEN-LAST:event_selecionaPokemonActionPerformed
 
@@ -179,6 +190,4 @@ public class InterfaceRegistros extends javax.swing.JFrame implements InitCompon
     private javax.swing.JButton selecionaPokemon;
     // End of variables declaration//
 
-    
-    
 }
