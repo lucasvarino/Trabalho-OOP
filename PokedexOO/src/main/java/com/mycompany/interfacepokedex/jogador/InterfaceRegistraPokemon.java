@@ -110,7 +110,6 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame implements Init
 
     private void confirmaPokemonActionPerformed(java.awt.event.ActionEvent evt) throws PokemonApiException {
         Treinador treinadorAtual = Treinador.getTreinadorAtual();
-        
         try {
             treinadorAtual.addPokemon(inputNomePokemon.getText(), inputApelidoPokemon.getText());
         } catch(InputException ex) {
