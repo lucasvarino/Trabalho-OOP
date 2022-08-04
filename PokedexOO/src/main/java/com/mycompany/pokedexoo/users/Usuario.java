@@ -4,6 +4,7 @@
  */
 package com.mycompany.pokedexoo.users;
 
+import excecoes.LoginException;
 import java.util.*;
 
 /**
@@ -22,7 +23,16 @@ public abstract class Usuario extends Pessoa {
     public String getSenha() {
         return senha;
     }
-    // abstrata
-    // criar tratamento de excessao
-    public abstract boolean logar(String username, String senha);
+
+    public boolean logar(String username, String senha) throws LoginException {
+        if (username.equals(this.getNome())) {
+            if(senha.equals(this.getSenha())) {
+                return true;
+            }
+            
+            throw new LoginException();
+        }
+        
+        return false;
+    }
 }

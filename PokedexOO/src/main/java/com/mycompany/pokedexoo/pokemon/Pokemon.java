@@ -7,6 +7,7 @@ package com.mycompany.pokedexoo.pokemon;
 import com.mycompany.pokedexoo.pokemon.region.PokemonRegion;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import excecoes.PokemonApiException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -199,7 +200,7 @@ public class Pokemon {
         Pokemon.pokemonAtual = pokemonAtual;
     }
     
-    public static Pokemon getPokemonByUrl(String pokemonName) { // Principal método da classe, busca um pokemon na API e retorna ele juntamente com sua região
+    public static Pokemon getPokemonByUrl(String pokemonName) throws PokemonApiException { // Principal método da classe, busca um pokemon na API e retorna ele juntamente com sua região
         try {
             String url = "https://pokeapi.co/api/v2/pokemon/" + pokemonName.toLowerCase();
             
@@ -209,7 +210,7 @@ public class Pokemon {
             conn.setRequestProperty("Accept", "Application/json");
             
             if(conn.getResponseCode() != 200) {
-                System.out.println("Requisição inválida, tente novamente.");
+                throw new PokemonApiException();
             }
             
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));

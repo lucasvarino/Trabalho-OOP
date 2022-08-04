@@ -9,6 +9,7 @@ import com.google.gson.internal.LinkedTreeMap;
 import com.mycompany.pokedexoo.users.Usuario;
 import com.mycompany.pokedexoo.users.Treinador;
 import excecoes.InputException;
+import excecoes.LoginException;
 import excecoes.NameException;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -121,7 +122,7 @@ public class Jogador extends Usuario {
     }
     
     @Override
-    public boolean logar(String username, String senha) {
+    public boolean logar(String username, String senha) throws LoginException {
         for (Jogador jogador : jogadores) {
             if(jogador.getNome().equals(username))
             {
@@ -130,13 +131,11 @@ public class Jogador extends Usuario {
                     return true;
                 }
                 
-                System.out.println("Senha Incorreta!");
-                return false;
+                throw new LoginException();
             }
         }
         
-        System.out.println("Não foi encontrado usuário com esse nome!");
-        return false;
+        throw new LoginException();
     }
     
     public static boolean registrar(String username, String senha) throws IOException, InputException, NameException {
