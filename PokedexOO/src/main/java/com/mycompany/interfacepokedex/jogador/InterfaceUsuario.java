@@ -9,6 +9,7 @@ import com.mycompany.interfacepokedex.UserInterface;
 import com.mycompany.pokedexoo.pokemon.Pokemon;
 import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
+import excecoes.PokemonApiException;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -16,16 +17,19 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JPanel;
 
 /**
- * autores:
- * João Pedro Banhato Pereira (202165506B)
- * Lucas de Oliveira Varino (202165090A)
+ * autores: João Pedro Banhato Pereira (202165506B) Lucas de Oliveira Varino
+ * (202165090A)
  */
 public class InterfaceUsuario extends javax.swing.JFrame implements InitComponents {
 
     /**
      * Creates new form InterfaceInicial
+     *
      * @param pokemonAtual
      * @throws java.io.IOException
      */
@@ -103,7 +107,11 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
         editaPokemon.setText("Editar");
         editaPokemon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editaPokemonActionPerformed(evt);
+                try {
+                    editaPokemonActionPerformed(evt);
+                } catch (PokemonApiException ex) {
+                    Logger.getLogger(InterfaceUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         getContentPane().add(editaPokemon);
@@ -123,12 +131,12 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
         });
         getContentPane().add(inputApelidoPokemon);
         inputApelidoPokemon.setBounds(200, 320, 60, 24);
-        
+
         System.out.println("Buscando imagem na api...");
         URL url = new URL(Pokemon.getPokemonAtual().getSprites().getSprite());
 
         Image image = ImageIO.read(url);
-        
+
         bulbasaur.setIcon(new javax.swing.ImageIcon(image)); // NOI18N
         getContentPane().add(bulbasaur);
         bulbasaur.setBounds(270, 190, 190, 240);
@@ -176,29 +184,33 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
         // pega altura pokemon, ja exibindo o padrao
     }//GEN-LAST:event_inputAlturaPokemonActionPerformed
 
-    private void editaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editaPokemonActionPerformed
+    private void editaPokemonActionPerformed(java.awt.event.ActionEvent evt) throws PokemonApiException {
+        // confirma a edicao do pokemon e o cria e volta para a InterfaceRegistros
+
+        Pokemon pokemon;
         try {
-            // confirma a edicao do pokemon e o cria e volta para a InterfaceRegistros
-            
-            Pokemon pokemon = Pokemon.getPokemonByUrl(Pokemon.getPokemonAtual().getNome());
+            pokemon = Pokemon.getPokemonByUrl(Pokemon.getPokemonAtual().getNome());
+
             pokemon.setApelido(inputApelidoPokemon.getText());
             boolean editouAltura = pokemon.editarAltura(inputAlturaPokemon.getText());
             boolean editouPeso = pokemon.editarPeso(inputPesoPokemon.getText());
-            
-            if(editouAltura && editouPeso)
-            {
+
+            if (editouAltura && editouPeso) {
                 pokemon.setId(Pokemon.getPokemonAtual().getId());
                 Pokemon.setTotalPokemons(Pokemon.getTotalPokemons() - 1);
                 Treinador.getTreinadorAtual().editarPokemon(pokemon);
-                
+
                 this.dispose();
                 InterfaceRegistros interfaceRegistros = new InterfaceRegistros();
                 interfaceRegistros.setVisible(true);
             }
         } catch (IOException ex) {
             Logger.getLogger(InterfaceUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (PokemonApiException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Valores em Branco, favor inserir", "Erro na API", ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_editaPokemonActionPerformed
+    }
 
     private void inputApelidoPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputApelidoPokemonActionPerformed
         // pega apelido pokemon, ja exibindo o padrao
@@ -264,5 +276,5 @@ public class InterfaceUsuario extends javax.swing.JFrame implements InitComponen
     // End of variables declaration//GEN-END:variables
 
     private Pokemon pokemonAtual;
-    
+
 }

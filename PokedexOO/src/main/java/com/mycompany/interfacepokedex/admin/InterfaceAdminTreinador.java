@@ -5,11 +5,13 @@
 package com.mycompany.interfacepokedex.admin;
 
 import com.mycompany.interfacepokedex.InitComponents;
+import com.mycompany.interfacepokedex.jogador.InterfaceCriaTreinador;
 import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 
 /**
  * autores:
@@ -42,6 +44,7 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame implements InitC
         listaTreinadores = new javax.swing.JComboBox<>();
         sair = new javax.swing.JButton();
         pokedex = new javax.swing.JLabel();
+        registraPokemon = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -54,7 +57,7 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame implements InitC
             }
         });
         getContentPane().add(modificaAdmin);
-        modificaAdmin.setBounds(140, 350, 110, 24);
+        modificaAdmin.setBounds(190, 320, 120, 24);
 
         jogador.setBackground(new java.awt.Color(0, 153, 51));
         jogador.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
@@ -87,8 +90,22 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame implements InitC
             }
         });
         getContentPane().add(sair);
-        sair.setBounds(260, 350, 100, 24);
+        sair.setBounds(270, 360, 100, 24);
 
+        registraPokemon.setBackground(new java.awt.Color(0, 0, 255));
+        registraPokemon.setText("Adicionar Novo");
+        registraPokemon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    registraTreinadorActionPerformed(evt);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(InterfaceAdminTreinador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        getContentPane().add(registraPokemon);
+        registraPokemon.setBounds(130, 360, 130, 24);
+        
         pokedex.setIcon(new javax.swing.ImageIcon("img/pokedex.png")); // NOI18N
         getContentPane().add(pokedex);
         pokedex.setBounds(20, 15, 840, 639);
@@ -120,6 +137,13 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame implements InitC
         }
     }//GEN-LAST:event_sairActionPerformed
 
+    private void registraTreinadorActionPerformed(java.awt.event.ActionEvent evt) throws FileNotFoundException {
+        // manda o jogador para a InterfaceAdmin
+        InterfaceAdmin interfaceAdmin = new InterfaceAdmin();
+        this.dispose();
+        interfaceAdmin.setVisible(true);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -162,14 +186,15 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame implements InitC
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify//
     private javax.swing.JLabel jogador;
     private javax.swing.JComboBox<String> listaTreinadores;
     private javax.swing.JButton modificaAdmin;
     private javax.swing.JLabel pokedex;
     private javax.swing.JButton sair;
     private javax.swing.JLabel treinador;
-    // End of variables declaration//GEN-END:variables
+    private JButton registraPokemon;
+    // End of variables declaration//
 
     
     

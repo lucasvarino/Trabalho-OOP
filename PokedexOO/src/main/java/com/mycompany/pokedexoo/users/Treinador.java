@@ -6,6 +6,8 @@ package com.mycompany.pokedexoo.users;
 
 import com.mycompany.pokedexoo.pokemon.Pokemon;
 import excecoes.InputException;
+import excecoes.NameException;
+import excecoes.PokemonApiException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -78,7 +80,7 @@ public class Treinador extends Pessoa {
         }
     }
 
-    public void addPokemon(String pokemonName, String apelido) throws InputException {
+    public void addPokemon(String pokemonName, String apelido) throws InputException, PokemonApiException {
         //TODO: Adicionar Tratamento de Exceção aqui
         
         if(pokemonName.isBlank() || apelido.isBlank())
@@ -178,6 +180,26 @@ public class Treinador extends Pessoa {
         }
         
         return null;
+    }
+    
+    
+
+    
+    public static boolean registrar(String username, String region) throws IOException, InputException, NameException {
+        if(username.isBlank() || region.isBlank())
+        {
+            throw new InputException();
+        }
+        
+        for (Treinador treinador : Jogador.getJogadorAtual().getTreinadores()) {
+            if(username.equals(treinador.getNome()))
+            {
+                throw new NameException();
+            }
+        }
+        
+        Treinador jogador = new Treinador(username, region);
+        return true;
     }
     
     
