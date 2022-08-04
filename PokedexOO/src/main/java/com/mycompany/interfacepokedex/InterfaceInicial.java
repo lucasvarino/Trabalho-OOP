@@ -7,9 +7,11 @@ package com.mycompany.interfacepokedex;
 import com.mycompany.interfacepokedex.jogador.InterfaceCriaUsuario;
 import com.mycompany.interfacepokedex.jogador.InterfaceJogadorTreinador;
 import com.mycompany.interfacepokedex.admin.InterfaceAdmin;
+import com.mycompany.pokedexoo.users.Admin;
 import com.mycompany.pokedexoo.users.Jogador;
 import excecoes.LoginException;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -166,21 +168,18 @@ public class InterfaceInicial extends javax.swing.JFrame implements InitComponen
 
     private void entraAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entraAdminActionPerformed
         try {
-            // a partir do admin selecionado da combo-box verificar se a senha e nome batem,
-            boolean credenciaisCorretasAdmin = true;
-            // caso nao bater, informar por um JOP que as credenciais nao batem,
-            if (!credenciaisCorretasAdmin) {
-                JPanel painel = new JPanel();
-                JOptionPane.showInternalMessageDialog(painel, "Credenciais incorretas!", "Login inváido", ERROR_MESSAGE);
-            } else {
-                // caso esteja correto, enviar o jogador para a InterfaceAdmin
-                // onde ele terá acesso as funcionalidades de um admin
-                this.dispose();
-                InterfaceAdmin interfaceAdmin = new InterfaceAdmin();
-                interfaceAdmin.setVisible(true);
-            }
+            // a partir do admin selecionado da combo-box verificar se a senha e nome batem,            
+            Admin admin1 = new Admin("admin@admin.com", "123456");
+            admin1.logar(inputEmailAdmin.getText(), String.valueOf(inputSenhaAdmin.getPassword()));
+
+            this.dispose();
+            InterfaceAdmin interfaceAdmin = new InterfaceAdmin();
+            interfaceAdmin.setVisible(true);
         } catch (FileNotFoundException ex) {
             System.out.println("Nao foi possivel encontrar o arquivo.");
+        } catch (LoginException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Credenciais incorretas!", "Login inváido", ERROR_MESSAGE);
         }
     }//GEN-LAST:event_entraAdminActionPerformed
 
