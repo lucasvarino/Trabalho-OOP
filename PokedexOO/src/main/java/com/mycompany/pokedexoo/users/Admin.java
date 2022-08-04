@@ -37,6 +37,6 @@ public class Admin extends Usuario {
 
     @Override
     public boolean logar(String username, String senha) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return (username == "admin@admin.com" && senha == "123456");
     }
 }

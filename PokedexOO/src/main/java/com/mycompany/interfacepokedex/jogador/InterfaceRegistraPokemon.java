@@ -57,7 +57,11 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame implements Init
         confirmaPokemon.setText("Registrar");
         confirmaPokemon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmaPokemonActionPerformed(evt);
+                try {
+                    confirmaPokemonActionPerformed(evt);
+                } catch (PokemonApiException ex) {
+                    Logger.getLogger(InterfaceRegistraPokemon.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         getContentPane().add(confirmaPokemon);
@@ -104,9 +108,8 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame implements Init
         pack();
     }// </editor-fold>                        
 
-    private void confirmaPokemonActionPerformed(java.awt.event.ActionEvent evt) {
-         Treinador treinadorAtual = Treinador.getTreinadorAtual();
-        
+    private void confirmaPokemonActionPerformed(java.awt.event.ActionEvent evt) throws PokemonApiException {
+        Treinador treinadorAtual = Treinador.getTreinadorAtual();
         try {
             treinadorAtual.addPokemon(inputNomePokemon.getText(), inputApelidoPokemon.getText());
         } catch(InputException ex) {
