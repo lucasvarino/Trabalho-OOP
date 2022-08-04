@@ -24,16 +24,5 @@ public abstract class Usuario extends Pessoa {
     }
     // abstrata
     // criar tratamento de excessao
-    public boolean logar(String username, String senha) {
-        if (username.equals(this.getNome())) {
-            if(senha.equals(this.getSenha())) {
-                return true;
-            }
-            
-            System.out.println("Senha incorreta!");
-            return false;
-        }
-        
-        return false;
-    }
+    public abstract boolean logar(String username, String senha);
 }

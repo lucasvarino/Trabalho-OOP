@@ -8,9 +8,13 @@ import com.mycompany.interfacepokedex.InitComponents;
 import com.mycompany.pokedexoo.pokemon.Pokemon;
 import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
+import excecoes.InputException;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JPanel;
 
 /**
  * autores:
@@ -99,10 +103,16 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame implements Init
         pack();
     }// </editor-fold>                        
 
-    private void confirmaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaPokemonActionPerformed
+    private void confirmaPokemonActionPerformed(java.awt.event.ActionEvent evt) {
         Treinador treinadorAtual = Treinador.getTreinadorAtual();
         
-        treinadorAtual.addPokemon(inputNomePokemon.getText(), inputApelidoPokemon.getText());
+        try {
+            treinadorAtual.addPokemon(inputNomePokemon.getText(), inputApelidoPokemon.getText());
+        } catch(InputException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Valores em Branco, favor inserir", "Valores em Branco", ERROR_MESSAGE);
+        }
+        
         
         try {
             Jogador.atualizaJogadores();
@@ -112,7 +122,7 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame implements Init
         InterfaceRegistros interfaceRegistros = new InterfaceRegistros();
         this.dispose();
         interfaceRegistros.setVisible(true);
-    }//GEN-LAST:event_confirmaPokemonActionPerformed
+    }
 
     private void inputNomePokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomePokemonActionPerformed
         // pega nome pokemon
