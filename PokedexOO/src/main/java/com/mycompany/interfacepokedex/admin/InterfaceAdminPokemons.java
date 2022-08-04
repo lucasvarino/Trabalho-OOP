@@ -5,7 +5,9 @@
 package com.mycompany.interfacepokedex.admin;
 
 import com.mycompany.interfacepokedex.InitComponents;
+import com.mycompany.pokedexoo.pokemon.Pokemon;
 import com.mycompany.pokedexoo.users.Jogador;
+import com.mycompany.pokedexoo.users.Treinador;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -53,7 +55,7 @@ public class InterfaceAdminPokemons extends javax.swing.JFrame implements InitCo
         getContentPane().add(pokemons);
         pokemons.setBounds(140, 290, 100, 20);
 
-        listaPokemons.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bulbasaur", "Lucas", "Pedro", "José" }));
+        listaPokemons.setModel(new javax.swing.DefaultComboBoxModel<>(Treinador.getTreinadorAtual().getAllNomes()));
         listaPokemons.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listaPokemonsActionPerformed(evt);
@@ -114,8 +116,9 @@ public class InterfaceAdminPokemons extends javax.swing.JFrame implements InitCo
     private void modificaAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificaAdminActionPerformed
         try {
             // manda pra InterfaceAdminPokemon do pokemon selecionado na combo-box
+            Pokemon.setPokemonAtual(Treinador.getTreinadorAtual().getPokemonByName(listaPokemons.getSelectedItem().toString()));
             this.dispose();
-            InterfaceAdminPokemon interfaceAdminPokemon = new InterfaceAdminPokemon();
+            InterfaceAdminPokemon interfaceAdminPokemon = new InterfaceAdminPokemon(Pokemon.getPokemonAtual());
             interfaceAdminPokemon.setVisible(true);
         } catch (IOException ex) {
             System.out.println("Nao foi possivel encontrar a imagem.");

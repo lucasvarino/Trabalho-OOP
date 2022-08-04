@@ -5,7 +5,13 @@
 package com.mycompany.interfacepokedex.admin;
 
 import com.mycompany.interfacepokedex.InitComponents;
+import com.mycompany.interfacepokedex.UserInterface;
+import com.mycompany.interfacepokedex.jogador.InterfaceRegistros;
+import com.mycompany.interfacepokedex.jogador.InterfaceUsuario;
+import com.mycompany.pokedexoo.pokemon.Pokemon;
+import com.mycompany.pokedexoo.users.Admin;
 import com.mycompany.pokedexoo.users.Treinador;
+import excecoes.PokemonApiException;
 import java.awt.Image;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -13,6 +19,9 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JPanel;
 
 /**
  * autores:
@@ -24,8 +33,9 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame implements InitCom
     /**
      * Creates new form InterfaceInicial
      */
-    public InterfaceAdminPokemon() throws IOException {
+    public InterfaceAdminPokemon(Pokemon pokemonAtual) throws IOException {
         initComponents();
+        pokemonAtual = this.pokemonAtual;
         this.setSize(1000, 800);
         this.setVisible(true);
     }
@@ -40,20 +50,20 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame implements InitCom
     public void initComponents() throws MalformedURLException, IOException {
 
         pesoPokemon = new javax.swing.JLabel();
-        deletaPokemon = new javax.swing.JButton();
         nomePokemon = new javax.swing.JLabel();
         inputPesoPokemon = new javax.swing.JTextField();
-        regiaoNome = new javax.swing.JLabel();
+        altura1 = new javax.swing.JLabel();
         inputAlturaPokemon = new javax.swing.JTextField();
         editaPokemon = new javax.swing.JButton();
         apelido = new javax.swing.JLabel();
         inputApelidoPokemon = new javax.swing.JTextField();
         bulbasaur = new javax.swing.JLabel();
-        altura1 = new javax.swing.JLabel();
-        treinadorNome = new javax.swing.JLabel();
         treinador1 = new javax.swing.JLabel();
+        treinadorNome = new javax.swing.JLabel();
         regiao1 = new javax.swing.JLabel();
+        regiaoNome = new javax.swing.JLabel();
         pokedex = new javax.swing.JLabel();
+        deletaPokemon = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -64,24 +74,13 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame implements InitCom
         getContentPane().add(pesoPokemon);
         pesoPokemon.setBounds(130, 290, 50, 23);
 
-        deletaPokemon.setBackground(new java.awt.Color(255, 51, 51));
-        deletaPokemon.setText("Deletar");
-        deletaPokemon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deletaPokemonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(deletaPokemon);
-        deletaPokemon.setBounds(290, 360, 70, 24);
-
         nomePokemon.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
-        nomePokemon.setForeground(new java.awt.Color(0, 204, 0));
         nomePokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nomePokemon.setText("#1 Bulbasaur");
+        nomePokemon.setText("#" + Pokemon.getPokemonAtual().getIdPokedex() + " " + UserInterface.upperCaseFirst(Pokemon.getPokemonAtual().getNome()));
         getContentPane().add(nomePokemon);
         nomePokemon.setBounds(170, 230, 160, 20);
 
-        inputPesoPokemon.setText("45");
+        inputPesoPokemon.setText(Pokemon.getPokemonAtual().getPeso());
         inputPesoPokemon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputPesoPokemonActionPerformed(evt);
@@ -90,14 +89,13 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame implements InitCom
         getContentPane().add(inputPesoPokemon);
         inputPesoPokemon.setBounds(200, 290, 60, 24);
 
-        regiaoNome.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        regiaoNome.setForeground(new java.awt.Color(255, 255, 255));
-        regiaoNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        regiaoNome.setText(Treinador.getTreinadorAtual().getRegiao());
-        getContentPane().add(regiaoNome);
-        regiaoNome.setBounds(650, 290, 100, 30);
+        altura1.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        altura1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        altura1.setText("Altura:");
+        getContentPane().add(altura1);
+        altura1.setBounds(130, 260, 60, 23);
 
-        inputAlturaPokemon.setText("1,25");
+        inputAlturaPokemon.setText(Pokemon.getPokemonAtual().getAltura());
         inputAlturaPokemon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputAlturaPokemonActionPerformed(evt);
@@ -114,7 +112,7 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame implements InitCom
             }
         });
         getContentPane().add(editaPokemon);
-        editaPokemon.setBounds(140, 360, 70, 24);
+        editaPokemon.setBounds(210, 360, 70, 24);
 
         apelido.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         apelido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -122,7 +120,7 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame implements InitCom
         getContentPane().add(apelido);
         apelido.setBounds(130, 320, 70, 23);
 
-        inputApelidoPokemon.setText("cebolinha");
+        inputApelidoPokemon.setText(UserInterface.upperCaseFirst(Pokemon.getPokemonAtual().getApelido()));
         inputApelidoPokemon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputApelidoPokemonActionPerformed(evt);
@@ -130,27 +128,15 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame implements InitCom
         });
         getContentPane().add(inputApelidoPokemon);
         inputApelidoPokemon.setBounds(200, 320, 60, 24);
-
-        URL url = new URL("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png");
+        
         System.out.println("Buscando imagem na api...");
+        URL url = new URL(Pokemon.getPokemonAtual().getSprites().getSprite());
+
         Image image = ImageIO.read(url);
         
         bulbasaur.setIcon(new javax.swing.ImageIcon(image)); // NOI18N
         getContentPane().add(bulbasaur);
         bulbasaur.setBounds(270, 190, 190, 240);
-
-        altura1.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
-        altura1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        altura1.setText("Altura:");
-        getContentPane().add(altura1);
-        altura1.setBounds(130, 260, 60, 23);
-
-        treinadorNome.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        treinadorNome.setForeground(new java.awt.Color(255, 255, 255));
-        treinadorNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        treinadorNome.setText(Treinador.getTreinadorAtual().getNome());
-        getContentPane().add(treinadorNome);
-        treinadorNome.setBounds(650, 260, 120, 30);
 
         treinador1.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         treinador1.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,6 +145,13 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame implements InitCom
         getContentPane().add(treinador1);
         treinador1.setBounds(530, 260, 120, 23);
 
+        treinadorNome.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        treinadorNome.setForeground(new java.awt.Color(255, 255, 255));
+        treinadorNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        treinadorNome.setText(UserInterface.upperCaseFirst(Treinador.getTreinadorAtual().getNome()));
+        getContentPane().add(treinadorNome);
+        treinadorNome.setBounds(650, 260, 120, 30);
+
         regiao1.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         regiao1.setForeground(new java.awt.Color(255, 255, 255));
         regiao1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -166,6 +159,23 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame implements InitCom
         getContentPane().add(regiao1);
         regiao1.setBounds(550, 290, 100, 23);
 
+        regiaoNome.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        regiaoNome.setForeground(new java.awt.Color(255, 255, 255));
+        regiaoNome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        regiaoNome.setText(UserInterface.upperCaseFirst(Treinador.getTreinadorAtual().getRegiao()));
+        getContentPane().add(regiaoNome);
+        regiaoNome.setBounds(650, 290, 100, 30);
+
+        deletaPokemon.setBackground(new java.awt.Color(255, 0, 0));
+        deletaPokemon.setText("Deletar");
+        deletaPokemon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletaPokemonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(deletaPokemon);
+        deletaPokemon.setBounds(290, 360, 70, 24);
+        
         pokedex.setIcon(new javax.swing.ImageIcon("img/pokedex.png")); // NOI18N
         getContentPane().add(pokedex);
         pokedex.setBounds(20, 15, 840, 639);
@@ -174,12 +184,16 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame implements InitCom
     }// </editor-fold>//
 
     private void deletaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletaPokemonActionPerformed
-        // admin deleta o pokemon
-        
-        // e volta para InterfaceAdminPokemons
-        this.dispose();
-        InterfaceAdminPokemons interfaceAdminPokemons = new InterfaceAdminPokemons();
-        interfaceAdminPokemons.setVisible(true);
+        try {
+            // admin deleta o pokemon
+            Admin.deletaPokemon(inputApelidoPokemon.getText());
+            // e volta para InterfaceAdminPokemons
+            this.dispose();
+            InterfaceAdminPokemons interfaceAdminPokemons = new InterfaceAdminPokemons();
+            interfaceAdminPokemons.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(InterfaceAdminPokemon.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_deletaPokemonActionPerformed
 
     private void inputPesoPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPesoPokemonActionPerformed
@@ -191,12 +205,29 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame implements InitCom
     }//GEN-LAST:event_inputAlturaPokemonActionPerformed
 
     private void editaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editaPokemonActionPerformed
-        // confirma a edicao do pokemon e o cria
-        
-        // e volta para a InterfaceAdminPokemons
-        this.dispose();
-        InterfaceAdminPokemons interfaceAdminPokemons = new InterfaceAdminPokemons();
-        interfaceAdminPokemons.setVisible(true);
+        Pokemon pokemon;
+        try {
+            pokemon = Pokemon.getPokemonByUrl(Pokemon.getPokemonAtual().getNome());
+
+            pokemon.setApelido(inputApelidoPokemon.getText());
+            boolean editouAltura = pokemon.editarAltura(inputAlturaPokemon.getText());
+            boolean editouPeso = pokemon.editarPeso(inputPesoPokemon.getText());
+
+            if (editouAltura && editouPeso) {
+                pokemon.setId(Pokemon.getPokemonAtual().getId());
+                Pokemon.setTotalPokemons(Pokemon.getTotalPokemons() - 1);
+                Treinador.getTreinadorAtual().editarPokemon(pokemon);
+
+                this.dispose();
+                InterfaceAdminPokemons interfaceAdminPokemons = new InterfaceAdminPokemons();
+                interfaceAdminPokemons.setVisible(true);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(InterfaceAdminPokemons.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (PokemonApiException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Valores em Branco, favor inserir", "Erro na API", ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_editaPokemonActionPerformed
 
     private void inputApelidoPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputApelidoPokemonActionPerformed
@@ -241,13 +272,15 @@ public class InterfaceAdminPokemon extends javax.swing.JFrame implements InitCom
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new InterfaceAdminPokemon().setVisible(true);
+                    new InterfaceAdminPokemon(Pokemon.getPokemonAtual()).setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(InterfaceAdminPokemon.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
     }
+    
+    private Pokemon pokemonAtual;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel altura1;

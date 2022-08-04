@@ -4,6 +4,8 @@
  */
 package com.mycompany.pokedexoo.users;
 
+import com.mycompany.pokedexoo.pokemon.Pokemon;
+import java.io.IOException;
 import excecoes.LoginException;
 import java.util.*;
 
@@ -28,6 +30,10 @@ public class Admin extends Usuario {
     
     public void deletaUsuario() {
         
+    }
+    
+    public static void deletaPokemon(String nome) throws IOException {
+        Treinador.getTreinadorAtual().deletarPokemonAtual(Pokemon.getPokemonAtual());
     }
 
     @Override

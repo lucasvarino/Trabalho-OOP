@@ -30,7 +30,6 @@ public class Treinador extends Pessoa {
         super(_nome);
         this.regiao = regiao.toLowerCase();
         this.pokemons = new ArrayList<>();
-        this.pokemons = jsonUtil.fromJsonToList(jogadorId, this.id);
     }
 
     public void setJogadorId(int jogadorId) {
@@ -118,27 +117,10 @@ public class Treinador extends Pessoa {
         }
         return false;
     }
-
-    public void deletarPokemon(int id) throws IOException {
-
-        if(this.pokemons.isEmpty()) {
-            System.out.println("Você ainda não registrou nenhum pokemon!");
-            return;
-        } else {
-            for (Pokemon pokemon : pokemons) {
-                if(pokemon.getId() == id) {
-                    pokemons.remove(pokemon);
-
-                    System.out.println("Pokemon removido com sucesso!");
-                    Jogador.salvarJogadorJson();
-
-                    return;
-                }
-            }
-        }
-
-        System.out.println("Não foi encontrado nenhum pokemon com esse id!");
-
+    
+    public void deletarPokemonAtual(Pokemon pokemon) throws IOException {
+        pokemons.remove(pokemon);
+        Jogador.salvarJogadorJson();
     }
 
     public void editarPokemon(Pokemon pokemonEditado) throws IOException {
