@@ -4,6 +4,10 @@
  */
 package excecoes;
 
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JPanel;
+
 /**
  * autores:
  * João Pedro Banhato Pereira (202165506B)
