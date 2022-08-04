@@ -6,6 +6,7 @@ package com.mycompany.pokedexoo.users;
 
 import com.mycompany.pokedexoo.pokemon.Pokemon;
 import excecoes.InputException;
+import excecoes.PokemonApiException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -78,7 +79,7 @@ public class Treinador extends Pessoa {
         }
     }
 
-    public void addPokemon(String pokemonName, String apelido) throws InputException {
+    public void addPokemon(String pokemonName, String apelido) throws InputException, PokemonApiException {
         //TODO: Adicionar Tratamento de Exceção aqui
         
         if(pokemonName.isBlank() || apelido.isBlank())
