@@ -7,6 +7,8 @@ package com.mycompany.pokedexoo.pokemon;
 import com.mycompany.pokedexoo.pokemon.region.PokemonRegion;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import com.mycompany.pokedexoo.users.Treinador;
+import excecoes.ComboBoxException;
 import excecoes.PokemonApiException;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -63,7 +65,7 @@ public class Pokemon {
         this.apelido = this.name; // Caso não tenha nenhum apelido, por padrão ele é o nome do pokemon
     }
 
-    public Pokemon(String apelido, String height, String weight) {
+    public Pokemon(String apelido, String height, String weight) { // Construtor usado na Edição
         this.idSistema = totalPokemons;
         Pokemon.totalPokemons += 1;
         this.apelido = apelido;
@@ -72,7 +74,7 @@ public class Pokemon {
     }
 
    
-    public Pokemon(int idPokedex, String nome, String altura, String peso) throws IOException {
+    public Pokemon(int idPokedex, String nome, String altura, String peso) throws IOException { // Construtor usado na criação
         this.idSistema = totalPokemons;
         Pokemon.totalPokemons += 1;
         this.idPokedex = idPokedex;
@@ -196,20 +198,25 @@ public class Pokemon {
         return pokemonAtual;
     }
 
-    public static void setPokemonAtual(Pokemon pokemonAtual) {
+    public static void setPokemonAtual(Pokemon pokemonAtual) throws ComboBoxException {
+        if(Treinador.getTreinadorAtual().getPokemons().isEmpty())
+        {
+            throw new ComboBoxException();
+        }
+        
         Pokemon.pokemonAtual = pokemonAtual;
     }
     
     public static Pokemon getPokemonByUrl(String pokemonName) throws PokemonApiException { // Principal método da classe, busca um pokemon na API e retorna ele juntamente com sua região
         try {
-            String url = "https://pokeapi.co/api/v2/pokemon/" + pokemonName.toLowerCase();
+            String url = "https://pokeapi.co/api/v2/pokemon/" + pokemonName.toLowerCase(); // Busca na API
             
             HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
             
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "Application/json");
             
-            if(conn.getResponseCode() != 200) {
+            if(conn.getResponseCode() != 200) { // Verifica se o pokémon realmente existe
                 throw new PokemonApiException();
             }
             
@@ -226,9 +233,9 @@ public class Pokemon {
             
             Gson gson = new Gson();
             
-            Pokemon pokemon = gson.fromJson(new String(response.getBytes()), Pokemon.class);
+            Pokemon pokemon = gson.fromJson(new String(response.getBytes()), Pokemon.class); // Faz o mapping para a classe
             
-            pokemon.setRegion(PokemonRegion.getPokemonRegionName(pokemon.getNome()));
+            pokemon.setRegion(PokemonRegion.getPokemonRegionName(pokemon.getNome())); // Faz o set da região dinamicamente via API
             
             return pokemon;
             
@@ -236,21 +243,5 @@ public class Pokemon {
             System.out.println("Erro ao processar sua requisição, tente novamente" + ex);
             return null;
         }
-    }
-    
-    public void imprimePokemon() throws IOException {
-        System.out.println("ID NOSSO - " + this.idSistema);
-        System.out.println("NOME - " + this.name);
-        System.out.println("ALTURA - " + this.height);
-        System.out.println("PESO - " + this.weight);
-        
-        for(PokemonTypeSlot tipo : this.tipos) 
-        {
-            System.out.println("TIPO - " + tipo.getType().getName());
-        }
-        
-        System.out.println("SPRITE - " + this.sprites.getSprite());
-        System.out.println("REGIAO - " + this.region);
-        
     }
 }

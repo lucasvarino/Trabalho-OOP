@@ -5,7 +5,7 @@ package com.mycompany.pokedexoo.pokemon;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class PokemonType {
+public class PokemonType { // Classe usada apenas para mapping
     private final String name;
     private final String url;
 

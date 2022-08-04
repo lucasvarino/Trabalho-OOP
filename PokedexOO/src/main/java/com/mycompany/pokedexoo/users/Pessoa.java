@@ -9,7 +9,7 @@ package com.mycompany.pokedexoo.users;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public abstract class Pessoa {
+public abstract class Pessoa { // Classe abstrata de pessoa
     protected static int totalPessoas;
     protected int id;
     protected String nome;

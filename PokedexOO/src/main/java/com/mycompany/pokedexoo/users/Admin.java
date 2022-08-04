@@ -20,29 +20,9 @@ public class Admin extends Usuario {
         super(_nome, _senha);
     }
     
-    public void criaUsuario() {
-        
-    }
-    
-    public void editaUsuario(List<Usuario> usuariosBanco, int usuarioId) {
-        
-    }
-    
-    public void deletaUsuario() {
-        
-    }
-    
     public static void deletaPokemon(String nome) throws IOException {
         Treinador.getTreinadorAtual().deletarPokemonAtual(Pokemon.getPokemonAtual());
     }
 
-    @Override
-    public boolean logar(String username, String senha) throws LoginException {
-         if(!"admin@admin.com".equals(username) || !"123456".equals(senha))
-         {
-            throw new LoginException();
-         }
-         
-         return true;
-    }
+
 }

@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * João Pedro Banhato Pereira (202165506B)
  * Lucas de Oliveira Varino (202165090A)
  */
-public class PokemonSprites {
+public class PokemonSprites { // Classe usada apenas para o mapping
     @SerializedName("front_default")
     private final String sprite;
 

@@ -14,10 +14,11 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- *
- * @author lucasvarino
+ * autores:
+ * João Pedro Banhato Pereira (202165506B)
+ * Lucas de Oliveira Varino (202165090A)
  */
-public class JogadorUtil {
+public class JogadorUtil { // Classe usada para Interagir com o JSON
     private final Gson gson;
 
     public JogadorUtil() {

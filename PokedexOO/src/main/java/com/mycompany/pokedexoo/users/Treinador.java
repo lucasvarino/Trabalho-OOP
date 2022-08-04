@@ -4,14 +4,21 @@
  */
 package com.mycompany.pokedexoo.users;
 
+import com.mycompany.pokedexoo.pokemon.Generation;
 import com.mycompany.pokedexoo.pokemon.Pokemon;
+import excecoes.ComboBoxException;
 import excecoes.InputException;
 import excecoes.NameException;
 import excecoes.PokemonApiException;
+import excecoes.RegiaoException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JPanel;
 
 /**
  * autores:
@@ -19,16 +26,16 @@ import java.util.List;
  * Lucas de Oliveira Varino (202165090A)
  */
 public class Treinador extends Pessoa {
-    private int jogadorId;
-    private String regiao;
-    private List<Pokemon> pokemons;
-    public static final PokemonUtil jsonUtil = new PokemonUtil();
+    private int jogadorId; // Id do jogador
+    private String regiao; // Região (já tratada com possíveis exceções)
+    private List<Pokemon> pokemons; // Lista de pokemons do treinador
+    public static final PokemonUtil jsonUtil = new PokemonUtil(); // Para interagir com o JSON
 
-    private static Treinador treinadorAtual;
+    private static Treinador treinadorAtual; // Treinador atual para usar nas interfaces após o login
     
     public Treinador(String _nome, String regiao) throws FileNotFoundException {
         super(_nome);
-        this.regiao = regiao.toLowerCase();
+        this.regiao = regiao.toLowerCase(); // Colocando em minúsculo para evitar erros
         this.pokemons = new ArrayList<>();
     }
 
@@ -48,7 +55,12 @@ public class Treinador extends Pessoa {
         Treinador.treinadorAtual = treinadorAtual;
     }
     
-    public static void setTreinadorAtualByName(String nome) {
+    public static void setTreinadorAtualByName(String nome) throws ComboBoxException { // Método para setar o treinador após login
+        if(Jogador.getJogadorAtual().getTreinadores().isEmpty())
+        {
+            throw new ComboBoxException();
+        }
+        
         for (Treinador t : Jogador.getJogadorAtual().getTreinadores()) {
             if (t.getNome().equals(nome)) {
                 setTreinadorAtual(t);
@@ -79,9 +91,7 @@ public class Treinador extends Pessoa {
         }
     }
 
-    public void addPokemon(String pokemonName, String apelido) throws InputException, PokemonApiException {
-        //TODO: Adicionar Tratamento de Exceção aqui
-        
+    public void addPokemon(String pokemonName, String apelido) throws InputException, PokemonApiException, RegiaoException { // Método para adicionar pokémon no array de pokemons
         if(pokemonName.isBlank() || apelido.isBlank())
         {
             throw new InputException();
@@ -91,11 +101,9 @@ public class Treinador extends Pessoa {
             Pokemon pokemon = Pokemon.getPokemonByUrl(pokemonName);
             pokemon.setApelido(apelido);
                  
-            if(!pokemon.getRegion().equals(this.regiao)) {
-                // Tratamento de Exceção aqui
+            if(!pokemon.getRegion().equals(this.regiao)) { // Verifica se as regiões são iguais
                 
-                System.out.println("O pokemon não é da mesma região do treinador!");
-                return;
+                throw new RegiaoException();
             }
             
             this.pokemons.add(pokemon);
@@ -123,7 +131,7 @@ public class Treinador extends Pessoa {
         Jogador.salvarJogadorJson();
     }
 
-    public void editarPokemon(Pokemon pokemonEditado) throws IOException {
+    public void editarPokemon(Pokemon pokemonEditado) throws IOException { // Editar o pokemon
 
         
         if(this.pokemons.isEmpty()) {
@@ -145,7 +153,7 @@ public class Treinador extends Pessoa {
         System.out.println("Não foi encontrado nenhum pokemon com esse id!");
     }
     
-    public String[] getAllNomes() {
+    public String[] getAllNomes() { // Método para exibir todos os nomes na ComboBox
         String[] nomes = new String[this.pokemons.size()];
         
         for (int i = 0; i < this.pokemons.size(); i++) {
@@ -155,7 +163,7 @@ public class Treinador extends Pessoa {
         return nomes;
     }
     
-    public Pokemon getPokemonByName(String name) {
+    public Pokemon getPokemonByName(String name) { // Pegar o pokemon pelo nome
         for (Pokemon pokemon : pokemons) {
             if(pokemon.getApelido().equals(name))
                 return pokemon;
@@ -165,9 +173,7 @@ public class Treinador extends Pessoa {
     }
     
     
-
-    
-    public static boolean registrar(String username, String region) throws IOException, InputException, NameException {
+    public static boolean registrar(String username, String region) throws IOException, InputException, NameException, MalformedURLException, RegiaoException { // Registrar o pokemon
         if(username.isBlank() || region.isBlank())
         {
             throw new InputException();
@@ -180,7 +186,21 @@ public class Treinador extends Pessoa {
             }
         }
         
-        Treinador jogador = new Treinador(username, region);
+        try {
+            boolean regiaoValida = Generation.verificarRegiao(region);
+            
+            if(regiaoValida) {
+                Treinador treinador = new Treinador(username, region);
+                Jogador.getJogadorAtual().getTreinadores().add(treinador);
+                Jogador.salvarJogadorJson();
+                return true;
+            }
+        }catch(RegiaoException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Região Inválida! Escolha uma dessas regiões a seguir", "Valores em Branco", ERROR_MESSAGE);
+            return false;
+        }
+        
         return true;
     }
     

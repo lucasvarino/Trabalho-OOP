@@ -5,10 +5,11 @@
 package com.mycompany.pokedexoo.pokemon;
 
 /**
- *
- * @author lucasvarino
+ * autores:
+ * João Pedro Banhato Pereira (202165506B)
+ * Lucas de Oliveira Varino (202165090A)
  */
-public class PokemonTypeSlot {
+public class PokemonTypeSlot { // Classe usada apenas para mapping
     private final int slot;
     private final PokemonType type;
 

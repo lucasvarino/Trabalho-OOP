@@ -44,13 +44,13 @@ public class PokemonRegion {
     }
 
     public static int takeRegionIdFromUrl(String url) {
-        int id = Integer.parseInt(Character.toString(url.charAt(-2)));
+        int id = Integer.parseInt(Character.toString(url.charAt(-2))); // Pegando o ID da região pela URL
 
         return id;
 
     }
     
-    public static PokemonRegion getRegionFromAPI(String pokemonName) throws IOException {
+    public static PokemonRegion getRegionFromAPI(String pokemonName) throws IOException { // Método usado para procurar a região via API
         String url = "https://pokeapi.co/api/v2/pokemon-species/" + pokemonName;
         
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
@@ -80,7 +80,7 @@ public class PokemonRegion {
         return region;
     }
     
-    public static String getPokemonRegionName(String pokemonName) throws IOException
+    public static String getPokemonRegionName(String pokemonName) throws IOException // Pegar o nome da Região a partir da geração
     {
         return PokemonRegion.getRegionFromAPI(pokemonName).getGeracao().getRegionNameFromGeneration();
     }

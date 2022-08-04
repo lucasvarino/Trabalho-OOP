@@ -10,6 +10,7 @@ import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
 import excecoes.InputException;
 import excecoes.PokemonApiException;
+import excecoes.RegiaoException;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,9 +19,8 @@ import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import javax.swing.JPanel;
 
 /**
- * autores:
- * João Pedro Banhato Pereira (202165506B)
- * Lucas de Oliveira Varino (202165090A)
+ * autores: João Pedro Banhato Pereira (202165506B) Lucas de Oliveira Varino
+ * (202165090A)
  */
 public class InterfaceRegistraPokemon extends javax.swing.JFrame implements InitComponents {
 
@@ -61,6 +61,10 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame implements Init
                     confirmaPokemonActionPerformed(evt);
                 } catch (PokemonApiException ex) {
                     Logger.getLogger(InterfaceRegistraPokemon.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (RegiaoException ex) {
+                    JPanel painel = new JPanel();
+                    JOptionPane.showInternalMessageDialog(painel, "O pokémon selecionado não é da mesma região do treinador!", "Erro na Região", ERROR_MESSAGE);
+                    return;
                 }
             }
         });
@@ -108,21 +112,20 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame implements Init
         pack();
     }// </editor-fold>                        
 
-    private void confirmaPokemonActionPerformed(java.awt.event.ActionEvent evt) throws PokemonApiException {
+    private void confirmaPokemonActionPerformed(java.awt.event.ActionEvent evt) throws PokemonApiException, RegiaoException {
         Treinador treinadorAtual = Treinador.getTreinadorAtual();
         try {
             treinadorAtual.addPokemon(inputNomePokemon.getText(), inputApelidoPokemon.getText());
-        } catch(InputException ex) {
+        } catch (InputException ex) {
             JPanel painel = new JPanel();
             JOptionPane.showInternalMessageDialog(painel, "Valores em Branco, favor inserir", "Valores em Branco", ERROR_MESSAGE);
             return;
-        } catch(PokemonApiException ex) {
+        } catch (PokemonApiException ex) {
             JPanel painel = new JPanel();
             JOptionPane.showInternalMessageDialog(painel, "Erro na requisição", "Erro na API", ERROR_MESSAGE);
             return;
         }
-        
-        
+
         try {
             Jogador.atualizaJogadores();
         } catch (FileNotFoundException ex) {
@@ -189,6 +192,4 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame implements Init
     private javax.swing.JLabel registrarPokemon;
     // End of variables declaration                   
 
-    
-    
 }

@@ -24,7 +24,12 @@ public abstract class Usuario extends Pessoa {
         return senha;
     }
 
-    public boolean logar(String username, String senha) throws LoginException {
-        return (username == "admin@admin.com" && senha == "123456");
+    public boolean logar(String username, String senha) throws LoginException { //Logar no sistema
+         if(!"admin@admin.com".equals(username) || !"123456".equals(senha))
+         {
+            throw new LoginException();
+         }
+         
+         return true;
     }
 }
