@@ -9,6 +9,7 @@ import com.mycompany.interfacepokedex.jogador.InterfaceCriaTreinador;
 import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -44,7 +45,8 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame implements InitC
         listaTreinadores = new javax.swing.JComboBox<>();
         sair = new javax.swing.JButton();
         pokedex = new javax.swing.JLabel();
-        registraPokemon = new javax.swing.JButton();
+        registraTreinador = new javax.swing.JButton();
+        deletaTreinador = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -58,6 +60,22 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame implements InitC
         });
         getContentPane().add(modificaAdmin);
         modificaAdmin.setBounds(190, 320, 120, 24);
+        
+        deletaTreinador.setBackground(new java.awt.Color(255, 0, 0));
+        deletaTreinador.setText("Deletar");
+        deletaTreinador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    deletaTreinadorActionPerformed(evt);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(InterfaceAdminTreinador.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(InterfaceAdminTreinador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        getContentPane().add(deletaTreinador);
+        deletaTreinador.setBounds(190, 410, 120, 24);
 
         jogador.setBackground(new java.awt.Color(0, 153, 51));
         jogador.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
@@ -92,9 +110,9 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame implements InitC
         getContentPane().add(sair);
         sair.setBounds(270, 360, 100, 24);
 
-        registraPokemon.setBackground(new java.awt.Color(0, 0, 255));
-        registraPokemon.setText("Adicionar Novo");
-        registraPokemon.addActionListener(new java.awt.event.ActionListener() {
+        registraTreinador.setBackground(new java.awt.Color(0, 0, 255));
+        registraTreinador.setText("Adicionar Novo");
+        registraTreinador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
                     registraTreinadorActionPerformed(evt);
@@ -103,8 +121,8 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame implements InitC
                 }
             }
         });
-        getContentPane().add(registraPokemon);
-        registraPokemon.setBounds(130, 360, 130, 24);
+        getContentPane().add(registraTreinador);
+        registraTreinador.setBounds(130, 360, 130, 24);
         
         pokedex.setIcon(new javax.swing.ImageIcon("img/pokedex.png")); // NOI18N
         getContentPane().add(pokedex);
@@ -139,9 +157,18 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame implements InitC
 
     private void registraTreinadorActionPerformed(java.awt.event.ActionEvent evt) throws FileNotFoundException {
         // manda o jogador para a InterfaceAdmin
-        InterfaceAdmin interfaceAdmin = new InterfaceAdmin();
+        InterfaceAdminCriaTreinador interfaceAdminCriaTreinador = new InterfaceAdminCriaTreinador();
         this.dispose();
-        interfaceAdmin.setVisible(true);
+        interfaceAdminCriaTreinador.setVisible(true);
+    }
+    
+    private void deletaTreinadorActionPerformed(java.awt.event.ActionEvent evt) throws FileNotFoundException, IOException {
+        // deleta o treinador selecionado
+        Jogador.getJogadorAtual().deletaTreinador(listaTreinadores.getSelectedItem().toString());
+        // manda de volta pra mesma pagina
+        this.dispose();
+        InterfaceAdminTreinador interfaceAdminTreinador = new InterfaceAdminTreinador();
+        interfaceAdminTreinador.setVisible(true);
     }
     
     /**
@@ -193,7 +220,8 @@ public class InterfaceAdminTreinador extends javax.swing.JFrame implements InitC
     private javax.swing.JLabel pokedex;
     private javax.swing.JButton sair;
     private javax.swing.JLabel treinador;
-    private JButton registraPokemon;
+    private JButton registraTreinador;
+    private JButton deletaTreinador;
     // End of variables declaration//
 
     

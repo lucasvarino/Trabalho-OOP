@@ -5,6 +5,18 @@
 package com.mycompany.interfacepokedex.admin;
 
 import com.mycompany.interfacepokedex.InitComponents;
+import com.mycompany.interfacepokedex.jogador.InterfaceRegistraPokemon;
+import com.mycompany.interfacepokedex.jogador.InterfaceRegistros;
+import com.mycompany.pokedexoo.users.Jogador;
+import com.mycompany.pokedexoo.users.Treinador;
+import excecoes.InputException;
+import excecoes.PokemonApiException;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JPanel;
 
 /**
  * autores:
@@ -95,7 +107,26 @@ public class InterfaceRegistraPokemonAdmin extends javax.swing.JFrame implements
     }// </editor-fold>                        
 
     private void confirmaPokemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmaPokemonActionPerformed
-        // registra o novo pokemon com essas info e volta pra InterfaceAdminPokemons
+        Treinador treinadorAtual = Treinador.getTreinadorAtual();
+        
+        try {
+            treinadorAtual.addPokemon(inputNomePokemon.getText(), inputApelidoPokemon.getText());
+        } catch(InputException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Valores em Branco, favor inserir", "Valores em Branco", ERROR_MESSAGE);
+            return;
+        } catch(PokemonApiException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Erro na requisição", "Erro na API", ERROR_MESSAGE);
+            return;
+        }
+        
+        
+        try {
+            Jogador.atualizaJogadores();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(InterfaceRegistraPokemon.class.getName()).log(Level.SEVERE, null, ex);
+        }
         InterfaceAdminPokemons interfaceAdminPokemons = new InterfaceAdminPokemons();
         this.dispose();
         interfaceAdminPokemons.setVisible(true);

@@ -42,6 +42,28 @@ public class Jogador extends Usuario {
         }
     }
 
+    public void deletaTreinador(String nome) throws IOException {
+        Treinador deletar = null;
+        for (Treinador t : treinadores) {
+            if (t.getNome().equals(nome)) {
+                deletar = t;
+            }
+        }
+        getTreinadores().remove(deletar);
+        Jogador.salvarJogadorJson();
+    }
+    
+    public void deletaJogador(String nome) throws IOException {
+        Jogador deletar = null;
+        for (Jogador j : jogadores) {
+            if (j.getNome().equals(nome)) {
+                deletar = j;
+            }
+        }
+        jogadores.remove(deletar);
+        Jogador.salvarJogadorJson();
+    }
+    
     public static Jogador getJogadorAtual() {
         return jogadorAtual;
     }

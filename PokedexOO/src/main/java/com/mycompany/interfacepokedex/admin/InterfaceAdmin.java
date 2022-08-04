@@ -8,6 +8,7 @@ import com.mycompany.interfacepokedex.InitComponents;
 import com.mycompany.interfacepokedex.InterfaceInicial;
 import com.mycompany.pokedexoo.users.Jogador;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,6 +43,7 @@ public class InterfaceAdmin extends javax.swing.JFrame implements InitComponents
         jogador = new javax.swing.JLabel();
         sair = new javax.swing.JButton();
         pokedex = new javax.swing.JLabel();
+        deletaJogador = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -65,6 +67,22 @@ public class InterfaceAdmin extends javax.swing.JFrame implements InitComponents
         getContentPane().add(selecionaJogador);
         selecionaJogador.setBounds(140, 360, 110, 24);
 
+        deletaJogador.setBackground(new java.awt.Color(255, 0, 0));
+        deletaJogador.setText("Deletar");
+        deletaJogador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    deletaJogadorActionPerformed(evt);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(InterfaceAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(InterfaceAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        getContentPane().add(deletaJogador);
+        deletaJogador.setBounds(190, 410, 120, 24);
+        
         admin.setBackground(new java.awt.Color(0, 153, 51));
         admin.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         admin.setForeground(new java.awt.Color(0, 204, 51));
@@ -126,6 +144,16 @@ public class InterfaceAdmin extends javax.swing.JFrame implements InitComponents
         }
     }//GEN-LAST:event_sairActionPerformed
 
+    private void deletaJogadorActionPerformed(java.awt.event.ActionEvent evt) throws FileNotFoundException, IOException {
+        // deleta o jogador selecionado
+        Jogador.setJogadorAtualByName(listaJogadores.getSelectedItem().toString());
+        Jogador.getJogadorAtual().deletaJogador(Jogador.getJogadorAtual().getNome());
+        // manda de volta pra mesma pagina
+        this.dispose();
+        InterfaceAdmin interfaceAdmin = new InterfaceAdmin();
+        interfaceAdmin.setVisible(true);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -166,6 +194,8 @@ public class InterfaceAdmin extends javax.swing.JFrame implements InitComponents
         });
     }
 
+    
+    private javax.swing.JButton deletaJogador;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel admin;
     private javax.swing.JLabel jogador;
