@@ -4,14 +4,20 @@
  */
 package com.mycompany.pokedexoo.users;
 
+import com.mycompany.pokedexoo.pokemon.Generation;
 import com.mycompany.pokedexoo.pokemon.Pokemon;
 import excecoes.InputException;
 import excecoes.NameException;
 import excecoes.PokemonApiException;
+import excecoes.RegiaoException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JPanel;
 
 /**
  * autores:
@@ -167,7 +173,7 @@ public class Treinador extends Pessoa {
     
 
     
-    public static boolean registrar(String username, String region) throws IOException, InputException, NameException {
+    public static boolean registrar(String username, String region) throws IOException, InputException, NameException, MalformedURLException, RegiaoException {
         if(username.isBlank() || region.isBlank())
         {
             throw new InputException();
@@ -180,7 +186,21 @@ public class Treinador extends Pessoa {
             }
         }
         
-        Treinador jogador = new Treinador(username, region);
+        try {
+            boolean regiaoValida = Generation.verificarRegiao(region);
+            
+            if(regiaoValida) {
+                Treinador treinador = new Treinador(username, region);
+                Jogador.getJogadorAtual().getTreinadores().add(treinador);
+                Jogador.salvarJogadorJson();
+                return true;
+            }
+        }catch(RegiaoException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Região Inválida! Escolha uma dessas regiões a seguir", "Valores em Branco", ERROR_MESSAGE);
+            return false;
+        }
+        
         return true;
     }
     

@@ -10,7 +10,9 @@ import com.mycompany.pokedexoo.users.Jogador;
 import com.mycompany.pokedexoo.users.Treinador;
 import excecoes.InputException;
 import excecoes.NameException;
+import excecoes.RegiaoException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -18,9 +20,8 @@ import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import javax.swing.JPanel;
 
 /**
- * autores:
- * João Pedro Banhato Pereira (202165506B)
- * Lucas de Oliveira Varino (202165090A)
+ * autores: João Pedro Banhato Pereira (202165506B) Lucas de Oliveira Varino
+ * (202165090A)
  */
 public class InterfaceCriaTreinador extends javax.swing.JFrame implements InitComponents {
 
@@ -69,6 +70,8 @@ public class InterfaceCriaTreinador extends javax.swing.JFrame implements InitCo
                     System.out.println("Nao foi possivel criar treinador.");
                 } catch (InputException ex) {
                     Logger.getLogger(InterfaceCriaTreinador.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (RegiaoException ex) {
+                    Logger.getLogger(InterfaceCriaTreinador.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -104,29 +107,25 @@ public class InterfaceCriaTreinador extends javax.swing.JFrame implements InitCo
         pack();
     }// </editor-fold>//
 
-    private void criaTreinadorActionPerformed(java.awt.event.ActionEvent evt) throws IOException, InputException {//
+    private void criaTreinadorActionPerformed(java.awt.event.ActionEvent evt) throws IOException, InputException, MalformedURLException, RegiaoException {//
 
         try {
             boolean podeCriar = Treinador.registrar(inputNomeTreinador.getText(), inputRegiaoTreinador.getText());
-            
-            if (!podeCriar) {
-            JPanel painel = new JPanel();
-            JOptionPane.showInternalMessageDialog(painel, "Nome já existe! Tente outro.", "Inválido", ERROR_MESSAGE);
-            } else {
+
+            if (podeCriar) {
                 InterfaceJogadorTreinador interfaceJogadorTreinador = new InterfaceJogadorTreinador();
                 this.dispose();
                 interfaceJogadorTreinador.setVisible(true);
-            
-            } 
-        } catch(InputException ex) {
+            }
+
+        } catch (InputException ex) {
             JPanel painel = new JPanel();
             JOptionPane.showInternalMessageDialog(painel, "Valores em Branco, favor inserir", "Valores em Branco", ERROR_MESSAGE);
-        } catch(NameException ex) {
+        } catch (NameException ex) {
             JPanel painel = new JPanel();
             JOptionPane.showInternalMessageDialog(painel, "Username já cadastrado! Tente outro", "Username em uso", ERROR_MESSAGE);
         }
-        
-        
+
     }//
 
     private void inputNomeJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomeJogadorActionPerformed
@@ -181,6 +180,4 @@ public class InterfaceCriaTreinador extends javax.swing.JFrame implements InitCo
     private javax.swing.JLabel senhaTreinador;
     // End of variables declaration//
 
-    
-    
 }

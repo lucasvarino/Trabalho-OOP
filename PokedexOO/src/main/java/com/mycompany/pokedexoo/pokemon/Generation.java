@@ -7,6 +7,7 @@ package com.mycompany.pokedexoo.pokemon;
 import com.mycompany.pokedexoo.pokemon.region.Region;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+import excecoes.RegiaoException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -45,7 +46,7 @@ public class Generation {
         return region;
     }
     
-
+    //Método usado no mapping de Pokémon
     public String getRegionNameFromGeneration() throws IOException {
         String url = "https://pokeapi.co/api/v2/generation/" + this.name;
 
@@ -75,5 +76,20 @@ public class Generation {
         
 
         return regiao.getRegion().getName();
+    }
+    
+    public static boolean verificarRegiao(String regiao) throws MalformedURLException, IOException, RegiaoException {
+        String url = " https://pokeapi.co/api/v2/region/" + regiao.toLowerCase();
+
+        HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Accept", "Application/json");
+
+        if (conn.getResponseCode() != 200) {
+            throw new RegiaoException();
+        }
+        
+        return true;
     }
 }
