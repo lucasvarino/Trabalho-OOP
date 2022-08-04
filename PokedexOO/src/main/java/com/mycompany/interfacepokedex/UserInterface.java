@@ -1,15 +1,9 @@
 package com.mycompany.interfacepokedex;
 
 
-import com.mycompany.pokedexoo.pokemon.Pokemon;
-import com.mycompany.pokedexoo.users.Jogador;
-import com.mycompany.pokedexoo.users.JsonUtil;
-import com.mycompany.pokedexoo.users.Treinador;
-import com.mycompany.pokedexoo.users.Usuario;
-import java.io.File;
+
 import java.io.IOException;
-import java.util.List;
-import java.util.Scanner;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license

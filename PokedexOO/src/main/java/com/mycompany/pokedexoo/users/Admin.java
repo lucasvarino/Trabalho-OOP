@@ -28,4 +28,9 @@ public class Admin extends Usuario {
     public void deletaUsuario() {
         
     }
+
+    @Override
+    public boolean logar(String username, String senha) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

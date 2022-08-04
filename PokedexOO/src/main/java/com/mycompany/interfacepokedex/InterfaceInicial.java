@@ -8,6 +8,7 @@ import com.mycompany.interfacepokedex.jogador.InterfaceCriaUsuario;
 import com.mycompany.interfacepokedex.jogador.InterfaceJogadorTreinador;
 import com.mycompany.interfacepokedex.admin.InterfaceAdmin;
 import com.mycompany.pokedexoo.users.Jogador;
+import excecoes.LoginException;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -187,10 +188,11 @@ public class InterfaceInicial extends javax.swing.JFrame implements InitComponen
         // a partir do jogador selecionado da combo-box verificar se a senha e nome batem, 
         Jogador.setJogadorAtualByName(listaJogadores.getSelectedItem().toString());
         Jogador j = Jogador.getJogadorAtual();
-        boolean credenciaisCorretasJogador = j.logar(listaJogadores.getSelectedItem().toString(), String.valueOf(inputSenhaJogador.getPassword()));
-//        System.out.println(inputSenhaJogador.getPassword().toString());
-        // caso nao bater, informar por um JOP que as credenciais nao batem, 
-        if (!credenciaisCorretasJogador) {
+        
+        try {
+            boolean credenciaisCorretasJogador = j.logar(listaJogadores.getSelectedItem().toString(), String.valueOf(inputSenhaJogador.getPassword()));
+
+            if (!credenciaisCorretasJogador) {
             JPanel painel = new JPanel();
             JOptionPane.showInternalMessageDialog(painel, "Credenciais incorretas!", "Login inváido", ERROR_MESSAGE);
         } else {
@@ -205,6 +207,15 @@ public class InterfaceInicial extends javax.swing.JFrame implements InitComponen
                 System.out.println("Nao foi possivel encontrar o arquivo.");
             }
         }
+            
+        } catch(LoginException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Credenciais incorretas!", "Login inváido", ERROR_MESSAGE);
+        }
+        
+//        System.out.println(inputSenhaJogador.getPassword().toString());
+        // caso nao bater, informar por um JOP que as credenciais nao batem, 
+        
     }//GEN-LAST:event_entraJogadorActionPerformed
 
     private void criaJogador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criaJogador1ActionPerformed

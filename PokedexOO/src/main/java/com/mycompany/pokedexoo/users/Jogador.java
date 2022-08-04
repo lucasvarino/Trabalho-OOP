@@ -8,6 +8,9 @@ import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
 import com.mycompany.pokedexoo.users.Usuario;
 import com.mycompany.pokedexoo.users.Treinador;
+import excecoes.InputException;
+import excecoes.LoginException;
+import excecoes.NameException;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -119,7 +122,7 @@ public class Jogador extends Usuario {
     }
     
     @Override
-    public boolean logar(String username, String senha) {
+    public boolean logar(String username, String senha) throws LoginException {
         for (Jogador jogador : jogadores) {
             if(jogador.getNome().equals(username))
             {
@@ -128,21 +131,23 @@ public class Jogador extends Usuario {
                     return true;
                 }
                 
-                System.out.println("Senha Incorreta!");
-                return false;
+                throw new LoginException();
             }
         }
         
-        System.out.println("Não foi encontrado usuário com esse nome!");
-        return false;
+        throw new LoginException();
     }
     
-    public static boolean registrar(String username, String senha) throws IOException {
+    public static boolean registrar(String username, String senha) throws IOException, InputException, NameException {
+        if(username.isBlank() || senha.isBlank())
+        {
+            throw new InputException();
+        }
+        
         for (Jogador jogador : jogadores) {
             if(username.equals(jogador.getNome()))
             {
-                System.out.println("Não é possível criar um jogador! Nome já utilizado");
-                return false;
+                throw new NameException();
             }
         }
         

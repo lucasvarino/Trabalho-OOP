@@ -7,6 +7,8 @@ package com.mycompany.interfacepokedex.jogador;
 import com.mycompany.interfacepokedex.InitComponents;
 import com.mycompany.interfacepokedex.InterfaceInicial;
 import com.mycompany.pokedexoo.users.Jogador;
+import excecoes.InputException;
+import excecoes.NameException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -64,6 +66,8 @@ public class InterfaceCriaUsuario extends javax.swing.JFrame implements InitComp
                     criaJogadorActionPerformed(evt);
                 } catch (IOException ex) {
                     System.out.println("Nao foi possivel criar jogador.");
+                } catch (InputException ex) {
+                    Logger.getLogger(InterfaceCriaUsuario.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -99,21 +103,30 @@ public class InterfaceCriaUsuario extends javax.swing.JFrame implements InitComp
         pack();
     }// </editor-fold>//
 
-    private void criaJogadorActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//
+    private void criaJogadorActionPerformed(java.awt.event.ActionEvent evt) throws IOException, InputException {//
 //        Jogador jogador = new Jogador(inputNomeJogador.getText(), inputSenhaJogador.getPassword().toString());
-        boolean podeCriar = Jogador.registrar(inputNomeJogador.getText(), String.valueOf(inputSenhaJogador.getPassword()));
-        if (!podeCriar) {
+
+        try {
+            boolean podeCriar = Jogador.registrar(inputNomeJogador.getText(), String.valueOf(inputSenhaJogador.getPassword()));
+            
+            if (!podeCriar) {
             JPanel painel = new JPanel();
             JOptionPane.showInternalMessageDialog(painel, "Nome já existe! Tente outro.", "Inválido", ERROR_MESSAGE);
-        } else {
-            InterfaceInicial interfaceInicial = new InterfaceInicial();
-            this.dispose();
-            interfaceInicial.setVisible(true);
-            System.out.println("Jogador: ");
-            System.out.println("Nome: " + inputNomeJogador.getText());
-            System.out.println("Senha: " + String.valueOf(inputSenhaJogador.getPassword()));
-            System.out.println("Indo para tela inicial");
+            } else {
+                InterfaceInicial interfaceInicial = new InterfaceInicial();
+                this.dispose();
+                interfaceInicial.setVisible(true);
+            
+            } 
+        } catch(InputException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Valores em Branco, favor inserir", "Valores em Branco", ERROR_MESSAGE);
+        } catch(NameException ex) {
+            JPanel painel = new JPanel();
+            JOptionPane.showInternalMessageDialog(painel, "Username já cadastrado! Tente outro", "Username em uso", ERROR_MESSAGE);
         }
+        
+        
     }//
 
     private void inputNomeJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomeJogadorActionPerformed

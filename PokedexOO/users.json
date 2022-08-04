@@ -91,22 +91,22 @@
                 "pokemons": [
                     {
                         "idSistema": 0,
-                        "apelido": "COBRONA",
-                        "id": 23,
-                        "name": "ekans",
-                        "height": "20",
-                        "weight": "69",
+                        "apelido": "Teste Charmander",
+                        "id": 4,
+                        "name": "charmander",
+                        "height": "6",
+                        "weight": "85",
                         "types": [
                             {
                                 "slot": 1,
                                 "type": {
-                                    "name": "poison",
-                                    "url": "https://pokeapi.co/api/v2/type/4/"
+                                    "name": "fire",
+                                    "url": "https://pokeapi.co/api/v2/type/10/"
                                 }
                             }
                         ],
                         "sprites": {
-                            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/23.png"
+                            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
                         },
                         "region": "kanto"
                     },
@@ -149,6 +149,48 @@
                         ],
                         "sprites": {
                             "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+                        },
+                        "region": "kanto"
+                    },
+                    {
+                        "idSistema": 6,
+                        "apelido": "Mewtwo",
+                        "id": 150,
+                        "name": "mewtwo",
+                        "height": "20",
+                        "weight": "1.5",
+                        "types": [
+                            {
+                                "slot": 1,
+                                "type": {
+                                    "name": "psychic",
+                                    "url": "https://pokeapi.co/api/v2/type/14/"
+                                }
+                            }
+                        ],
+                        "sprites": {
+                            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png"
+                        },
+                        "region": "kanto"
+                    },
+                    {
+                        "idSistema": 8,
+                        "apelido": "Squirtle",
+                        "id": 7,
+                        "name": "squirtle",
+                        "height": "5",
+                        "weight": "90",
+                        "types": [
+                            {
+                                "slot": 1,
+                                "type": {
+                                    "name": "water",
+                                    "url": "https://pokeapi.co/api/v2/type/11/"
+                                }
+                            }
+                        ],
+                        "sprites": {
+                            "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
                         },
                         "region": "kanto"
                     }
