@@ -4,6 +4,7 @@
  */
 package com.mycompany.pokedexoo.users;
 
+import excecoes.LoginException;
 import java.util.*;
 
 /**
@@ -30,7 +31,12 @@ public class Admin extends Usuario {
     }
 
     @Override
-    public boolean logar(String username, String senha) {
-        return (username == "admin@admin.com" && senha == "123456");
+    public boolean logar(String username, String senha) throws LoginException {
+         if(!"admin@admin.com".equals(username) || !"123456".equals(senha))
+         {
+            throw new LoginException();
+         }
+         
+         return true;
     }
 }
