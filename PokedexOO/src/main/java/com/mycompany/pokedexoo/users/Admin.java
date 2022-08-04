@@ -4,6 +4,7 @@
  */
 package com.mycompany.pokedexoo.users;
 
+import com.mycompany.pokedexoo.pokemon.Pokemon;
 import java.io.IOException;
 import java.util.*;
 
@@ -31,8 +32,7 @@ public class Admin extends Usuario {
     }
     
     public static void deletaPokemon(String nome) throws IOException {
-        int id = Treinador.getTreinadorAtual().getPokemonByName(nome).getId();
-        Treinador.getTreinadorAtual().deletarPokemon(id);
+        Treinador.getTreinadorAtual().deletarPokemonAtual(Pokemon.getPokemonAtual());
     }
 
     @Override
