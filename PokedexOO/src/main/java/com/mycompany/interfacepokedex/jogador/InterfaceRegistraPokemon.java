@@ -122,7 +122,7 @@ public class InterfaceRegistraPokemon extends javax.swing.JFrame implements Init
             return;
         } catch (PokemonApiException ex) {
             JPanel painel = new JPanel();
-            JOptionPane.showInternalMessageDialog(painel, "Erro na requisição", "Erro na API", ERROR_MESSAGE);
+            JOptionPane.showInternalMessageDialog(painel, "Favor inserir o nome de um pokémon existente!", "Erro na API", ERROR_MESSAGE);
             return;
         }
 

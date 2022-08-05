@@ -128,15 +128,15 @@ public class InterfaceRegistros extends javax.swing.JFrame implements InitCompon
         try {
             // manda o jogador para a InterfaceUsuario com as informacoes do Pokemon
             // selecionado na combo-box
-            this.dispose();
             if (this.listaPokemons.getItemCount() == 0) {
                 JPanel painel = new JPanel();
                 JOptionPane.showInternalMessageDialog(painel, "O seu treinador ainda não capturou nenhum pokémon!", "Pokedex vazia!", ERROR_MESSAGE);
-                return;
+            } else {
+                this.dispose();
+                Pokemon.setPokemonAtual(Treinador.getTreinadorAtual().getPokemonByName(this.listaPokemons.getSelectedItem().toString()));
+                InterfaceUsuario interfaceUsuario = new InterfaceUsuario(Pokemon.getPokemonAtual());
+                interfaceUsuario.setVisible(true);
             }
-            Pokemon.setPokemonAtual(Treinador.getTreinadorAtual().getPokemonByName(this.listaPokemons.getSelectedItem().toString()));
-            InterfaceUsuario interfaceUsuario = new InterfaceUsuario(Pokemon.getPokemonAtual());
-            interfaceUsuario.setVisible(true);
         } catch (IOException ex) {
             System.out.println("Nao foi possivel encontrar a imagem.");
         } catch (ComboBoxException ex) {

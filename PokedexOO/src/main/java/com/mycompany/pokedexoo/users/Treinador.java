@@ -197,7 +197,7 @@ public class Treinador extends Pessoa {
             }
         }catch(RegiaoException ex) {
             JPanel painel = new JPanel();
-            JOptionPane.showInternalMessageDialog(painel, "Região Inválida! Escolha uma dessas regiões a seguir", "Valores em Branco", ERROR_MESSAGE);
+            JOptionPane.showInternalMessageDialog(painel, "Região Inválida!", "Valores em Branco", ERROR_MESSAGE);
             return false;
         }
         
